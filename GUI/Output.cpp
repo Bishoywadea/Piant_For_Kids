@@ -6,7 +6,7 @@ Output::Output()
 	//Initialize user interface parameters
 	UI.InterfaceMode = MODE_DRAW;
 	
-	UI.width = 1250;
+	UI.width = 1500;
 	UI.height = 650;
 	UI.wx = 5;
 	UI.wy =5;
@@ -81,15 +81,29 @@ void Output::CreateDrawToolBar() const
 	//reoder them in UI_Info.h ==> enum DrawMenuItem
 	string MenuItemImages[DRAW_ITM_COUNT];
 	MenuItemImages[ITM_RECT] = "images\\MenuItems\\Menu_Rect.jpg";
-	MenuItemImages[ITM_CIRCLE] = "images\\MenuItems\\circle.jpg";
-	MenuItemImages[ITM_TRIANGLE] = "images\\MenuItems\\triangle.jpg";
+	MenuItemImages[ITM_SQUARE] = "images\\MenuItems\\Menu_Square.jpg";
+	MenuItemImages[ITM_TRIANGLE] = "images\\MenuItems\\Menu_Triangle.jpg";
+	MenuItemImages[ITM_HEXA] = "images\\MenuItems\\Menu_Hexa.jpg";
+	MenuItemImages[ITM_CIRCLE] = "images\\MenuItems\\Menu_Circle.jpg";
+	MenuItemImages[ITM_SELECT] = "images\\MenuItems\\Menu_Select1.jpg";
+	MenuItemImages[ITM_BLACK] = "images\\MenuItems\\Menu_Black.jpg";
+	MenuItemImages[ITM_YELLOW] = "images\\MenuItems\\Menu_Yellow.jpg";
+	MenuItemImages[ITM_ORANGE] = "images\\MenuItems\\Menu_Orange.jpg";
+	MenuItemImages[ITM_RED] = "images\\MenuItems\\Menu_Red.jpg";
+	MenuItemImages[ITM_GREEN] = "images\\MenuItems\\Menu_Green.jpg";
+	MenuItemImages[ITM_BLUE] = "images\\MenuItems\\Menu_Blue.jpg";
+	MenuItemImages[ITM_DELETE] = "images\\MenuItems\\Menu_Delete.jpg";
+	MenuItemImages[ITM_MOVE] = "images\\MenuItems\\Menu_Move.jpg";
+	MenuItemImages[ITM_UNDO] = "images\\MenuItems\\Menu_Undo.jpg";
+	MenuItemImages[ITM_REDO] = "images\\MenuItems\\Menu_Redo.jpg";
 	MenuItemImages[ITM_EXIT] = "images\\MenuItems\\Menu_Exit.jpg";
 	//TODO: Prepare images for each menu item and add it to the list
 
 	//Draw menu item one image at a time
-	for(int i=0; i<DRAW_ITM_COUNT; i++)
+	for(int i=0; i<15; i++)
 		pWind->DrawImage(MenuItemImages[i], i*UI.MenuItemWidth, 0, UI.MenuItemWidth, UI.ToolBarHeight);
-
+	for (int i = 15; i < DRAW_ITM_COUNT; i++)
+		pWind->DrawImage(MenuItemImages[i], (i-15) * UI.MenuItemWidth, UI.ToolBarHeight, UI.MenuItemWidth, 1.5*UI.ToolBarHeight);
 
 
 	//Draw a line under the toolbar
