@@ -6,7 +6,7 @@ Output::Output()
 	//Initialize user interface parameters
 	UI.InterfaceMode = MODE_DRAW;
 	
-	UI.width = 1500;
+	UI.width = 1250;
 	UI.height = 650;
 	UI.wx = 5;
 	UI.wy =5;
@@ -58,7 +58,7 @@ void Output::CreateStatusBar() const
 {
 	pWind->SetPen(UI.StatusBarColor, 1);
 	pWind->SetBrush(UI.StatusBarColor);
-	pWind->DrawRectangle(0, UI.height - UI.StatusBarHeight, UI.width, UI.height);
+	pWind->DrawRectangle(0, UI.ToolBarHeight, UI.width, UI.height);
 }
 //////////////////////////////////////////////////////////////////////////////////////////
 void Output::ClearStatusBar() const
@@ -80,35 +80,88 @@ void Output::CreateDrawToolBar() const
 	//To control the order of these images in the menu, 
 	//reoder them in UI_Info.h ==> enum DrawMenuItem
 	string MenuItemImages[DRAW_ITM_COUNT];
-	MenuItemImages[ITM_RECT] = "images\\MenuItems\\Menu_Rect.jpg";
-	MenuItemImages[ITM_SQUARE] = "images\\MenuItems\\Menu_Square.jpg";
-	MenuItemImages[ITM_TRIANGLE] = "images\\MenuItems\\Menu_Triangle.jpg";
-	MenuItemImages[ITM_HEXA] = "images\\MenuItems\\Menu_Hexa.jpg";
-	MenuItemImages[ITM_CIRCLE] = "images\\MenuItems\\Menu_Circle.jpg";
+	MenuItemImages[ITM_SHAPES] = "images\\MenuItems\\Shapes_Menu.jpg";
+	MenuItemImages[ITM_COLOUR] = "images\\MenuItems\\Colour_Menu.jpg";
 	MenuItemImages[ITM_SELECT] = "images\\MenuItems\\Menu_Select1.jpg";
-	MenuItemImages[ITM_BLACK] = "images\\MenuItems\\Menu_Black.jpg";
-	MenuItemImages[ITM_YELLOW] = "images\\MenuItems\\Menu_Yellow.jpg";
-	MenuItemImages[ITM_ORANGE] = "images\\MenuItems\\Menu_Orange.jpg";
-	MenuItemImages[ITM_RED] = "images\\MenuItems\\Menu_Red.jpg";
-	MenuItemImages[ITM_GREEN] = "images\\MenuItems\\Menu_Green.jpg";
-	MenuItemImages[ITM_BLUE] = "images\\MenuItems\\Menu_Blue.jpg";
 	MenuItemImages[ITM_DELETE] = "images\\MenuItems\\Menu_Delete.jpg";
 	MenuItemImages[ITM_MOVE] = "images\\MenuItems\\Menu_Move.jpg";
 	MenuItemImages[ITM_UNDO] = "images\\MenuItems\\Menu_Undo.jpg";
 	MenuItemImages[ITM_REDO] = "images\\MenuItems\\Menu_Redo.jpg";
 	MenuItemImages[ITM_EXIT] = "images\\MenuItems\\Menu_Exit.jpg";
+
 	//TODO: Prepare images for each menu item and add it to the list
 
 	//Draw menu item one image at a time
-	for(int i=0; i<15; i++)
+	for(int i=0; i<DRAW_ITM_COUNT; i++)
 		pWind->DrawImage(MenuItemImages[i], i*UI.MenuItemWidth, 0, UI.MenuItemWidth, UI.ToolBarHeight);
-	for (int i = 15; i < DRAW_ITM_COUNT; i++)
-		pWind->DrawImage(MenuItemImages[i], (i-15) * UI.MenuItemWidth, UI.ToolBarHeight, UI.MenuItemWidth, 1.5*UI.ToolBarHeight);
+
 
 
 	//Draw a line under the toolbar
 	pWind->SetPen(RED, 3);
 	pWind->DrawLine(0, UI.ToolBarHeight, UI.width, UI.ToolBarHeight);	
+
+}
+//////////////////////////////////////////////////////////////////////////////////////////
+void Output::CreateShapesToolBar() const
+{
+	UI.InterfaceMode = MODE_SHAPES;
+
+	//You can draw the tool bar icons in any way you want.
+	//Below is one possible way
+
+	//First prepare List of images for each menu item
+	//To control the order of these images in the menu, 
+	//reoder them in UI_Info.h ==> enum DrawMenuItem
+	string ShapesItemImages[SHAPES_ITM_COUNT];
+	ShapesItemImages[ITM_RECT] = "images\\MenuItems\\Menu_Rect.jpg";
+	ShapesItemImages[ITM_CIR] = "images\\MenuItems\\Menu_Circle.jpg";
+	ShapesItemImages[ITM_TRI] = "images\\MenuItems\\Menu_Triangle.jpg";
+	ShapesItemImages[ITM_HEX] = "images\\MenuItems\\Menu_Hexa.jpg";
+
+	//TODO: Prepare images for each menu item and add it to the list
+
+	//Draw menu item one image at a time
+	for (int i = 0; i < SHAPES_ITM_COUNT; i++)
+		pWind->DrawImage(ShapesItemImages[i], i * UI.MenuItemWidth, 0, UI.MenuItemWidth, UI.ToolBarHeight);
+
+
+
+	//Draw a line under the toolbar
+	pWind->SetPen(RED, 3);
+	pWind->DrawLine(0, UI.ToolBarHeight, UI.width, UI.ToolBarHeight);
+
+}
+//////////////////////////////////////////////////////////////////////////////////////////
+
+void Output::CreateColourToolBar() const
+{
+	UI.InterfaceMode = MODE_COLOUR;
+
+	//You can draw the tool bar icons in any way you want.
+	//Below is one possible way
+
+	//First prepare List of images for each menu item
+	//To control the order of these images in the menu, 
+	//reoder them in UI_Info.h ==> enum DrawMenuItem
+	string ColourItemImages[COLOUR_ITM_COUNT];
+	ColourItemImages[ITM_RED] = "images\\MenuItems\\Menu_Red.jpg";
+	ColourItemImages[ITM_BLUE] = "images\\MenuItems\\Menu_Blue.jpg";
+	ColourItemImages[ITM_BLACK] = "images\\MenuItems\\Menu_Black.jpg";
+	ColourItemImages[ITM_GREEN] = "images\\MenuItems\\Menu_Green.jpg";
+	ColourItemImages[ITM_ORANGE] = "images\\MenuItems\\Menu_Orange.jpg";
+	ColourItemImages[ITM_YELLOW] = "images\\MenuItems\\Menu_Yellow.jpg";
+	//TODO: Prepare images for each menu item and add it to the list
+
+	//Draw menu item one image at a time
+	for (int i = 0; i < COLOUR_ITM_COUNT; i++)
+		pWind->DrawImage(ColourItemImages[i], i * UI.MenuItemWidth, 0, UI.MenuItemWidth, UI.ToolBarHeight);
+
+
+
+	//Draw a line under the toolbar
+	pWind->SetPen(RED, 3);
+	pWind->DrawLine(0, UI.ToolBarHeight, UI.width, UI.ToolBarHeight);
 
 }
 //////////////////////////////////////////////////////////////////////////////////////////
@@ -126,6 +179,14 @@ void Output::ClearDrawArea() const
 	pWind->SetBrush(UI.BkGrndColor);
 	pWind->DrawRectangle(0, UI.ToolBarHeight, UI.width, UI.height - UI.StatusBarHeight);
 	
+}
+//////////////////////////////////////////////////////////////////////////////////////////
+void Output::ClearToolBar() const
+{
+	pWind->SetPen(UI.BkGrndColor, 1);
+	pWind->SetBrush(UI.BkGrndColor);
+	pWind->DrawRectangle(0, 0, UI.width, UI.ToolBarHeight);
+
 }
 //////////////////////////////////////////////////////////////////////////////////////////
 

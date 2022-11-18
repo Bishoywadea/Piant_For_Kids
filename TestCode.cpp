@@ -22,132 +22,132 @@ int main()
 	//			This has already been done through the constrcutor of class Output
 	///////////////////////////////////////////////////////////////////////////////////
 
-	pOut->PrintMessage("TEST1: Drawing Tool bar and Status bar, Click anywhere to continue");
-	pIn->GetPointClicked(x,y);	//Wait for any click
+	//pOut->PrintMessage("TEST1: Drawing Tool bar and Status bar, Click anywhere to continue");
+	//pIn->GetPointClicked(x,y);	//Wait for any click
 
-	
-	///////////////////////////////////////////////////////////////////////////////////
-	// TEST 2:	
-	//			Drawing all the Figures with all possible states: 
-	//			Non-filled, Filled, and highlighted in both cases			
-	///////////////////////////////////////////////////////////////////////////////////
-	
-	pOut->PrintMessage("TEST2: Now we will show that Output class can draw any figure in any state, Click anywhere to continue");
-	pIn->GetPointClicked(x,y);	//Wait for any click
+	//
+	/////////////////////////////////////////////////////////////////////////////////////
+	//// TEST 2:	
+	////			Drawing all the Figures with all possible states: 
+	////			Non-filled, Filled, and highlighted in both cases			
+	/////////////////////////////////////////////////////////////////////////////////////
+	//
+	//pOut->PrintMessage("TEST2: Now we will show that Output class can draw any figure in any state, Click anywhere to continue");
+	//pIn->GetPointClicked(x,y);	//Wait for any click
 
-	GfxInfo gfxInfo;//to be used with draw function of the class Ouput
-	Point P1, P2;
+	//GfxInfo gfxInfo;//to be used with draw function of the class Ouput
+	//Point P1, P2;
 
-	/// 2.1- Rectangle Test ///
-	/// =================== 
-	pOut->PrintMessage("Drawing a Rectangle, filled/non-filled and Highlighted filled/non-filled,  Click to continue");
-	pIn->GetPointClicked(x,y);	//Wait for any click
-	
-	// 2.1.1 - Drawing non-filled rectangle
-	pOut->PrintMessage("Drawing a Rectangle ==> non-filled,  Click two points");
-	pIn->GetPointClicked(P1.x, P1.y);
-	pIn->GetPointClicked(P2.x, P2.y);
+	///// 2.1- Rectangle Test ///
+	///// =================== 
+	//pOut->PrintMessage("Drawing a Rectangle, filled/non-filled and Highlighted filled/non-filled,  Click to continue");
+	//pIn->GetPointClicked(x,y);	//Wait for any click
+	//
+	//// 2.1.1 - Drawing non-filled rectangle
+	//pOut->PrintMessage("Drawing a Rectangle ==> non-filled,  Click two points");
+	//pIn->GetPointClicked(P1.x, P1.y);
+	//pIn->GetPointClicked(P2.x, P2.y);
 
-	gfxInfo.BorderWdth = 5;
-	gfxInfo.DrawClr = BLACK;	//any color for border
-	gfxInfo.isFilled = false;	//Figure is NOT filled
-	pOut->DrawRect(P1, P2, gfxInfo, false);
+	//gfxInfo.BorderWdth = 5;
+	//gfxInfo.DrawClr = BLACK;	//any color for border
+	//gfxInfo.isFilled = false;	//Figure is NOT filled
+	//pOut->DrawRect(P1, P2, gfxInfo, false);
 
-	// 2.1.2 - Drawing highlighted non-filled rectangle
-	pOut->PrintMessage("Drawing a Rectangle ==> Highlighted non-filled, Click to Highlight");
-	pIn->GetPointClicked(x,y);	//Wait for any click
-	pOut->DrawRect(P1, P2, gfxInfo, true);
-
-
-	// 2.1.3 - Drawing a filled rectangle
-	pOut->PrintMessage("Drawing a Rectangle ==> filled,  Click two points");
-	pIn->GetPointClicked(P1.x, P1.y);
-	pIn->GetPointClicked(P2.x, P2.y);
-
-	gfxInfo.BorderWdth = 6;
-	gfxInfo.DrawClr = BLUE;	//any color for border
-	gfxInfo.FillClr = GREEN;//any color for filling
-	gfxInfo.isFilled = true;//Figure is filled
-	pOut->DrawRect(P1, P2, gfxInfo, false);
+	//// 2.1.2 - Drawing highlighted non-filled rectangle
+	//pOut->PrintMessage("Drawing a Rectangle ==> Highlighted non-filled, Click to Highlight");
+	//pIn->GetPointClicked(x,y);	//Wait for any click
+	//pOut->DrawRect(P1, P2, gfxInfo, true);
 
 
-	// 2.1.4 - Drawing a highlighted filled rectangle
-	pOut->PrintMessage("Drawing a Rectangle ==> Highlighted filled, Click to Highlight");
-	pIn->GetPointClicked(x,y);	//Wait for any click
-	pOut->DrawRect(P1, P2, gfxInfo, true);
+	//// 2.1.3 - Drawing a filled rectangle
+	//pOut->PrintMessage("Drawing a Rectangle ==> filled,  Click two points");
+	//pIn->GetPointClicked(P1.x, P1.y);
+	//pIn->GetPointClicked(P2.x, P2.y);
+
+	//gfxInfo.BorderWdth = 6;
+	//gfxInfo.DrawClr = BLUE;	//any color for border
+	//gfxInfo.FillClr = GREEN;//any color for filling
+	//gfxInfo.isFilled = true;//Figure is filled
+	//pOut->DrawRect(P1, P2, gfxInfo, false);
+
+
+	//// 2.1.4 - Drawing a highlighted filled rectangle
+	//pOut->PrintMessage("Drawing a Rectangle ==> Highlighted filled, Click to Highlight");
+	//pIn->GetPointClicked(x,y);	//Wait for any click
+	//pOut->DrawRect(P1, P2, gfxInfo, true);
 
 
 
-	pOut->PrintMessage("Drawing a Rectangle Test ==> OK,  Click anywhere to continue");
-	pIn->GetPointClicked(x,y);	//Wait for any click
-	pOut->ClearDrawArea();
+	//pOut->PrintMessage("Drawing a Rectangle Test ==> OK,  Click anywhere to continue");
+	//pIn->GetPointClicked(x,y);	//Wait for any click
+	//pOut->ClearDrawArea();
 
-	/// 2.2- Square Test ///
-	/// ============== 
-	pOut->PrintMessage("Drawing a Square, normal and Highlighted, Click to continue");
-	pIn->GetPointClicked(x,y);	//Wait for any click
+	///// 2.2- Square Test ///
+	///// ============== 
+	//pOut->PrintMessage("Drawing a Square, normal and Highlighted, Click to continue");
+	//pIn->GetPointClicked(x,y);	//Wait for any click
 
-	///TODO: Add code to draw Square, Normal and Highlighted
+	/////TODO: Add code to draw Square, Normal and Highlighted
 
-	pOut->PrintMessage("Drawing a Square Test ==> OK,  Click anywhere to continue");
-	pIn->GetPointClicked(x,y);	//Wait for any click
-	pOut->ClearDrawArea();
+	//pOut->PrintMessage("Drawing a Square Test ==> OK,  Click anywhere to continue");
+	//pIn->GetPointClicked(x,y);	//Wait for any click
+	//pOut->ClearDrawArea();
 
-	/// 2.3- Triangle Test ///
-	/// =================== 
-	pOut->PrintMessage("Drawing a Triangle, filled/non-filled and Highlighted filled/non-filled,  Click to continue");
-	pIn->GetPointClicked(x,y);	//Wait for any click
+	///// 2.3- Triangle Test ///
+	///// =================== 
+	//pOut->PrintMessage("Drawing a Triangle, filled/non-filled and Highlighted filled/non-filled,  Click to continue");
+	//pIn->GetPointClicked(x,y);	//Wait for any click
 
-	///TODO: Add code to draw Triangle in all possible states
+	/////TODO: Add code to draw Triangle in all possible states
 
-	pOut->PrintMessage("Drawing a Triangle Test ==> OK,  Click anywhere to continue");
-	pIn->GetPointClicked(x,y);	//Wait for any click
-	pOut->ClearDrawArea();
-	
-	/// 2.4- Hexagon Test ///
-	/// =================== 
-	pOut->PrintMessage("Drawing a Hexagon, filled/non-filled and Highlighted filled/non-filled,  Click to continue");
-	pIn->GetPointClicked(x,y);	//Wait for any click
+	//pOut->PrintMessage("Drawing a Triangle Test ==> OK,  Click anywhere to continue");
+	//pIn->GetPointClicked(x,y);	//Wait for any click
+	//pOut->ClearDrawArea();
+	//
+	///// 2.4- Hexagon Test ///
+	///// =================== 
+	//pOut->PrintMessage("Drawing a Hexagon, filled/non-filled and Highlighted filled/non-filled,  Click to continue");
+	//pIn->GetPointClicked(x,y);	//Wait for any click
 
-	///TODO: Add code to draw Hexagon in all possible states
+	/////TODO: Add code to draw Hexagon in all possible states
 
-	pOut->PrintMessage("Drawing a Hexagon Test ==> OK,  Click anywhere to continue");
-	pIn->GetPointClicked(x,y);	//Wait for any click
-	pOut->ClearDrawArea();
-	
-	/// 2.5- Circle Test ///
-	/// =================== 
-	pOut->PrintMessage("Drawing an Circle, filled/non-filled and Highlighted filled/non-filled,  Click to continue");
-	pIn->GetPointClicked(x,y);	//Wait for any click
+	//pOut->PrintMessage("Drawing a Hexagon Test ==> OK,  Click anywhere to continue");
+	//pIn->GetPointClicked(x,y);	//Wait for any click
+	//pOut->ClearDrawArea();
+	//
+	///// 2.5- Circle Test ///
+	///// =================== 
+	//pOut->PrintMessage("Drawing an Circle, filled/non-filled and Highlighted filled/non-filled,  Click to continue");
+	//pIn->GetPointClicked(x,y);	//Wait for any click
 
-	///TODO: Add code to draw Circle in all possible states
+	/////TODO: Add code to draw Circle in all possible states
 
-	pOut->PrintMessage("Drawing a Circle Test ==> OK,  Click anywhere to continue");
-	pIn->GetPointClicked(x,y);	//Wait for any click
-	pOut->ClearDrawArea();
-	
-	///////////////////////////////////////////////////////////////////////////////////
-	// TEST 3: 
-	//			Input Class: Read strings from the user
-	///////////////////////////////////////////////////////////////////////////////////
-	pOut->PrintMessage("TEST3: Now Time to test class Input, Click anywhere to continue");
-	pIn->GetPointClicked(x,y);	//Wait for any click
-	
-	pOut->PrintMessage("Testing Input ability to read strings");
+	//pOut->PrintMessage("Drawing a Circle Test ==> OK,  Click anywhere to continue");
+	//pIn->GetPointClicked(x,y);	//Wait for any click
+	//pOut->ClearDrawArea();
+	//
+	/////////////////////////////////////////////////////////////////////////////////////
+	//// TEST 3: 
+	////			Input Class: Read strings from the user
+	/////////////////////////////////////////////////////////////////////////////////////
+	//pOut->PrintMessage("TEST3: Now Time to test class Input, Click anywhere to continue");
+	//pIn->GetPointClicked(x,y);	//Wait for any click
+	//
+	//pOut->PrintMessage("Testing Input ability to read strings");
 
-	///TODO: Add code here to 
-	// 1- Read a string from the user on the status bar
-	// 2- After reading the string clear the status bar
-	// 3- print on the status bar "You Entered" then print the string
+	/////TODO: Add code here to 
+	//// 1- Read a string from the user on the status bar
+	//// 2- After reading the string clear the status bar
+	//// 3- print on the status bar "You Entered" then print the string
 
-	pIn->GetPointClicked(x,y);	//Wait for any click
-	pOut->ClearDrawArea();
+	//pIn->GetPointClicked(x,y);	//Wait for any click
+	//pOut->ClearDrawArea();
 
-	///////////////////////////////////////////////////////////////////////////////////
-	// TEST 4: 
-	//			Input Class : Check for the user action
-	///////////////////////////////////////////////////////////////////////////////////
-	pOut->PrintMessage("TEST4: Testing Input ability to detect User Action, click anywhere");
+	/////////////////////////////////////////////////////////////////////////////////////
+	//// TEST 4: 
+	////			Input Class : Check for the user action
+	/////////////////////////////////////////////////////////////////////////////////////
+	//pOut->PrintMessage("TEST4: Testing Input ability to detect User Action, click anywhere");
 
 	ActionType ActType;
 	
@@ -164,6 +164,16 @@ int main()
 				pOut->PrintMessage("Action: Draw a Rectangle , Click anywhere");
 				break;
 
+		case SHAPES_MENU:
+			//pOut->PrintMessage("Action: Switch to Draw Mode, creating simualtion tool bar");
+			pOut->ClearToolBar();
+			pOut->CreateShapesToolBar();
+			break;
+		case COLOUR_MENU:
+			//pOut->PrintMessage("Action: Switch to Draw Mode, creating simualtion tool bar");
+			pOut->ClearToolBar();
+			pOut->CreateColourToolBar();
+			break;
 		case STATUS:
 				pOut->PrintMessage("Action: a click on the Status Bar, Click anywhere");
 				break;
@@ -178,6 +188,7 @@ int main()
 
 		case TO_DRAW:
 				pOut->PrintMessage("Action: Switch to Draw Mode, creating simualtion tool bar");
+				pOut->ClearToolBar();
 				pOut->CreateDrawToolBar();
 				break;
 

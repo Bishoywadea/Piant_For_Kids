@@ -10,6 +10,8 @@
 enum GUI_MODE	//Graphical user interface mode
 {
 	MODE_DRAW,	//Drawing mode (startup mode)
+	MODE_SHAPES,
+	MODE_COLOUR,
 	MODE_PLAY	//Playing mode
 };
 
@@ -17,26 +19,41 @@ enum DrawMenuItem //The items of the Draw menu (you should add more items)
 {
 	//Note: Items are **(ordered)** here as they appear in menu
 	//If you want to change the menu items order, change the order here
-	ITM_RECT,//Recangle item in menu
-	ITM_SQUARE,
-	ITM_TRIANGLE,
-	ITM_HEXA,
-	ITM_CIRCLE,
-	ITM_SELECT,
-	ITM_BLACK,
-	ITM_YELLOW,
-	ITM_ORANGE,
-	ITM_RED,
-	ITM_GREEN,
-	ITM_BLUE,
-	ITM_DELETE,
+	ITM_SHAPES,	
+	ITM_COLOUR,		//Recangle item in menu
+	ITM_SELECT,	
+	ITM_DELETE,	
 	ITM_MOVE,
 	ITM_UNDO,
-	ITM_REDO,
+	ITM_REDO,		//TODO: Add more items names here
 	ITM_EXIT,		//Exit item
-
+	
 	DRAW_ITM_COUNT		//no. of menu items ==> This should be the last line in this enum
 	
+};
+
+enum ShapesMenuItem //The items of the Draw menu (you should add more items)
+{
+	ITM_RECT,		//Recangle item in menu
+	ITM_CIR,
+	ITM_TRI,
+	ITM_HEX,
+
+	SHAPES_ITM_COUNT		//no. of menu items ==> This should be the last line in this enum
+
+};
+
+enum ColourMenuItem //The items of the Draw menu (you should add more items)
+{
+	ITM_RED,		//Recangle item in menu
+	ITM_BLUE,
+	ITM_BLACK,
+	ITM_GREEN,
+	ITM_ORANGE,
+	ITM_YELLOW,
+
+	COLOUR_ITM_COUNT		//no. of menu items ==> This should be the last line in this enum
+
 };
 
 enum PlayMenuItem //The items of the Play menu (you should add more items)
