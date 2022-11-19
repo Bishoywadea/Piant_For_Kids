@@ -1,0 +1,6 @@
+﻿cl : command line warning D9035: option 'Gm' has been deprecated and will be removed in a future release
+  TestCode.cpp
+  Output.cpp
+  Input.cpp
+  Generating Code...
+  PT-Project.vcxproj -> C:\Users\sarah\OneDrive\Documents\GitHub\Piant_For_Kids\Debug\PT Project.exe

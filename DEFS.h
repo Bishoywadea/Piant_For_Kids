@@ -15,6 +15,20 @@ enum ActionType //The actions supported (you can add more if needed)
 	TO_PLAY,		//Switch interface to Play mode
 	EMPTY,			//A click on empty place in the toolbar
 	DRAWING_AREA,	//A click on the drawing area
+	ACT_RED,
+	ACT_ORANGE,
+	ACT_YELLOW,
+	ACT_GREEN,
+	ACT_BLUE,
+	ACT_BLACK,
+	DRAW_CIRCLE,
+	DRAW_HEXAGON,
+	DRAW_TRIANGLE,
+	ACT_DRAWMOOD,
+	ACT_HIDESHAPES,
+	ACT_HIDECOLOURS,
+	ACT_HIDESHAPESANDCOLOURS,
+
 	STATUS			//A click on the status bar
 
 	///TODO: Add the other action types of the two modes
