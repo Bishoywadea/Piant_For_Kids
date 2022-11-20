@@ -255,11 +255,88 @@ void Output::DrawRect(Point P1, Point P2, GfxInfo RectGfxInfo, bool selected) co
 	pWind->DrawRectangle(P1.x, P1.y, P2.x, P2.y, style);
 	
 }
+void Output::DrawSq(Point center, GfxInfo SqGfxInfo,bool selected)     const
+{
+	color DrawingClr;
+	if(selected)	
+	DrawingClr = UI.HighlightColor;
+	else			
+	DrawingClr = SqGfxInfo.DrawClr;
+	pWind->SetPen(DrawingClr,1);
+	drawstyle style;
+	if (SqGfxInfo.isFilled)	
+	{
+		style = FILLED;		
+		pWind->SetBrush(SqGfxInfo.FillClr);
+	}
+	else	
+		style = FRAME;
+	pWind->DrawRectangle(center.x-50, center.y-50, center.x+50, center.y+50, style);
+}
+void Output:: DrawTri(Point P1,Point P2,Point P3,GfxInfo TriGfxInfo,bool selected)  const
+{
+	
+	color DrawingClr;
+	if(selected)	
+	DrawingClr = UI.HighlightColor;
+	else			
+	DrawingClr = TriGfxInfo.DrawClr;
+	pWind->SetPen(DrawingClr,1);
+	drawstyle style;
+	if (TriGfxInfo.isFilled)	
+	{
+		style = FILLED;		
+		pWind->SetBrush(TriGfxInfo.FillClr);
+	}
+	else	
+		style = FRAME;
+	pWind->DrawTriangle(P1.x,P1.y,P2.x,P2.y,P3.x,P3.y,style);
+}
+void Output:: DrawHexa(Point P1,GfxInfo HexaGfxInfo,bool selected)  const
+{
+	color DrawingClr;
+	if(selected)	
+	DrawingClr = UI.HighlightColor;
+	else			
+	DrawingClr = HexaGfxInfo.DrawClr;
+	pWind->SetPen(DrawingClr,1);
+	drawstyle style;
+	if (HexaGfxInfo.isFilled)	
+	{
+		style = FILLED;		
+		pWind->SetBrush(HexaGfxInfo.FillClr);
+	}
+	else	
+		style = FRAME;
+	double angle=30;
+	const int arrx[]={P1.x+100,P1.x+50,P1.x-50,P1.x-100,P1.x-50,P1.x+50};
+	const int arry[]={P1.y,P1.y+(0.866)*100,P1.y+((0.866)*100),P1.y,P1.y-((0.866)*100),P1.y-((0.866)*100)};
+	pWind->DrawPolygon(arrx,arry,6,style);
+}
 
+void Output:: DrawCircle(Point center,GfxInfo CircleGfxInfo,bool selected)  const
+{
+	color DrawingClr;
+	if(selected)	
+	DrawingClr = UI.HighlightColor;
+	else			
+	DrawingClr = CircleGfxInfo.DrawClr;
+	pWind->SetPen(DrawingClr,1);
+	drawstyle style;
+	if (CircleGfxInfo.isFilled)	
+	{
+		style = FILLED;		
+		pWind->SetBrush(CircleGfxInfo.FillClr);
+	}
+	else	
+		style = FRAME;
+	pWind->DrawCircle(center.x,center.y,100,style);
+}
 
 //////////////////////////////////////////////////////////////////////////////////////////
 Output::~Output()
 {
 	delete pWind;
 }
+
 
