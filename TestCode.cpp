@@ -160,10 +160,52 @@ int main()
 
 		switch (ActType)
 		{
+		case ACT_RED:
+			pOut->PrintMessage("Action: red colour chosen , Click anywhere");
+				break;
+		case ACT_BLACK:
+			pOut->PrintMessage("Action: black colour chosen , Click anywhere");
+			break;
+		case ACT_BLUE:
+			pOut->PrintMessage("Action: blue colour chosen , Click anywhere");
+			break;
+		case ACT_ORANGE:
+			pOut->PrintMessage("Action: orange colour chosen , Click anywhere");
+			break;
+		case ACT_YELLOW:
+			pOut->PrintMessage("Action: yellow colour chosen , Click anywhere");
+			break;
+		case ACT_GREEN:
+			pOut->PrintMessage("Action: green colour chosen , Click anywhere");
+			break;
+		case ACT_DELETE:
+			pOut->PrintMessage("Action: DELETE ICON , Click anywhere");
+			break;
+		case ACT_MOVE:
+			pOut->PrintMessage("Action: MOVE ICON , Click anywhere");
+			break;
+		case ACT_SELECTONE:
+			pOut->PrintMessage("Action: SELECT ONE ICON , Click anywhere");
+			break;
+		case ACT_UNDO:
+			pOut->PrintMessage("Action: UNDO ICON , Click anywhere");
+			break;
+		case ACT_REDO:
+			pOut->PrintMessage("Action: REDO ICON , Click anywhere");
+			break;
+		
 		case DRAW_RECT:
 				pOut->PrintMessage("Action: Draw a Rectangle , Click anywhere");
 				break;
-
+		case DRAW_CIRCLE:
+			pOut->PrintMessage("Action: Draw a circle , Click anywhere");
+			break;
+		case DRAW_TRIANGLE:
+			pOut->PrintMessage("Action: Draw a triangle , Click anywhere");
+			break;
+		case DRAW_HEXAGON:
+			pOut->PrintMessage("Action: Draw a hexagon , Click anywhere");
+			break;
 		case SHAPES_MENU:
 			//pOut->PrintMessage("Action: Switch to Draw Mode, creating simualtion tool bar");
 			pOut->ClearToolBar();
@@ -174,9 +216,19 @@ int main()
 			pOut->ClearToolBar();
 			pOut->CreateColourToolBar();
 			break;
+		
 		case STATUS:
 				pOut->PrintMessage("Action: a click on the Status Bar, Click anywhere");
 				break;
+		case HIDE_SHAPES:
+			pOut->PrintMessage("Action: hide shapes , Click anywhere");
+			break;
+		case HIDE_SHAPSANDCOLOURS:
+			pOut->PrintMessage("Action: hide shapes and colours, Click anywhere");
+			break;
+		case HIDE_COLOURS:
+			pOut->PrintMessage("Action:hide colours, Click anywhere");
+			break;
  
 		case DRAWING_AREA:
 				pOut->PrintMessage("Action: a click on the Drawing Area, Click anywhere");
@@ -193,6 +245,7 @@ int main()
 				break;
 
 		case TO_PLAY:
+			pOut->ClearToolBar();
 				pOut->PrintMessage("Action: Switch to Play Mode, creating Design tool bar");
 				pOut->CreatePlayToolBar();
 				break;

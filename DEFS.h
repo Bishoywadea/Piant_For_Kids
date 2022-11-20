@@ -12,9 +12,32 @@ enum ActionType //The actions supported (you can add more if needed)
 	DRAW_RECT,		//Draw Rectangle
 	EXIT,			//Exit
 	TO_DRAW,		//Switch interface to Draw mode
-	TO_PLAY,		//Switch interface to Play mode
+   	//Switch interface to Play mode
 	EMPTY,			//A click on empty place in the toolbar
 	DRAWING_AREA,	//A click on the drawing area
+	ACT_RED,
+	ACT_ORANGE,
+	ACT_YELLOW,
+	ACT_GREEN,
+	HIDE_SHAPES,
+	HIDE_SHAPSANDCOLOURS,
+	HIDE_COLOURS,
+	ACT_DELETE,
+	ACT_SELECTONE,
+	ACT_MOVE,
+	ACT_UNDO,
+	ACT_REDO,
+	ACT_BLUE,
+	ACT_BLACK,
+	DRAW_CIRCLE,
+	DRAW_HEXAGON,
+	DRAW_TRIANGLE,
+	ACT_DRAWMOOD,
+	ACT_HIDESHAPES,
+	ACT_HIDECOLOURS,
+	ACT_HIDESHAPESANDCOLOURS,
+	TO_PLAY,
+
 	STATUS			//A click on the status bar
 
 	///TODO: Add the other action types of the two modes

@@ -88,6 +88,12 @@ void Output::CreateDrawToolBar() const
 	MenuItemImages[ITM_UNDO] = "images\\MenuItems\\Menu_Undo.jpg";
 	MenuItemImages[ITM_REDO] = "images\\MenuItems\\Menu_Redo.jpg";
 	MenuItemImages[ITM_EXIT] = "images\\MenuItems\\Menu_Exit.jpg";
+	MenuItemImages[ITM_STARTREC] = "images\\MenuItems\\Menu_Startrec.jpg";
+	MenuItemImages[ITM_STOPREC] = "images\\MenuItems\\Menu_Stoprec.jpg";
+	MenuItemImages[ITM_PLAYREC] = "images\\MenuItems\\Menu_Playrec.jpg";
+	MenuItemImages[ITM_PLAYMOOD] = "images\\MenuItems\\Menu_Playmood.jpg";
+	//MenuItemImages[ITM_SAVE] = "images\\MenuItems\\Menu_Savegraph.jpg";
+
 
 	//TODO: Prepare images for each menu item and add it to the list
 
@@ -169,7 +175,19 @@ void Output::CreateColourToolBar() const
 void Output::CreatePlayToolBar() const
 {
 	UI.InterfaceMode = MODE_PLAY;
+	string PlayItemImages[COLOUR_ITM_COUNT];
+	PlayItemImages[ITM_DRAWMOOD] = "images\\MenuItems\\Menu_Drawmood.jpg";
+    PlayItemImages[ITM_HIDESHAPES] = "images\\MenuItems\\Menu_hidebyshapes.jpg";
+	PlayItemImages[ITM_HIDECOLOURS] = "images\\MenuItems\\Menu_Hidebycolour.jpg";
+	PlayItemImages[ITM_HIDESHAPESANDCOLOURS] = "images\\MenuItems\\Menu_hidebyshapesandcolours.jpg";
+	
+	//TODO: Prepare images for each menu item and add it to the list
+
+	//Draw menu item one image at a time
+	for (int i = 0; i < PLAY_ITM_COUNT; i++)
+		pWind->DrawImage(PlayItemImages[i], i * UI.MenuItemWidth, 0, UI.MenuItemWidth, UI.ToolBarHeight);
 	///TODO: write code to create Play mode menu
+
 }
 //////////////////////////////////////////////////////////////////////////////////////////
 

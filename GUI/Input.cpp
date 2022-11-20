@@ -34,15 +34,15 @@ string Input::GetSrting(Output *pO) const
 
 //This function reads the position where the user clicks to determine the desired action
 ActionType Input::GetUserAction() const
-{	
-	int x,y;
+{
+	int x, y;
 	pWind->WaitMouseClick(x, y);	//Get the coordinates of the user click
 
-	if(UI.InterfaceMode == MODE_DRAW)	//GUI in the DRAW mode
+	if (UI.InterfaceMode == MODE_DRAW)	//GUI in the DRAW mode
 	{
 		//[1] If user clicks on the Toolbar
-		if ( y >= 0 && y < UI.ToolBarHeight)
-		{	
+		if (y >= 0 && y < UI.ToolBarHeight)
+		{
 			//Check whick Menu item was clicked
 			//==> This assumes that menu items are lined up horizontally <==
 			int ClickedItemOrder = (x / UI.MenuItemWidth);
@@ -53,18 +53,26 @@ ActionType Input::GetUserAction() const
 			{
 			case ITM_SHAPES: return SHAPES_MENU;
 			case ITM_COLOUR: return COLOUR_MENU;
-			case ITM_EXIT: return EXIT;	
+			case ITM_EXIT: return EXIT;
 			
+			case ITM_DELETE: return ACT_DELETE;
+			case ITM_SELECT: return ACT_SELECTONE;
+			case ITM_UNDO: return ACT_UNDO;
+			case ITM_MOVE: return ACT_MOVE;
+			case ITM_REDO: return ACT_REDO;
+			case ITM_PLAYMOOD: return TO_PLAY;
+
+
 			default: return EMPTY;	//A click on empty place in desgin toolbar
 			}
 		}
 
 		//[2] User clicks on the drawing area
-		if ( y >= UI.ToolBarHeight && y < UI.height - UI.StatusBarHeight)
+		if (y >= UI.ToolBarHeight && y < UI.height - UI.StatusBarHeight)
 		{
-			return DRAWING_AREA;	
+			return DRAWING_AREA;
 		}
-		
+
 		//[3] User clicks on the status bar
 		return STATUS;
 	}
@@ -80,11 +88,11 @@ ActionType Input::GetUserAction() const
 
 			switch (ClickedItemOrder)
 			{
-			case ITM_RECT: return TO_DRAW; 
-			case ITM_CIR: return TO_DRAW;
-			case ITM_TRI: return TO_DRAW;
-			case ITM_HEX: return TO_DRAW;
-			default: return EMPTY;	//A click on empty place in desgin toolbar
+			case ITM_RECT: return DRAW_RECT;
+			case ITM_CIR: return DRAW_CIRCLE;
+			case ITM_TRI: return DRAW_TRIANGLE;
+			case ITM_HEX: return DRAW_HEXAGON;
+			default: return TO_DRAW;	//A click on empty place in desgin toolbar
 			}
 		}
 
@@ -109,11 +117,13 @@ ActionType Input::GetUserAction() const
 
 			switch (ClickedItemOrder)
 			{
-			case ITM_RED: return TO_DRAW;
-			case ITM_BLUE: return TO_DRAW;
-			case ITM_GREEN: return TO_DRAW;
-			case ITM_ORANGE: return TO_DRAW;
-			default: return EMPTY;	//A click on empty place in desgin toolbar
+			case ITM_RED: return ACT_RED;
+			case ITM_BLUE: return ACT_BLUE;
+			case ITM_GREEN: return ACT_GREEN;
+			case ITM_ORANGE: return ACT_ORANGE;
+			case ITM_BLACK: return ACT_BLACK;
+			case ITM_YELLOW: return ACT_YELLOW;
+			default: return TO_DRAW;	//A click on empty place in desgin toolbar
 			}
 		}
 
@@ -125,16 +135,40 @@ ActionType Input::GetUserAction() const
 
 		//[3] User clicks on the status bar
 		return STATUS;
-	}
-	else	//GUI is in PLAY mode
-	{
-		///TODO:
-		//perform checks similar to Draw mode checks above
-		//and return the correspoding action
-		return TO_PLAY;	//just for now. This should be updated
-	}	
 
+	}
+	
+	else if (UI.InterfaceMode == MODE_PLAY)
+	{
+	if (y >= 0 && y < UI.ToolBarHeight)
+	{
+		//Check whick Menu item was clicked
+		//==> This assumes that menu items are lined up horizontally <==
+		int ClickedItemOrder = (x / UI.MenuItemWidth);
+		//Divide x coord of the point clicked by the menu item width (int division)
+		//if division result is 0 ==> first item is clicked, if 1 ==> 2nd item and so on
+
+		switch (ClickedItemOrder)
+		{
+		case ITM_DRAWMOOD: return TO_DRAW;
+		case ITM_HIDESHAPES: return HIDE_SHAPES;
+
+		case ITM_HIDESHAPESANDCOLOURS: return HIDE_SHAPSANDCOLOURS;
+		case ITM_HIDECOLOURS: return HIDE_COLOURS;
+		default: return EMPTY;	//A click on empty place in desgin toolbar
+		}
+	}
+
+	//[2] User clicks on the drawing area
+	if (y >= UI.ToolBarHeight && y < UI.height - UI.StatusBarHeight)
+	{
+		return DRAWING_AREA;
+	}
+
+	//[3] User clicks on the status bar
+	return STATUS;
 }
+} 
 /////////////////////////////////
 	
 Input::~Input()

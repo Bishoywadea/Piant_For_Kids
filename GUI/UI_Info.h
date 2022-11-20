@@ -25,7 +25,14 @@ enum DrawMenuItem //The items of the Draw menu (you should add more items)
 	ITM_DELETE,	
 	ITM_MOVE,
 	ITM_UNDO,
+
 	ITM_REDO,		//TODO: Add more items names here
+	ITM_STARTREC,
+	ITM_STOPREC,
+
+	ITM_PLAYREC,
+	ITM_PLAYMOOD,
+	//ITM_SAVE,
 	ITM_EXIT,		//Exit item
 	
 	DRAW_ITM_COUNT		//no. of menu items ==> This should be the last line in this enum
@@ -58,7 +65,10 @@ enum ColourMenuItem //The items of the Draw menu (you should add more items)
 
 enum PlayMenuItem //The items of the Play menu (you should add more items)
 {
-	//Note: Items are **(ordered)** here as they appear in menu
+	ITM_DRAWMOOD,
+	ITM_HIDESHAPES,
+	ITM_HIDECOLOURS,
+	ITM_HIDESHAPESANDCOLOURS,//Note: Items are **(ordered)** here as they appear in menu
 	//If you want to change the menu items order, change the order here
 	
 	//TODO: Add more items names here
