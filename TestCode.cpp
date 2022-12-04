@@ -10,6 +10,7 @@ int main()
 	//Create Input and Output objects to test
 	Output *pOut = new Output();
 	Input *pIn = pOut->CreateInput();
+	pOut->ClearDrawArea();
 
 	//Starting the test
 	pOut->PrintMessage("This demo is to test input and output classes, Click anywhere to start the test");
