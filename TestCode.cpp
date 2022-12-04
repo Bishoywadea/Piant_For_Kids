@@ -12,6 +12,26 @@ int main()
 	Input *pIn = pOut->CreateInput();
 
 	//Starting the test
+	pOut->PrintMessage("This demo is to test input and output classes, Click anywhere to start the test");
+	pIn->GetPointClicked(x,y);	//Wait for any click
+
+
+	///////////////////////////////////////////////////////////////////////////////////
+	// TEST 1:	
+	//			Create The FULL Tool bar, the drawing area and the status bar	
+	//			This has already been done through the constrcutor of class Output
+	///////////////////////////////////////////////////////////////////////////////////
+
+	//pOut->PrintMessage("TEST1: Drawing Tool bar and Status bar, Click anywhere to continue");
+	//pIn->GetPointClicked(x,y);	//Wait for any click
+
+	//
+	/////////////////////////////////////////////////////////////////////////////////////
+	//// TEST 2:	
+	////			Drawing all the Figures with all possible states: 
+	////			Non-filled, Filled, and highlighted in both cases			
+	/////////////////////////////////////////////////////////////////////////////////////
+	//
 	pOut->PrintMessage("TEST1: Drawing Tool bar and Status bar, Click anywhere to continue");
 	pIn->GetPointClicked(x,y);	//Wait for any click
 
@@ -28,8 +48,6 @@ int main()
 	GfxInfo gfxInfo;//to be used with draw function of the class Ouput
 	Point P1, P2,P3;
 
-	/// 2.1- Rectangle Test ///
-	/// =================== 
 	pOut->PrintMessage("Drawing a Rectangle, filled/non-filled and Highlighted filled/non-filled,  Click to continue");
 	pIn->GetPointClicked(x,y);	//Wait for any click
 	
@@ -37,7 +55,6 @@ int main()
 	pOut->PrintMessage("Drawing a Rectangle ==> non-filled,  Click two points");
 	pIn->GetPointClicked(P1.x, P1.y);
 	pIn->GetPointClicked(P2.x, P2.y);
-
 	gfxInfo.BorderWdth = 5;
 	gfxInfo.DrawClr = BLACK;	//any color for border
 	gfxInfo.isFilled = false;	//Figure is NOT filled
@@ -53,8 +70,7 @@ int main()
 	pOut->PrintMessage("Drawing a Rectangle ==> filled,  Click two points");
 	pIn->GetPointClicked(P1.x, P1.y);
 	pIn->GetPointClicked(P2.x, P2.y);
-
-	gfxInfo.BorderWdth = 6;
+	gfxInfo.BorderWdth = 5;
 	gfxInfo.DrawClr = BLUE;	//any color for border
 	gfxInfo.FillClr = GREEN;//any color for filling
 	gfxInfo.isFilled = true;//Figure is filled
@@ -65,8 +81,6 @@ int main()
 	pOut->PrintMessage("Drawing a Rectangle ==> Highlighted filled, Click to Highlight");
 	pIn->GetPointClicked(x,y);	//Wait for any click
 	pOut->DrawRect(P1, P2, gfxInfo, true);
-
-
 
 	pOut->PrintMessage("Drawing a Rectangle Test ==> OK,  Click anywhere to continue");
 	pIn->GetPointClicked(x,y);	//Wait for any click
@@ -100,6 +114,7 @@ int main()
 	pIn->GetPointClicked(P1.x,P1.y);
 	pIn->GetPointClicked(P2.x,P2.y);
 	pIn->GetPointClicked(P3.x,P3.y);
+	gfxInfo.BorderWdth = 5;
 	pOut->DrawTri(P1,P2,P3, gfxInfo, false);
 	// 2.3.2 - Drawing non-filled and Highlighted Triangle
 	pOut->PrintMessage("Drawing an Triangle, non-filled and Highlighted,  Click to highlight");
@@ -153,26 +168,28 @@ int main()
 	pOut->PrintMessage("Drawing an Circle, filled/non-filled and Highlighted filled/non-filled,  Click to continue");
 	pIn->GetPointClicked(x,y);	//Wait for any click
 	// 2.5.1 - Drawing non-filled and non-Highlighted Circle
-	pOut->PrintMessage("Drawing an Circle, non-filled and non-Highlighted,  Click a point");
+	pOut->PrintMessage("Drawing an Circle, non-filled and non-Highlighted,  Click two points");
 	pIn->GetPointClicked(P1.x,P1.y);
+	pIn->GetPointClicked(P2.x,P2.y);
 	gfxInfo.BorderWdth = 5;
 	gfxInfo.DrawClr = BLACK;	
 	gfxInfo.isFilled = false;
-	pOut->DrawCircle(P1,gfxInfo,false);
+	pOut->DrawCircle(P1,P2,gfxInfo,false);
 	// 2.5.2 - Drawing non-filled and Highlighted Circle
     pOut->PrintMessage("Drawing an Circle, non-filled and Highlighted,  Click to highlight");
 	pIn->GetPointClicked(x,y);
-	pOut->DrawCircle(P1,gfxInfo,true);
+	pOut->DrawCircle(P1,P2,gfxInfo,true);
 	// 2.5.3 - Drawing filled and non-Highlighted Circle
-	pOut->PrintMessage("Drawing an Circle, filled and non-Highlighted,  Click a point");
+	pOut->PrintMessage("Drawing an Circle, filled and non-Highlighted,  Click two points");
 	pIn->GetPointClicked(P1.x,P1.y);
+	pIn->GetPointClicked(P2.x,P2.y);
 	gfxInfo.DrawClr = BLUE;	
 	gfxInfo.isFilled = true;
-	pOut->DrawCircle(P1,gfxInfo,false);
+	pOut->DrawCircle(P1,P2,gfxInfo,false);
 	// 2.5.4 - Drawing filled and Highlighted Circle
 	pOut->PrintMessage("Drawing an Circle, filled and Highlighted,  Click to highlight");
 	pIn->GetPointClicked(x,y);
-	pOut->DrawCircle(P1,gfxInfo,true);
+	pOut->DrawCircle(P1,P2,gfxInfo,true);
 	pOut->PrintMessage("Drawing a Circle Test ==> OK,  Click anywhere to continue");
 	pIn->GetPointClicked(x,y);	//Wait for any click
 	pOut->ClearDrawArea();
@@ -201,6 +218,7 @@ int main()
 	pOut->PrintMessage("TEST4: Testing Input ability to detect User Action, click anywhere");
 
 	ActionType ActType;
+	
 	
 	///TODO:  
 	//You must add a case for each action (both Draw mode and Play mode actions)

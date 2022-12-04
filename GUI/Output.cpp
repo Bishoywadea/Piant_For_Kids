@@ -1,5 +1,5 @@
 #include "Output.h"
-
+#include<cmath>
 
 Output::Output()
 {
@@ -241,7 +241,7 @@ void Output::DrawRect(Point P1, Point P2, GfxInfo RectGfxInfo, bool selected) co
 	else			
 		DrawingClr = RectGfxInfo.DrawClr;
 	
-	pWind->SetPen(DrawingClr,1);
+	pWind->SetPen(DrawingClr,RectGfxInfo.BorderWdth);
 	drawstyle style;
 	if (RectGfxInfo.isFilled)	
 	{
@@ -262,7 +262,7 @@ void Output::DrawSq(Point center, GfxInfo SqGfxInfo,bool selected)     const
 	DrawingClr = UI.HighlightColor;
 	else			
 	DrawingClr = SqGfxInfo.DrawClr;
-	pWind->SetPen(DrawingClr,1);
+	pWind->SetPen(DrawingClr,SqGfxInfo.BorderWdth);
 	drawstyle style;
 	if (SqGfxInfo.isFilled)	
 	{
@@ -281,7 +281,7 @@ void Output:: DrawTri(Point P1,Point P2,Point P3,GfxInfo TriGfxInfo,bool selecte
 	DrawingClr = UI.HighlightColor;
 	else			
 	DrawingClr = TriGfxInfo.DrawClr;
-	pWind->SetPen(DrawingClr,1);
+	pWind->SetPen(DrawingClr,TriGfxInfo.BorderWdth);
 	drawstyle style;
 	if (TriGfxInfo.isFilled)	
 	{
@@ -299,7 +299,7 @@ void Output:: DrawHexa(Point P1,GfxInfo HexaGfxInfo,bool selected)  const
 	DrawingClr = UI.HighlightColor;
 	else			
 	DrawingClr = HexaGfxInfo.DrawClr;
-	pWind->SetPen(DrawingClr,1);
+	pWind->SetPen(DrawingClr,HexaGfxInfo.BorderWdth);
 	drawstyle style;
 	if (HexaGfxInfo.isFilled)	
 	{
@@ -308,20 +308,19 @@ void Output:: DrawHexa(Point P1,GfxInfo HexaGfxInfo,bool selected)  const
 	}
 	else	
 		style = FRAME;
-	double angle=30;
-	const int arrx[]={P1.x+100,P1.x+50,P1.x-50,P1.x-100,P1.x-50,P1.x+50};
+    const int arrx[]={P1.x+100,P1.x+50,P1.x-50,P1.x-100,P1.x-50,P1.x+50};
 	const int arry[]={P1.y,P1.y+(0.866)*100,P1.y+((0.866)*100),P1.y,P1.y-((0.866)*100),P1.y-((0.866)*100)};
 	pWind->DrawPolygon(arrx,arry,6,style);
 }
 
-void Output:: DrawCircle(Point center,GfxInfo CircleGfxInfo,bool selected)  const
+void Output:: DrawCircle(Point center,Point border,GfxInfo CircleGfxInfo,bool selected)  const
 {
 	color DrawingClr;
 	if(selected)	
 	DrawingClr = UI.HighlightColor;
 	else			
 	DrawingClr = CircleGfxInfo.DrawClr;
-	pWind->SetPen(DrawingClr,1);
+	pWind->SetPen(DrawingClr,CircleGfxInfo.BorderWdth);
 	drawstyle style;
 	if (CircleGfxInfo.isFilled)	
 	{
@@ -330,7 +329,8 @@ void Output:: DrawCircle(Point center,GfxInfo CircleGfxInfo,bool selected)  cons
 	}
 	else	
 		style = FRAME;
-	pWind->DrawCircle(center.x,center.y,100,style);
+	int radius=sqrt(pow((center.x-border.x),2)+pow((center.y)-(border.y),2));
+	pWind->DrawCircle(center.x,center.y,radius,style);
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////
@@ -338,6 +338,5 @@ Output::~Output()
 {
 	delete pWind;
 }
-
 
 

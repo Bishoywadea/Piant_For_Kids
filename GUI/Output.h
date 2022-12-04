@@ -27,7 +27,8 @@ public:
 	void DrawSq(Point P1, GfxInfo SquareGfxInfo,bool selected)      const;
 	void DrawTri(Point P1,Point P2,Point P3,GfxInfo TriGfxInfo,bool selected)  const;
 	void DrawHexa(Point P1,GfxInfo TriGfxInfo,bool selected)  const;
-	void DrawCircle(Point center,GfxInfo CircleGfxInfo,bool selected)  const;
+	void DrawCircle(Point center,Point border,GfxInfo CircleGfxInfo,bool selected)  const;
+	///Make similar functions for drawing all other figure types.
 	
 	void PrintMessage(string msg) const;	//Print a message on Status bar
 
