@@ -11,6 +11,7 @@ int main()
 	Output *pOut = new Output();
 	Input *pIn = pOut->CreateInput();
 	pOut->ClearDrawArea();
+
 	//Starting the test
 	pOut->PrintMessage("This demo is to test input and output classes, Click anywhere to start the test");
 	pIn->GetPointClicked(x,y);	//Wait for any click
@@ -83,6 +84,7 @@ int main()
 	pIn->GetPointClicked(x,y);	//Wait for any click
 	pOut->ClearDrawArea();
 	pOut->CreateDrawToolBar();
+
 	/// 2.2- Square Test ///
 	/// ============== 
 	pOut->PrintMessage("Drawing a Square,filled/non-filled and Highlighted filled/non-filled, Click to continue");
@@ -127,6 +129,7 @@ int main()
 	pIn->GetPointClicked(x,y);	//Wait for any click
 	pOut->ClearDrawArea();
 	pOut->CreateDrawToolBar();
+
 	/// 2.3- Triangle Test ///
 	/// =================== 
 	pOut->PrintMessage("Drawing a Triangle, filled/non-filled and Highlighted filled/non-filled,  Click to continue");

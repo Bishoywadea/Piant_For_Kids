@@ -124,7 +124,7 @@ void Output::CreateShapesToolBar() const
 	ShapesItemImages[ITM_CIR] = "images\\MenuItems\\Menu_Circle.jpg";
 	ShapesItemImages[ITM_TRI] = "images\\MenuItems\\Menu_Triangle.jpg";
 	ShapesItemImages[ITM_HEX] = "images\\MenuItems\\Menu_Hexa.jpg";
-
+	ShapesItemImages[ITM_BACk] = "images\\MenuItems\\BACK.jpg";
 	//TODO: Prepare images for each menu item and add it to the list
 
 	//Draw menu item one image at a time
@@ -157,6 +157,7 @@ void Output::CreateColourToolBar() const
 	ColourItemImages[ITM_GREEN] = "images\\MenuItems\\Menu_Green.jpg";
 	ColourItemImages[ITM_ORANGE] = "images\\MenuItems\\Menu_Orange.jpg";
 	ColourItemImages[ITM_YELLOW] = "images\\MenuItems\\Menu_Yellow.jpg";
+	ColourItemImages[ITM_BACK] = "images\\MenuItems\\BACK.jpg";
 	//TODO: Prepare images for each menu item and add it to the list
 
 	//Draw menu item one image at a time
