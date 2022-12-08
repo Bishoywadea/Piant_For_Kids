@@ -10,6 +10,7 @@ int main()
 	//Create Input and Output objects to test
 	Output *pOut = new Output();
 	Input *pIn = pOut->CreateInput();
+	pOut->ClearDrawArea();
 
 	//Starting the test
 	pOut->PrintMessage("This demo is to test input and output classes, Click anywhere to start the test");
@@ -59,13 +60,10 @@ int main()
 	gfxInfo.DrawClr = BLACK;	//any color for border
 	gfxInfo.isFilled = false;	//Figure is NOT filled
 	pOut->DrawRect(P1, P2, gfxInfo, false);
-
 	// 2.1.2 - Drawing highlighted non-filled rectangle
 	pOut->PrintMessage("Drawing a Rectangle ==> Highlighted non-filled, Click to Highlight");
 	pIn->GetPointClicked(x,y);	//Wait for any click
 	pOut->DrawRect(P1, P2, gfxInfo, true);
-
-
 	// 2.1.3 - Drawing a filled rectangle
 	pOut->PrintMessage("Drawing a Rectangle ==> filled,  Click two points");
 	pIn->GetPointClicked(P1.x, P1.y);
@@ -75,17 +73,14 @@ int main()
 	gfxInfo.FillClr = GREEN;//any color for filling
 	gfxInfo.isFilled = true;//Figure is filled
 	pOut->DrawRect(P1, P2, gfxInfo, false);
-
-
 	// 2.1.4 - Drawing a highlighted filled rectangle
 	pOut->PrintMessage("Drawing a Rectangle ==> Highlighted filled, Click to Highlight");
 	pIn->GetPointClicked(x,y);	//Wait for any click
 	pOut->DrawRect(P1, P2, gfxInfo, true);
-
 	pOut->PrintMessage("Drawing a Rectangle Test ==> OK,  Click anywhere to continue");
 	pIn->GetPointClicked(x,y);	//Wait for any click
 	pOut->ClearDrawArea();
-
+	pOut->CreateDrawToolBar();
 	/// 2.2- Square Test ///
 	/// ============== 
 	pOut->PrintMessage("Drawing a Square, normal and Highlighted, Click to continue");
@@ -104,7 +99,22 @@ int main()
 	pOut->PrintMessage("Drawing a Square Test ==> OK,  Click anywhere to continue");
 	pIn->GetPointClicked(x,y);	//Wait for any click
 	pOut->ClearDrawArea();
-
+	pOut->CreateDrawToolBar();
+	// 2.2.3 - Drawing a filled square
+	pOut->PrintMessage("Drawing a Square ==> filled,  Click a point");
+	pIn->GetPointClicked(P1.x, P1.y);
+	gfxInfo.BorderWdth = 5;
+	gfxInfo.DrawClr = BLUE;	//any color for border
+	gfxInfo.isFilled = true;//Figure is filled
+	pOut->DrawSq(P1, gfxInfo, false);
+	// 2.1.4 - Drawing a highlighted filled square
+	pOut->PrintMessage("Drawing a Square ==> Highlighted filled, Click to Highlight");
+	pIn->GetPointClicked(x,y);	//Wait for any click
+	pOut->DrawSq(P1, gfxInfo, true);
+	pOut->PrintMessage("Drawing a Square Test ==> OK,  Click anywhere to continue");
+	pIn->GetPointClicked(x,y);	//Wait for any click
+	pOut->ClearDrawArea();
+	pOut->CreateDrawToolBar();
 	/// 2.3- Triangle Test ///
 	/// =================== 
 	pOut->PrintMessage("Drawing a Triangle, filled/non-filled and Highlighted filled/non-filled,  Click to continue");
@@ -115,6 +125,8 @@ int main()
 	pIn->GetPointClicked(P2.x,P2.y);
 	pIn->GetPointClicked(P3.x,P3.y);
 	gfxInfo.BorderWdth = 5;
+	gfxInfo.DrawClr = BLACK;
+	gfxInfo.isFilled = false;
 	pOut->DrawTri(P1,P2,P3, gfxInfo, false);
 	// 2.3.2 - Drawing non-filled and Highlighted Triangle
 	pOut->PrintMessage("Drawing an Triangle, non-filled and Highlighted,  Click to highlight");
@@ -135,6 +147,7 @@ int main()
 	pOut->PrintMessage("Drawing a Triangle Test ==> OK,  Click anywhere to continue");
 	pIn->GetPointClicked(x,y);	//Wait for any click
 	pOut->ClearDrawArea();
+	pOut->CreateDrawToolBar();
 	/// 2.4- Hexagon Test ///
 	/// =================== 
 	pOut->PrintMessage("Drawing a Hexagon, filled/non-filled and Highlighted filled/non-filled,  Click to continue");
@@ -162,7 +175,7 @@ int main()
 	pOut->PrintMessage("Drawing a Hexagon Test ==> OK,  Click anywhere to continue");
 	pIn->GetPointClicked(x,y);	//Wait for any click
 	pOut->ClearDrawArea();
-	
+	pOut->CreateDrawToolBar();
 	/// 2.5- Circle Test ///
 	/// =================== 
 	pOut->PrintMessage("Drawing an Circle, filled/non-filled and Highlighted filled/non-filled,  Click to continue");
@@ -193,16 +206,18 @@ int main()
 	pOut->PrintMessage("Drawing a Circle Test ==> OK,  Click anywhere to continue");
 	pIn->GetPointClicked(x,y);	//Wait for any click
 	pOut->ClearDrawArea();
-	
+	pOut->CreateDrawToolBar();
 	///////////////////////////////////////////////////////////////////////////////////
 	// TEST 3: 
 	//			Input Class: Read strings from the user
 	///////////////////////////////////////////////////////////////////////////////////
 	pOut->PrintMessage("TEST3: Now Time to test class Input, Click anywhere to continue");
+
 	pIn->GetPointClicked(x,y);	//Wait for any click
 	
 	pOut->PrintMessage("Testing Input ability to read strings");
 
+	pOut->PrintMessage("You entered " + pIn->GetSrting(pOut));
 	///TODO: Add code here to 
 	// 1- Read a string from the user on the status bar
 	// 2- After reading the string clear the status bar
