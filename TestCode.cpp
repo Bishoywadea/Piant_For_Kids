@@ -86,6 +86,7 @@ int main()
 	pOut->PrintMessage("Drawing a Rectangle Test ==> OK,  Click anywhere to continue");
 	pIn->GetPointClicked(x,y);	//Wait for any click
 	pOut->ClearDrawArea();
+	pOut->CreateDrawToolBar();
 
 	/// 2.2- Square Test ///
 	/// ============== 
@@ -105,6 +106,7 @@ int main()
 	pOut->PrintMessage("Drawing a Square Test ==> OK,  Click anywhere to continue");
 	pIn->GetPointClicked(x,y);	//Wait for any click
 	pOut->ClearDrawArea();
+	pOut->CreateDrawToolBar();
 
 	/// 2.3- Triangle Test ///
 	/// =================== 
@@ -136,6 +138,7 @@ int main()
 	pOut->PrintMessage("Drawing a Triangle Test ==> OK,  Click anywhere to continue");
 	pIn->GetPointClicked(x,y);	//Wait for any click
 	pOut->ClearDrawArea();
+	pOut->CreateDrawToolBar();
 	/// 2.4- Hexagon Test ///
 	/// =================== 
 	pOut->PrintMessage("Drawing a Hexagon, filled/non-filled and Highlighted filled/non-filled,  Click to continue");
@@ -163,7 +166,7 @@ int main()
 	pOut->PrintMessage("Drawing a Hexagon Test ==> OK,  Click anywhere to continue");
 	pIn->GetPointClicked(x,y);	//Wait for any click
 	pOut->ClearDrawArea();
-	
+	pOut->CreateDrawToolBar();
 	/// 2.5- Circle Test ///
 	/// =================== 
 	pOut->PrintMessage("Drawing an Circle, filled/non-filled and Highlighted filled/non-filled,  Click to continue");
@@ -194,7 +197,7 @@ int main()
 	pOut->PrintMessage("Drawing a Circle Test ==> OK,  Click anywhere to continue");
 	pIn->GetPointClicked(x,y);	//Wait for any click
 	pOut->ClearDrawArea();
-	
+	pOut->CreateDrawToolBar();
 	///////////////////////////////////////////////////////////////////////////////////
 	// TEST 3: 
 	//			Input Class: Read strings from the user

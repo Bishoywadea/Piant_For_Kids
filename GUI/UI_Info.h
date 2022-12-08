@@ -45,7 +45,7 @@ enum ShapesMenuItem //The items of the Draw menu (you should add more items)
 	ITM_CIR,
 	ITM_TRI,
 	ITM_HEX,
-
+	ITM_BACk,
 	SHAPES_ITM_COUNT		//no. of menu items ==> This should be the last line in this enum
 
 };
@@ -58,7 +58,7 @@ enum ColourMenuItem //The items of the Draw menu (you should add more items)
 	ITM_GREEN,
 	ITM_ORANGE,
 	ITM_YELLOW,
-
+	ITM_BACK,
 	COLOUR_ITM_COUNT		//no. of menu items ==> This should be the last line in this enum
 
 };
