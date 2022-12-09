@@ -21,8 +21,11 @@ string Input::GetSrting(Output *pO) const
 		pWind->WaitKeyPress(Key);
 		if(Key == 27 )	//ESCAPE key is pressed
 			return "";	//returns nothing as user has cancelled label
-		if(Key == 13 )	//ENTER key is pressed
+		if (Key == 13)	//ENTER key is pressed
+		{
+			pWind->FlushMouseQueue();   // to clear all the buffer mouse clicks
 			return Label;
+		}
 		if((Key == 8) && (Label.size() >= 1))	//BackSpace is pressed
 			Label.resize(Label.size() -1 );			
 		else
