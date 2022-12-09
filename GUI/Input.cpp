@@ -51,18 +51,17 @@ ActionType Input::GetUserAction() const
 
 			switch (ClickedItemOrder)
 			{
-			case ITM_SHAPES: return SHAPES_MENU;
-			case ITM_COLOUR: return COLOUR_MENU;
-			case ITM_EXIT: return EXIT;
-			
-			case ITM_DELETE: return ACT_DELETE;
-			case ITM_SELECT: return ACT_SELECTONE;
-			case ITM_UNDO: return ACT_UNDO;
-			case ITM_MOVE: return ACT_MOVE;
-			case ITM_REDO: return ACT_REDO;
-			case ITM_PLAYMOOD: return TO_PLAY;
-
-
+			case ITM_SHAPES: return SHAPES_MENU;         //icon to open the shapes
+			case ITM_COLOUR: return COLOUR_MENU;         //icon to open the colours
+			case ITM_EXIT: return EXIT;                  //icon to close the program
+			case ITM_DELETE: return ACT_DELETE;          //icon to delete the shape selected
+			case ITM_SELECT: return ACT_SELECTONE;       //icon to select a shape
+			case ITM_UNDO: return ACT_UNDO;              //icon to undo
+			case ITM_SAVE: return ACT_SAVE;              //icon to save the draw 
+			case ITM_LOAD: return ACT_LOAD;              //icon to save the draw 
+			case ITM_MOVE: return ACT_MOVE;              //icon to move the selected shape
+			case ITM_REDO: return ACT_REDO;              //icon to redo
+			case ITM_PLAYMOOD: return TO_PLAY;           //icon to go to play mode
 			default: return EMPTY;	//A click on empty place in desgin toolbar
 			}
 		}
@@ -76,6 +75,7 @@ ActionType Input::GetUserAction() const
 		//[3] User clicks on the status bar
 		return STATUS;
 	}
+	//[4] If user in shapes menu and clicks on the shape
 	else if (UI.InterfaceMode == MODE_SHAPES)
 	{
 		if (y >= 0 && y < UI.ToolBarHeight)
@@ -88,11 +88,11 @@ ActionType Input::GetUserAction() const
 
 			switch (ClickedItemOrder)
 			{
-			case ITM_RECT: return DRAW_RECT;
-			case ITM_CIR: return DRAW_CIRCLE;
-			case ITM_TRI: return DRAW_TRIANGLE;
-			case ITM_HEX: return DRAW_HEXAGON;
-			default: return TO_DRAW;	//A click on empty place in desgin toolbar
+			case ITM_RECT: return DRAW_RECT;       //icon to draw rect
+			case ITM_CIR: return DRAW_CIRCLE;      //icon to draw circle
+			case ITM_TRI: return DRAW_TRIANGLE;    //icon to draw triangle
+			case ITM_HEX: return DRAW_HEXAGON;     //icon to draw hexagon
+			default: return TO_DRAW;	           //A click on empty place in desgin toolbar
 			}
 		}
 
@@ -105,6 +105,7 @@ ActionType Input::GetUserAction() const
 		//[3] User clicks on the status bar
 		return STATUS;
 	}
+	//[5] If user in color menu and clicks on the colour
 	else if (UI.InterfaceMode == MODE_COLOUR)
 	{
 		if (y >= 0 && y < UI.ToolBarHeight)
@@ -117,12 +118,12 @@ ActionType Input::GetUserAction() const
 
 			switch (ClickedItemOrder)
 			{
-			case ITM_RED: return ACT_RED;
-			case ITM_BLUE: return ACT_BLUE;
-			case ITM_GREEN: return ACT_GREEN;
-			case ITM_ORANGE: return ACT_ORANGE;
-			case ITM_BLACK: return ACT_BLACK;
-			case ITM_YELLOW: return ACT_YELLOW;
+			case ITM_RED: return ACT_RED;         //icon to color red
+			case ITM_BLUE: return ACT_BLUE;       //icon to color blue
+			case ITM_GREEN: return ACT_GREEN;     //icon to color green
+			case ITM_ORANGE: return ACT_ORANGE;   //icon to color orange
+			case ITM_BLACK: return ACT_BLACK;     //icon to color black
+			case ITM_YELLOW: return ACT_YELLOW;   //icon to color yellow
 			default: return TO_DRAW;	//A click on empty place in desgin toolbar
 			}
 		}
@@ -137,7 +138,7 @@ ActionType Input::GetUserAction() const
 		return STATUS;
 
 	}
-	
+	//[6] If user in mode play and clicks on the icon in it
 	else if (UI.InterfaceMode == MODE_PLAY)
 	{
 	if (y >= 0 && y < UI.ToolBarHeight)
@@ -150,11 +151,10 @@ ActionType Input::GetUserAction() const
 
 		switch (ClickedItemOrder)
 		{
-		case ITM_DRAWMOOD: return TO_DRAW;
-		case ITM_HIDESHAPES: return HIDE_SHAPES;
-
-		case ITM_HIDESHAPESANDCOLOURS: return HIDE_SHAPSANDCOLOURS;
-		case ITM_HIDECOLOURS: return HIDE_COLOURS;
+		case ITM_DRAWMOOD: return TO_DRAW;                               // icon to go back to draw mode
+		case ITM_HIDESHAPES: return HIDE_SHAPES;                         // icon to go hide shapes
+		case ITM_HIDESHAPESANDCOLOURS: return HIDE_SHAPSANDCOLOURS;      // icon to go hide shapes and colour
+		case ITM_HIDECOLOURS: return HIDE_COLOURS;                       // icon to go hide colours
 		default: return EMPTY;	//A click on empty place in desgin toolbar
 		}
 	}

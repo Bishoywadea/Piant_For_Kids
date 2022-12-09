@@ -12,7 +12,7 @@ enum ActionType //The actions supported (you can add more if needed)
 	DRAW_RECT,		//Draw Rectangle
 	EXIT,			//Exit
 	TO_DRAW,		//Switch interface to Draw mode
-   	//Switch interface to Play mode
+	//Switch interface to Play mode
 	EMPTY,			//A click on empty place in the toolbar
 	DRAWING_AREA,	//A click on the drawing area
 	ACT_RED,
@@ -26,6 +26,8 @@ enum ActionType //The actions supported (you can add more if needed)
 	ACT_SELECTONE,
 	ACT_MOVE,
 	ACT_UNDO,
+	ACT_SAVE,
+	ACT_LOAD,
 	ACT_REDO,
 	ACT_BLUE,
 	ACT_BLACK,
@@ -40,7 +42,7 @@ enum ActionType //The actions supported (you can add more if needed)
 
 	STATUS			//A click on the status bar
 
-	///TODO: Add the other action types of the two modes
+	///TODO: Add the other action types of the two modes  (DONE)
 };
 
 struct Point	//To be used for figures points

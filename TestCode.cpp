@@ -369,7 +369,12 @@ int main()
 		case ACT_REDO:
 			pOut->PrintMessage("Action: REDO ICON , Click anywhere");
 			break;
-		
+		case ACT_SAVE:
+			pOut->PrintMessage("Action: SAVE ICON , Click anywhere");
+			break;
+		case ACT_LOAD:
+			pOut->PrintMessage("Action: LOAD ICON , Click anywhere");
+			break;
 		case DRAW_RECT:
 				pOut->PrintMessage("Action: Draw a Rectangle , Click anywhere");
 				break;
@@ -427,7 +432,7 @@ int main()
 				break;
 
 
-		///TODO: Add more cases for the other action types
+		///TODO: Add more cases for the other action types  (DONE)
 
 
 		case EXIT:				
