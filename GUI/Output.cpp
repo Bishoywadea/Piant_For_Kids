@@ -5,17 +5,17 @@ Output::Output()
 {
 	//Initialize user interface parameters
 	UI.InterfaceMode = MODE_DRAW;
-	
+
 	UI.width = 1250;
 	UI.height = 650;
 	UI.wx = 5;
-	UI.wy =5;
+	UI.wy = 5;
 
-	
+
 	UI.StatusBarHeight = 50;
 	UI.ToolBarHeight = 50;
 	UI.MenuItemWidth = 60;
-	
+
 	UI.DrawColor = BLUE;	//Drawing color
 	UI.FillColor = GREEN;	//Filling color
 	UI.MsgColor = RED;		//Messages color
@@ -24,12 +24,12 @@ Output::Output()
 	UI.StatusBarColor = TURQUOISE;
 	UI.PenWidth = 3;	//width of the figures frames
 
-	
+
 	//Create the output window
 	pWind = CreateWind(UI.width, UI.height, UI.wx, UI.wy);
 	//Change the title
 	pWind->ChangeTitle("Paint for Kids - Programming Techniques Project");
-	
+
 	CreateDrawToolBar();
 	CreateStatusBar();
 }
@@ -46,11 +46,11 @@ Input* Output::CreateInput() const
 //======================================================================================//
 
 window* Output::CreateWind(int w, int h, int x, int y) const
-{ 
+{
 	window* pW = new window(w, h, x, y);
 	pW->SetBrush(UI.BkGrndColor);
 	pW->SetPen(UI.BkGrndColor, 1);
-	pW->DrawRectangle(0, UI.ToolBarHeight, w, h);	
+	pW->DrawRectangle(0, UI.ToolBarHeight, w, h);
 	return pW;
 }
 //////////////////////////////////////////////////////////////////////////////////////////
@@ -75,7 +75,7 @@ void Output::CreateDrawToolBar() const
 
 	//You can draw the tool bar icons in any way you want.
 	//Below is one possible way
-	
+
 	//First prepare List of images for each menu item
 	//To control the order of these images in the menu, 
 	//reoder them in UI_Info.h ==> enum DrawMenuItem
@@ -98,12 +98,12 @@ void Output::CreateDrawToolBar() const
 	//TODO: Prepare images for each menu item and add it to the list  (DONE)
 
 	//Draw menu item one image at a time
-	for(int i=0; i<DRAW_ITM_COUNT; i++)
-		pWind->DrawImage(MenuItemImages[i], i*UI.MenuItemWidth, 0, UI.MenuItemWidth, UI.ToolBarHeight);
+	for (int i = 0; i < DRAW_ITM_COUNT; i++)
+		pWind->DrawImage(MenuItemImages[i], i * UI.MenuItemWidth, 0, UI.MenuItemWidth, UI.ToolBarHeight);
 
 	//Draw a line under the toolbar
 	pWind->SetPen(RED, 3);
-	pWind->DrawLine(0, UI.ToolBarHeight, UI.width, UI.ToolBarHeight);	
+	pWind->DrawLine(0, UI.ToolBarHeight, UI.width, UI.ToolBarHeight);
 
 }
 //////////////////////////////////////////////////////////////////////////////////////////
@@ -120,6 +120,8 @@ void Output::CreateShapesToolBar() const   //a method to draw shapes menu
 	string ShapesItemImages[SHAPES_ITM_COUNT];
 	ShapesItemImages[ITM_RECT] = "images\\MenuItems\\Menu_Rect.jpg";
 	ShapesItemImages[ITM_CIR] = "images\\MenuItems\\Menu_Circle.jpg";
+	ShapesItemImages[ITM_SQU] = "images\\MenuItems\\Menu_Square.jpg";
+
 	ShapesItemImages[ITM_TRI] = "images\\MenuItems\\Menu_Triangle.jpg";
 	ShapesItemImages[ITM_HEX] = "images\\MenuItems\\Menu_Hexa.jpg";
 	ShapesItemImages[ITM_BACk] = "images\\MenuItems\\BACK.jpg";
@@ -172,10 +174,10 @@ void Output::CreatePlayToolBar() const
 	UI.InterfaceMode = MODE_PLAY;
 	string PlayItemImages[COLOUR_ITM_COUNT];
 	PlayItemImages[ITM_DRAWMOOD] = "images\\MenuItems\\Menu_Drawmood.jpg";
-    PlayItemImages[ITM_HIDESHAPES] = "images\\MenuItems\\Menu_hidebyshapes.jpg";
+	PlayItemImages[ITM_HIDESHAPES] = "images\\MenuItems\\Menu_hidebyshapes.jpg";
 	PlayItemImages[ITM_HIDECOLOURS] = "images\\MenuItems\\Menu_Hidebycolour.jpg";
 	PlayItemImages[ITM_HIDESHAPESANDCOLOURS] = "images\\MenuItems\\Menu_hidebyshapesandcolours.jpg";
-	
+
 	//TODO: Prepare images for each menu item and add it to the list
 
 	//paly menu item one image at a time
@@ -190,7 +192,7 @@ void Output::ClearDrawArea() const
 	pWind->SetPen(UI.BkGrndColor, 1);
 	pWind->SetBrush(UI.BkGrndColor);
 	pWind->DrawRectangle(0, UI.ToolBarHeight, UI.width, UI.height - UI.StatusBarHeight);
-	
+
 }
 //////////////////////////////////////////////////////////////////////////////////////////
 void Output::ClearToolBar() const
@@ -205,23 +207,29 @@ void Output::ClearToolBar() const
 void Output::PrintMessage(string msg) const	//Prints a message on status bar
 {
 	ClearStatusBar();	//First clear the status bar
-	
+
 	pWind->SetPen(UI.MsgColor, 50);
-	pWind->SetFont(20, BOLD , BY_NAME, "Arial");   
-	pWind->DrawString(10, UI.height - (int)(UI.StatusBarHeight/1.5), msg);
+	pWind->SetFont(20, BOLD, BY_NAME, "Arial");
+	pWind->DrawString(10, UI.height - (int)(UI.StatusBarHeight / 1.5), msg);
 }
 //////////////////////////////////////////////////////////////////////////////////////////
 
 color Output::getCrntDrawColor() const	//get current drawing color
-{	return UI.DrawColor;	}
+{
+	return UI.DrawColor;
+}
 //////////////////////////////////////////////////////////////////////////////////////////
 
 color Output::getCrntFillColor() const	//get current filling color
-{	return UI.FillColor;	}
+{
+	return UI.FillColor;
+}
 //////////////////////////////////////////////////////////////////////////////////////////
-	
+
 int Output::getCrntPenWidth() const		//get current pen width
-{	return UI.PenWidth;	}
+{
+	return UI.PenWidth;
+}
 
 //======================================================================================//
 //								Figures Drawing Functions								//
@@ -230,101 +238,101 @@ int Output::getCrntPenWidth() const		//get current pen width
 void Output::DrawRect(Point P1, Point P2, GfxInfo RectGfxInfo, bool selected) const
 {
 	color DrawingClr;
-	if(selected)	
+	if (selected)
 		DrawingClr = UI.HighlightColor; //Figure should be drawn highlighted
-	else			
+	else
 		DrawingClr = RectGfxInfo.DrawClr;
-	
-	pWind->SetPen(DrawingClr,RectGfxInfo.BorderWdth);
+
+	pWind->SetPen(DrawingClr, RectGfxInfo.BorderWdth);
 	drawstyle style;
-	if (RectGfxInfo.isFilled)	
+	if (RectGfxInfo.isFilled)
 	{
-		style = FILLED;		
+		style = FILLED;
 		pWind->SetBrush(RectGfxInfo.FillClr);
 	}
-	else	
+	else
 		style = FRAME;
 
-	
+
 	pWind->DrawRectangle(P1.x, P1.y, P2.x, P2.y, style);
-	
+
 }
-void Output::DrawSq(Point center, GfxInfo SqGfxInfo,bool selected)     const
+void Output::DrawSq(Point center, GfxInfo SqGfxInfo, bool selected)     const
 {
 	color DrawingClr;
-	if(selected)	
-	DrawingClr = UI.HighlightColor;
-	else			
-	DrawingClr = SqGfxInfo.DrawClr;
-	pWind->SetPen(DrawingClr,SqGfxInfo.BorderWdth);
+	if (selected)
+		DrawingClr = UI.HighlightColor;
+	else
+		DrawingClr = SqGfxInfo.DrawClr;
+	pWind->SetPen(DrawingClr, SqGfxInfo.BorderWdth);
 	drawstyle style;
-	if (SqGfxInfo.isFilled)	
+	if (SqGfxInfo.isFilled)
 	{
-		style = FILLED;		
+		style = FILLED;
 		pWind->SetBrush(SqGfxInfo.FillClr);
 	}
-	else	
+	else
 		style = FRAME;
-	pWind->DrawRectangle(center.x-50, center.y-50, center.x+50, center.y+50, style);
+	pWind->DrawRectangle(center.x - 50, center.y - 50, center.x + 50, center.y + 50, style);
 }
-void Output:: DrawTri(Point P1,Point P2,Point P3,GfxInfo TriGfxInfo,bool selected)  const
+void Output::DrawTri(Point P1, Point P2, Point P3, GfxInfo TriGfxInfo, bool selected)  const
 {
-	
+
 	color DrawingClr;
-	if(selected)	
-	DrawingClr = UI.HighlightColor;
-	else			
-	DrawingClr = TriGfxInfo.DrawClr;
-	pWind->SetPen(DrawingClr,TriGfxInfo.BorderWdth);
+	if (selected)
+		DrawingClr = UI.HighlightColor;
+	else
+		DrawingClr = TriGfxInfo.DrawClr;
+	pWind->SetPen(DrawingClr, TriGfxInfo.BorderWdth);
 	drawstyle style;
-	if (TriGfxInfo.isFilled)	
+	if (TriGfxInfo.isFilled)
 	{
-		style = FILLED;		
+		style = FILLED;
 		pWind->SetBrush(TriGfxInfo.FillClr);
 	}
-	else	
+	else
 		style = FRAME;
-	pWind->DrawTriangle(P1.x,P1.y,P2.x,P2.y,P3.x,P3.y,style);
+	pWind->DrawTriangle(P1.x, P1.y, P2.x, P2.y, P3.x, P3.y, style);
 }
-void Output:: DrawHexa(Point P1,GfxInfo HexaGfxInfo,bool selected)  const
+void Output::DrawHexa(Point P1, GfxInfo HexaGfxInfo, bool selected)  const
 {
 	color DrawingClr;
-	if(selected)	
-	DrawingClr = UI.HighlightColor;
-	else			
-	DrawingClr = HexaGfxInfo.DrawClr;
-	pWind->SetPen(DrawingClr,HexaGfxInfo.BorderWdth);
+	if (selected)
+		DrawingClr = UI.HighlightColor;
+	else
+		DrawingClr = HexaGfxInfo.DrawClr;
+	pWind->SetPen(DrawingClr, HexaGfxInfo.BorderWdth);
 	drawstyle style;
-	if (HexaGfxInfo.isFilled)	
+	if (HexaGfxInfo.isFilled)
 	{
-		style = FILLED;		
+		style = FILLED;
 		pWind->SetBrush(HexaGfxInfo.FillClr);
 	}
-	else	
+	else
 		style = FRAME;
-    const int arrx[]={P1.x+100,P1.x+50,P1.x-50,P1.x-100,P1.x-50,P1.x+50};
-	const int arry[]={P1.y,P1.y+(0.866)*100,P1.y+((0.866)*100),P1.y,P1.y-((0.866)*100),P1.y-((0.866)*100)};
-	pWind->DrawPolygon(arrx,arry,6,style);
+	const int arrx[] = { P1.x + 100,P1.x + 50,P1.x - 50,P1.x - 100,P1.x - 50,P1.x + 50 };
+	const int arry[] = { P1.y,P1.y + (0.866) * 100,P1.y + ((0.866) * 100),P1.y,P1.y - ((0.866) * 100),P1.y - ((0.866) * 100) };
+	pWind->DrawPolygon(arrx, arry, 6, style);
 }
 
-void Output:: DrawCircle(Point center,Point border,GfxInfo CircleGfxInfo,bool selected)  const
+void Output::DrawCircle(Point center, Point border, GfxInfo CircleGfxInfo, bool selected)  const
 {
 	color DrawingClr;
-	if(selected)	
-	DrawingClr = UI.HighlightColor;
-	else			
-	DrawingClr = CircleGfxInfo.DrawClr;
-	pWind->SetPen(DrawingClr,CircleGfxInfo.BorderWdth);
+	if (selected)
+		DrawingClr = UI.HighlightColor;
+	else
+		DrawingClr = CircleGfxInfo.DrawClr;
+	pWind->SetPen(DrawingClr, CircleGfxInfo.BorderWdth);
 	drawstyle style;
-	if (CircleGfxInfo.isFilled)	
+	if (CircleGfxInfo.isFilled)
 	{
-		style = FILLED;		
+		style = FILLED;
 		pWind->SetBrush(CircleGfxInfo.FillClr);
 	}
-	else	
+	else
 		style = FRAME;
-	int radius=sqrt(pow((center.x-border.x),2)+pow((center.y)-(border.y),2));
-	pWind->DrawCircle(center.x,center.y,radius,style);
+	int radius = sqrt(pow((center.x - border.x), 2) + pow((center.y) - (border.y), 2));
+	pWind->DrawCircle(center.x, center.y, radius, style);
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////

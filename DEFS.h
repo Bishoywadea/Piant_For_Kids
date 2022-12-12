@@ -34,6 +34,7 @@ enum ActionType //The actions supported (you can add more if needed)
 	DRAW_CIRCLE,
 	DRAW_HEXAGON,
 	DRAW_TRIANGLE,
+	DRAW_SQUARE,
 	ACT_DRAWMOOD,
 	ACT_HIDESHAPES,
 	ACT_HIDECOLOURS,
@@ -46,7 +47,9 @@ enum ActionType //The actions supported (you can add more if needed)
 };
 
 struct Point	//To be used for figures points
-{ int x,y; };
+{
+	int x, y;
+};
 
 struct GfxInfo	//Graphical info of each figure (you may add more members)
 {
