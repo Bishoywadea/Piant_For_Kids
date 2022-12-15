@@ -9,7 +9,7 @@ void Backicon::Execute()
 	Output* pOut = pManager->GetOutput();
 	Input* pIn = pManager->GetInput();
 
-	pOut->PrintMessage("back icom");
+	pOut->PrintMessage("back icon");
 	pOut->ClearToolBar();
 	pOut->CreateDrawToolBar();
 }
