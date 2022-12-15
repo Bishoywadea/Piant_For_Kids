@@ -7,6 +7,7 @@
 enum ActionType //The actions supported (you can add more if needed)
 {
 	SHAPES_MENU,
+	BACK_ICON,
 	COLOUR_MENU,
 	BACK,
 	DRAW_RECT,		//Draw Rectangle

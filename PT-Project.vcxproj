@@ -132,6 +132,7 @@
     <ClCompile Include="AddHexagon.cpp" />
     <ClCompile Include="AddSquare.cpp" />
     <ClCompile Include="AddTriangle.cpp" />
+    <ClCompile Include="back_icon.cpp" />
     <ClCompile Include="Ccircle.cpp" />
     <ClCompile Include="CHexagon.cpp" />
     <ClCompile Include="CMUgraphicsLib\auxil.cpp" />
@@ -186,6 +187,7 @@
     <ClInclude Include="AddHexagon.h" />
     <ClInclude Include="AddSquare.h" />
     <ClInclude Include="AddTriangle.h" />
+    <ClInclude Include="back_icon.h" />
     <ClInclude Include="Ccircle.h" />
     <ClInclude Include="CHexagon.h" />
     <ClInclude Include="CMUgraphicsLib\auxil.h" />

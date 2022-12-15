@@ -36,6 +36,7 @@ if (sqrt(pow((P1.x - P2.x), 2) + pow((P1.y) - (P2.y), 2)) > P1.y - 50)
 	//get drawing, filling colors and pen width from the interface
 	CircGfxInfo.DrawClr = pOut->getCrntDrawColor();
 	CircGfxInfo.FillClr = pOut->getCrntFillColor();
+	
 
 	pOut->ClearStatusBar();
 

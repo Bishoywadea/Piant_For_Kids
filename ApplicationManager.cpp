@@ -6,7 +6,7 @@
 #include "AddSquare.h"
 #include "AddTriangle.h"
 #include "Shapesmood.h"
-
+#include"back_icon.h"
 
 
 //Constructor
@@ -42,6 +42,9 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 	{
 		case SHAPES_MENU:
 			pAct = new Shapesmood(this);
+			break;
+		case BACK_ICON:
+			pAct = new Backicon(this);
 			break;
 		case DRAW_RECT:
 			pAct = new AddRectAction(this);

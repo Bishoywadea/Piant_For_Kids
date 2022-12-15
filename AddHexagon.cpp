@@ -28,6 +28,7 @@ void AddHexagon::ReadActionParameters()
 	//get drawing, filling colors and pen width from the interface
 	HexGfxInfo.DrawClr = pOut->getCrntDrawColor();
 	HexGfxInfo.FillClr = pOut->getCrntFillColor();
+	HexGfxInfo.isFilled = false;
 
 	pOut->ClearStatusBar();
 

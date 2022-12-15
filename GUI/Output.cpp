@@ -1,5 +1,6 @@
 #include "Output.h"
-#include<cmath>
+#include<iostream>
+using namespace std;
 
 Output::Output()
 {
@@ -14,9 +15,9 @@ Output::Output()
 
 	UI.StatusBarHeight = 50;
 	UI.ToolBarHeight = 50;
-	UI.MenuItemWidth = 60;
+	UI.MenuItemWidth = 80;
 
-	UI.DrawColor = BLUE;	//Drawing color
+	UI.DrawColor = BLACK;	//Drawing color
 	UI.FillColor = GREEN;	//Filling color
 	UI.MsgColor = RED;		//Messages color
 	UI.BkGrndColor = LIGHTGOLDENRODYELLOW;	//Background color
@@ -58,7 +59,7 @@ void Output::CreateStatusBar() const
 {
 	pWind->SetPen(UI.StatusBarColor, 1);
 	pWind->SetBrush(UI.StatusBarColor);
-	pWind->DrawRectangle(0, UI.ToolBarHeight, UI.width, UI.height);
+	pWind->DrawRectangle(0, UI.height - UI.StatusBarHeight, UI.width, UI.height);
 }
 //////////////////////////////////////////////////////////////////////////////////////////
 void Output::ClearStatusBar() const
@@ -119,9 +120,8 @@ void Output::CreateShapesToolBar() const   //a method to draw shapes menu
 	//reoder them in UI_Info.h ==> enum DrawMenuItem
 	string ShapesItemImages[SHAPES_ITM_COUNT];
 	ShapesItemImages[ITM_RECT] = "images\\MenuItems\\Menu_Rect.jpg";
-	ShapesItemImages[ITM_CIR] = "images\\MenuItems\\Menu_Circle.jpg";
 	ShapesItemImages[ITM_SQU] = "images\\MenuItems\\Menu_Square.jpg";
-
+	ShapesItemImages[ITM_CIR] = "images\\MenuItems\\Menu_Circle.jpg";
 	ShapesItemImages[ITM_TRI] = "images\\MenuItems\\Menu_Triangle.jpg";
 	ShapesItemImages[ITM_HEX] = "images\\MenuItems\\Menu_Hexa.jpg";
 	ShapesItemImages[ITM_BACk] = "images\\MenuItems\\BACK.jpg";
@@ -137,7 +137,6 @@ void Output::CreateShapesToolBar() const   //a method to draw shapes menu
 
 }
 //////////////////////////////////////////////////////////////////////////////////////////
-
 void Output::CreateColourToolBar() const
 {
 	UI.InterfaceMode = MODE_COLOUR;
@@ -195,6 +194,7 @@ void Output::ClearDrawArea() const
 
 }
 //////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////
 void Output::ClearToolBar() const
 {
 	pWind->SetPen(UI.BkGrndColor, 1);
@@ -243,7 +243,7 @@ void Output::DrawRect(Point P1, Point P2, GfxInfo RectGfxInfo, bool selected) co
 	else
 		DrawingClr = RectGfxInfo.DrawClr;
 
-	pWind->SetPen(DrawingClr, RectGfxInfo.BorderWdth);
+	pWind->SetPen(DrawingClr, 1);
 	drawstyle style;
 	if (RectGfxInfo.isFilled)
 	{
@@ -264,7 +264,7 @@ void Output::DrawSq(Point center, GfxInfo SqGfxInfo, bool selected)     const
 		DrawingClr = UI.HighlightColor;
 	else
 		DrawingClr = SqGfxInfo.DrawClr;
-	pWind->SetPen(DrawingClr, SqGfxInfo.BorderWdth);
+	pWind->SetPen(DrawingClr, 1);
 	drawstyle style;
 	if (SqGfxInfo.isFilled)
 	{
@@ -283,7 +283,7 @@ void Output::DrawTri(Point P1, Point P2, Point P3, GfxInfo TriGfxInfo, bool sele
 		DrawingClr = UI.HighlightColor;
 	else
 		DrawingClr = TriGfxInfo.DrawClr;
-	pWind->SetPen(DrawingClr, TriGfxInfo.BorderWdth);
+	pWind->SetPen(DrawingClr, 1);
 	drawstyle style;
 	if (TriGfxInfo.isFilled)
 	{
@@ -292,6 +292,7 @@ void Output::DrawTri(Point P1, Point P2, Point P3, GfxInfo TriGfxInfo, bool sele
 	}
 	else
 		style = FRAME;
+	std::cout << P1.x << " " << P1.y <<" "  << P2.x << " " << P2.y << " " << P3.x << " " << P3.y << endl;
 	pWind->DrawTriangle(P1.x, P1.y, P2.x, P2.y, P3.x, P3.y, style);
 }
 void Output::DrawHexa(Point P1, GfxInfo HexaGfxInfo, bool selected)  const
@@ -301,7 +302,7 @@ void Output::DrawHexa(Point P1, GfxInfo HexaGfxInfo, bool selected)  const
 		DrawingClr = UI.HighlightColor;
 	else
 		DrawingClr = HexaGfxInfo.DrawClr;
-	pWind->SetPen(DrawingClr, HexaGfxInfo.BorderWdth);
+	pWind->SetPen(DrawingClr,1);
 	drawstyle style;
 	if (HexaGfxInfo.isFilled)
 	{
@@ -322,23 +323,25 @@ void Output::DrawCircle(Point center, Point border, GfxInfo CircleGfxInfo, bool 
 		DrawingClr = UI.HighlightColor;
 	else
 		DrawingClr = CircleGfxInfo.DrawClr;
-	pWind->SetPen(DrawingClr, CircleGfxInfo.BorderWdth);
-	drawstyle style;
+	pWind->SetPen(DrawingClr,1);
+	drawstyle style = FRAME;
 	if (CircleGfxInfo.isFilled)
 	{
 		style = FILLED;
 		pWind->SetBrush(CircleGfxInfo.FillClr);
 	}
-	else
-		style = FRAME;
+
+
 	int radius = sqrt(pow((center.x - border.x), 2) + pow((center.y) - (border.y), 2));
 	pWind->DrawCircle(center.x, center.y, radius, style);
 }
+
+
+
 
 //////////////////////////////////////////////////////////////////////////////////////////
 Output::~Output()
 {
 	delete pWind;
 }
-
 
