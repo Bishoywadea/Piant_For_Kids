@@ -21,3 +21,12 @@ void CHexagon::PrintInfo(Output* pOut)
 	
 
 }
+
+bool CHexagon::IsOnFig(int x, int y) const  //Checks to deciding the click is on figure or not //BISHOY
+{ 
+	Point P;
+	P.x = x;
+	P.y = y;
+	//to see if the point on the hexa or not //BISHOY
+	return (50 >= CalcDistance(Center, P));
+}

@@ -21,3 +21,9 @@ void CTriangle::PrintInfo(Output* pOut)
 	pOut->PrintMessage("Figure type:Triangle,Coordinates: " + c + " ID: " + Id + " Is selected: " + isselected);
 
 }
+
+bool CTriangle::IsOnFig(int x, int y) const  
+{
+	//need math calcations
+	return 0;
+}

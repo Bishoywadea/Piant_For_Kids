@@ -24,7 +24,7 @@ enum ActionType //The actions supported (you can add more if needed)
 	HIDE_SHAPSANDCOLOURS,
 	HIDE_COLOURS,
 	ACT_DELETE,
-	ACT_SELECTONE,
+	ACT_SELECT,
 	ACT_MOVE,
 	ACT_UNDO,
 	ACT_SAVE,

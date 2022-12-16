@@ -178,6 +178,9 @@
     <ClCompile Include="back_icon.cpp">
       <Filter>Action Classes</Filter>
     </ClCompile>
+    <ClCompile Include="SelectAction.cpp">
+      <Filter>Action Classes</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CMUgraphicsLib\auxil.h">
@@ -293,6 +296,9 @@
       <Filter>Action Classes</Filter>
     </ClInclude>
     <ClInclude Include="back_icon.h">
+      <Filter>Action Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="SelectAction.h">
       <Filter>Action Classes</Filter>
     </ClInclude>
   </ItemGroup>

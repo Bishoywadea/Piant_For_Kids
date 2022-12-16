@@ -22,3 +22,15 @@ void CRectangle::PrintInfo(Output* pOut)
 	pOut->PrintMessage("Figure type:Rectangle,Center: " + c + " ID: " + Id + " Is selected: " + isselected);
 
 }
+
+bool CRectangle::IsOnFig(int x, int y) const
+{
+	Point P;
+	P.x = x;
+	P.y = y;
+	//to see if the point lie on the rec or not //BISHOY
+	if (P.x >= min(Corner1.x, Corner2.x) && P.x <= max(Corner2.x, Corner1.x) && P.y >= min(Corner1.y, Corner2.y) && P.y <= max(Corner2.y, Corner1.y))
+		return 1;
+	else return 0;
+}
+

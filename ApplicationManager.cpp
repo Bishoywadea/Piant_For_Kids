@@ -1,12 +1,13 @@
+#pragma once
 #include "ApplicationManager.h"
 #include "Actions\AddRectAction.h"
-#pragma once
 #include "AddCircle.h"
 #include "AddHexagon.h"
 #include "AddSquare.h"
 #include "AddTriangle.h"
 #include "Shapesmood.h"
 #include"back_icon.h"
+#include"SelectAction.h"
 
 
 //Constructor
@@ -40,12 +41,21 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 	//According to Action Type, create the corresponding action object
 	switch (ActType)
 	{
+//==================================================================================//
+//								tool bar actions sections      						//
+//==================================================================================//
 		case SHAPES_MENU:
 			pAct = new Shapesmood(this);
 			break;
-		case BACK_ICON:
+		case TO_DRAW:
 			pAct = new Backicon(this);
 			break;
+		case ACT_SELECT:
+			pAct = new SelectAction(this);
+			break;
+//==================================================================================//
+//								drawing shapes section       						//
+//==================================================================================//
 		case DRAW_RECT:
 			pAct = new AddRectAction(this);
 			break;
@@ -61,8 +71,6 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		case DRAW_SQUARE:
 			pAct = new AddSquare(this);
 			break;
-			
-	
 
 		case EXIT:
 			///create ExitAction here
@@ -77,7 +85,6 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 	if(pAct != NULL)
 	{
 		pAct->Execute();//Execute
-		delete pAct;	//You may need to change this line depending to your implementation
 		pAct = NULL;
 	}
 }
@@ -94,13 +101,11 @@ void ApplicationManager::AddFigure(CFigure* pFig)
 ////////////////////////////////////////////////////////////////////////////////////
 CFigure *ApplicationManager::GetFigure(int x, int y) const
 {
-	//If a figure is found return a pointer to it.
-	//if this point (x,y) does not belong to any figure return NULL
-
-
-	//Add your code here to search for a figure given a point x,y	
-	//Remember that ApplicationManager only calls functions do NOT implement it.
-
+	for (int i = FigCount - 1; i >= 0; i--) 
+	{
+		if (FigList[i]->IsOnFig(x, y))
+			return FigList[i];
+	}
 	return NULL;
 }
 //==================================================================================//

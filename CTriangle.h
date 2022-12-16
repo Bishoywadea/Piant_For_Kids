@@ -6,11 +6,12 @@ class CTriangle :
 {
 private:
     Point p1;
-    Point  p2;
+    Point p2;
     Point p3;
 public:
     CTriangle(Point, Point,Point, GfxInfo FigureGfxInfo);
-     void Draw(Output* pOut) const;
+    void Draw(Output* pOut) const;
     void PrintInfo(Output* pOut);
+    virtual bool IsOnFig(int x, int y) const;
 };
 

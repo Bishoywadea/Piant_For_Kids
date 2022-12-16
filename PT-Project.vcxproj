@@ -172,6 +172,7 @@
     <ClCompile Include="CMUgraphicsLib\jpeg\jquant2.c" />
     <ClCompile Include="CMUgraphicsLib\jpeg\jutils.c" />
     <ClCompile Include="CTriangle.cpp" />
+    <ClCompile Include="SelectAction.cpp" />
     <ClCompile Include="Shapesmood.cpp" />
     <ClCompile Include="Figures\CFigure.cpp" />
     <ClCompile Include="Figures\CRectangle.cpp" />
@@ -211,6 +212,7 @@
     <ClInclude Include="CMUgraphicsLib\jpeg\jpeglib.h" />
     <ClInclude Include="CMUgraphicsLib\jpeg\jversion.h" />
     <ClInclude Include="CTriangle.h" />
+    <ClInclude Include="SelectAction.h" />
     <ClInclude Include="Shapesmood.h" />
     <ClInclude Include="Figures\CFigure.h" />
     <ClInclude Include="Figures\CRectangle.h" />

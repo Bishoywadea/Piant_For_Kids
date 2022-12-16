@@ -5,13 +5,15 @@ class Square :
 {
 private:
 
-		Point Center;
-		
-	public:
-		Square(Point, GfxInfo FigureGfxInfo);
-		virtual void Draw(Output* pOut) const;
-		void PrintInfo(Output* pOut);
-	};
+	Point Center;
+	Point UpperLeft;
+	Point LowerRight;
+public:
+	Square(Point, GfxInfo FigureGfxInfo);
+	virtual void Draw(Output* pOut) const;
+	void PrintInfo(Output* pOut);
+	virtual bool IsOnFig(int x, int y) const;
+};
 
 
 

@@ -4,6 +4,7 @@ Ccircle::Ccircle(Point P1, Point P2, GfxInfo FigureGfxInfo) :CFigure(FigureGfxIn
 {
 	Center= P1;
 	Radius= P2;
+	radius = CalcDistance(P1, P2);
 }
 
 void Ccircle::Draw(Output* pOut) const
@@ -19,4 +20,13 @@ void Ccircle::PrintInfo(Output* pOut)
 
 	pOut->PrintMessage("Figure type: Circle,Center: " + c + " ID: " + Id + " Is selected: " + isselected);
 
+}
+
+bool Ccircle::IsOnFig(int x, int y) const  //Checks to deciding the click is on figure or not //BISHOY
+{
+	Point P;
+	P.x = x;
+	P.y = y;
+	//to see if the point lie on the circle or not //BISHOY
+	return (radius >= CalcDistance(Center, P));
 }

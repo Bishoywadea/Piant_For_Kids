@@ -35,5 +35,7 @@ public:
 
 	virtual void PrintInfo(Output* pOut) = 0;	//print all figure info on the status bar
 	
+	double CalcDistance(Point A, Point B) const;   //function to calc distance to help in deciding the click on figure or not in functon (IsOnFig) //BISHOY
+	virtual bool IsOnFig(int, int) const = 0;      //Checks to deciding the click is on figure or not //BISHOY
 };
 

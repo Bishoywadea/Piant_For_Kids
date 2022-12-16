@@ -58,7 +58,7 @@ ActionType Input::GetUserAction() const
 			case ITM_COLOUR: return COLOUR_MENU;         //icon to open the colours
 			case ITM_EXIT: return EXIT;                  //icon to close the program
 			case ITM_DELETE: return ACT_DELETE;          //icon to delete the shape selected
-			case ITM_SELECT: return ACT_SELECTONE;       //icon to select a shape
+			case ITM_SELECT: return ACT_SELECT;       //icon to select a shape
 			case ITM_UNDO: return ACT_UNDO;              //icon to undo
 			case ITM_SAVE: return ACT_SAVE;              //icon to save the draw 
 			case ITM_LOAD: return ACT_LOAD;              //icon to save the draw 
@@ -94,10 +94,10 @@ ActionType Input::GetUserAction() const
 			case ITM_RECT: return DRAW_RECT;       //icon to draw rect
 			case ITM_SQU: return DRAW_SQUARE;      //icon to draw square
 			case ITM_CIR: return DRAW_CIRCLE;      //icon to draw circle
-			case ITM_BACk: return BACK_ICON;        //back icon
 			case ITM_TRI: return DRAW_TRIANGLE;    //icon to draw triangle
 			case ITM_HEX: return DRAW_HEXAGON;     //icon to draw hexagon
-			default: return TO_DRAW;	           //A click on empty place in desgin toolbar
+			case ITM_BACk: return TO_DRAW;       //back icon
+			default: return BACK_ICON;	           //A click on empty place in desgin toolbar
 			}
 		}
 
