@@ -34,3 +34,10 @@ bool Square::IsOnFig(int x, int y) const
 		return 1;
 	else return 0;
 }
+
+void Square::MOVE(Point p)
+{
+	Center.x = p.x;
+	Center.y = p.y;
+
+}

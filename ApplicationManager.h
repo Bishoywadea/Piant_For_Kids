@@ -33,7 +33,8 @@ public:
 	// -- Figures Management Functions
 	void AddFigure(CFigure* pFig);          //Adds a new figure to the FigList
 	CFigure *GetFigure(int x, int y) const; //Search for a figure given a point inside the figure
-		
+	CFigure* Returnselectedfig() const;//function that loops through fig list to find selected figure and returns it, if not found return null
+     void Deletefig(CFigure*c);//deletes fig//SARAH
 	// -- Interface Management Functions
 	Input *GetInput() const; //Return pointer to the input
 	Output *GetOutput() const; //Return pointer to the output

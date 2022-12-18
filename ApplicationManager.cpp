@@ -8,6 +8,10 @@
 #include "Shapesmood.h"
 #include"back_icon.h"
 #include"SelectAction.h"
+#include"MoveAction.h"
+#include"ActDelete.h"
+#include"Createplaymood.h"
+#include"AddColor.h"
 
 
 //Constructor
@@ -50,8 +54,21 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		case TO_DRAW:
 			pAct = new Backicon(this);
 			break;
+		case COLOUR_MENU:
+			pAct = new AddColor(this);
+			break;
+
 		case ACT_SELECT:
 			pAct = new SelectAction(this);
+			break;
+		case ACT_MOVE:
+			pAct = new MoveAction(this);
+			break;
+		case ACT_DELETE:
+			pAct = new ActDelete(this);
+			break;
+		case TO_PLAY:
+			pAct = new Createplaymood(this);
 			break;
 //==================================================================================//
 //								drawing shapes section       						//
@@ -71,7 +88,7 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		case DRAW_SQUARE:
 			pAct = new AddSquare(this);
 			break;
-
+		
 		case EXIT:
 			///create ExitAction here
 			
@@ -108,13 +125,47 @@ CFigure *ApplicationManager::GetFigure(int x, int y) const
 	}
 	return NULL;
 }
+CFigure* ApplicationManager::Returnselectedfig() const
+{
+	bool f=0;
+	for (int i = 0; i < FigCount; i++)
+	{
+		if (FigList[i]->IsSelected())
+		{
+			f = 1;
+			return FigList[i];
+
+		}
+		
+	}
+	if (!f)
+	{
+		return NULL;
+	}
+
+}
+void ApplicationManager::Deletefig(CFigure*c)
+{
+	for (int i = 0; i < FigCount; i++)
+	{
+		if (FigList[i] == c)
+		{
+			delete FigList[i];
+			FigList[i] = FigList[FigCount-1];
+			FigCount--;
+			break;
+
+		}
+	}
+}
 //==================================================================================//
 //							Interface Management Functions							//
 //==================================================================================//
 
 //Draw all figures on the user interface
 void ApplicationManager::UpdateInterface() const
-{	
+{
+	pOut->ClearDrawArea();
 	for(int i=0; i<FigCount; i++)
 		FigList[i]->Draw(pOut);		//Call Draw function (virtual member fn)
 }

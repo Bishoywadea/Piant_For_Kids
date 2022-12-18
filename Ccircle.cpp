@@ -30,3 +30,15 @@ bool Ccircle::IsOnFig(int x, int y) const  //Checks to deciding the click is on 
 	//to see if the point lie on the circle or not //BISHOY
 	return (radius >= CalcDistance(Center, P));
 }
+
+void Ccircle::MOVE(Point p)
+{
+	Point cent = Center;
+	float rlen = sqrt(pow((Radius.x - Center.x), 2) + pow((Radius.y - Center.y), 2));
+	Center.x = p.x;
+	Center.y = p.y;
+	Radius.x = p.x + rlen;
+	Radius.y = p.y;
+
+}
+

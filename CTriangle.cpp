@@ -27,3 +27,8 @@ bool CTriangle::IsOnFig(int x, int y) const
 	//need math calcations
 	return 0;
 }
+
+void CTriangle::MOVE(Point p)
+{
+}
+

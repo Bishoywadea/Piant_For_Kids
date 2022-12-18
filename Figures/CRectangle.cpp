@@ -34,3 +34,18 @@ bool CRectangle::IsOnFig(int x, int y) const
 	else return 0;
 }
 
+void CRectangle::MOVE(Point p1)
+{
+	Point Center;
+	Center.x = float(Corner2.x - Corner1.x) / 2.0;
+	Center.y = float(Corner2.y - Corner1.y) / 2.0;
+	float deltax = float(Corner2.x - Corner1.x) / 2.0;
+	float deltay = float(Corner2.y - Corner1.y) / 2.0;
+	Corner1.x = p1.x + deltax;
+	Corner1.y = p1.y + deltay;
+	Corner2.x = p1.x - deltax;
+	Corner2.y = p1.y - deltay;
+	//Draw(Output* pOut);
+
+}
+

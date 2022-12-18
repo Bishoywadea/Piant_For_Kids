@@ -128,7 +128,9 @@
     </Bscmake>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="ActDelete.cpp" />
     <ClCompile Include="AddCircle.cpp" />
+    <ClCompile Include="AddColor.cpp" />
     <ClCompile Include="AddHexagon.cpp" />
     <ClCompile Include="AddSquare.cpp" />
     <ClCompile Include="AddTriangle.cpp" />
@@ -171,7 +173,9 @@
     <ClCompile Include="CMUgraphicsLib\jpeg\jquant1.c" />
     <ClCompile Include="CMUgraphicsLib\jpeg\jquant2.c" />
     <ClCompile Include="CMUgraphicsLib\jpeg\jutils.c" />
+    <ClCompile Include="Createplaymood.cpp" />
     <ClCompile Include="CTriangle.cpp" />
+    <ClCompile Include="MoveAction.cpp" />
     <ClCompile Include="SelectAction.cpp" />
     <ClCompile Include="Shapesmood.cpp" />
     <ClCompile Include="Figures\CFigure.cpp" />
@@ -184,7 +188,9 @@
     <ClCompile Include="Square.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="ActDelete.h" />
     <ClInclude Include="AddCircle.h" />
+    <ClInclude Include="AddColor.h" />
     <ClInclude Include="AddHexagon.h" />
     <ClInclude Include="AddSquare.h" />
     <ClInclude Include="AddTriangle.h" />
@@ -211,7 +217,9 @@
     <ClInclude Include="CMUgraphicsLib\jpeg\jpegint.h" />
     <ClInclude Include="CMUgraphicsLib\jpeg\jpeglib.h" />
     <ClInclude Include="CMUgraphicsLib\jpeg\jversion.h" />
+    <ClInclude Include="Createplaymood.h" />
     <ClInclude Include="CTriangle.h" />
+    <ClInclude Include="MoveAction.h" />
     <ClInclude Include="SelectAction.h" />
     <ClInclude Include="Shapesmood.h" />
     <ClInclude Include="Figures\CFigure.h" />

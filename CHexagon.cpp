@@ -22,6 +22,14 @@ void CHexagon::PrintInfo(Output* pOut)
 
 }
 
+void CHexagon::MOVE(Point p)
+{
+	Center.x = p.x;
+	Center.y = p.y;
+	
+}
+
+
 bool CHexagon::IsOnFig(int x, int y) const  //Checks to deciding the click is on figure or not //BISHOY
 { 
 	Point P;

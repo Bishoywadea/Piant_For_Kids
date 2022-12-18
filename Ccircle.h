@@ -11,6 +11,6 @@ public:
 	 void Draw(Output* pOut) const;
 	 void PrintInfo(Output* pOut);
 	 virtual bool IsOnFig(int x, int y) const; //Checks to deciding the click is on figure or not //BISHOY
-
+	 void MOVE(Point p);//Moves fig
 };
 

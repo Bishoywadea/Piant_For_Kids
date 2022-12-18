@@ -23,7 +23,7 @@ void SelectAction::ReadActionParameters()
 //Execute the action
 void SelectAction::Execute()
 {
-
+	
 	ReadActionParameters();
 
 	//check if the point clicked is on fig //BISHOY
@@ -39,9 +39,20 @@ void SelectAction::Execute()
 }
 
 void SelectAction::Selected() {
-	SelectedFig->SetSelected(true); //Sets the figure as "selected"
-	Output* pOut = pManager->GetOutput(); //Get a Pointer to the Output Interface
-	SelectedFig->PrintInfo(pOut); //Print the selected figure info on the status bar
+	CFigure* fig = pManager->Returnselectedfig();//maks sure no other figure is selected
+	if (fig == NULL)
+	{
+		SelectedFig->SetSelected(true); //Sets the figure as "selected"
+		Output* pOut = pManager->GetOutput(); //Get a Pointer to the Output Interface
+		SelectedFig->PrintInfo(pOut); //Print the selected figure info on the status bar
+	}
+	else
+	{
+		fig->SetSelected(0);
+		SelectedFig->SetSelected(true); //Sets the figure as "selected"
+		Output* pOut = pManager->GetOutput(); //Get a Pointer to the Output Interface
+		SelectedFig->PrintInfo(pOut); //Print the selected figure info on the status bar
+	}
 }
 
 void SelectAction::Unselected() {
