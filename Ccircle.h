@@ -10,7 +10,7 @@ public:
 	 Ccircle(Point, Point, GfxInfo FigureGfxInfo);
 	 void Draw(Output* pOut) const;
 	 void PrintInfo(Output* pOut);
-	 virtual bool IsOnFig(int x, int y) const; //Checks to deciding the click is on figure or not //BISHOY
+	 virtual bool IsOnFig(int x, int y) ;//Checks to deciding the click is on figure or not //BISHOY
 
 };
 

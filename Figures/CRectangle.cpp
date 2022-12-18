@@ -23,7 +23,7 @@ void CRectangle::PrintInfo(Output* pOut)
 
 }
 
-bool CRectangle::IsOnFig(int x, int y) const
+bool CRectangle::IsOnFig(int x, int y) 
 {
 	Point P;
 	P.x = x;
