@@ -70,6 +70,9 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		case TO_PLAY:
 			pAct = new Createplaymood(this);
 			break;
+		case ACT_CLEARALL:
+			Clearall();
+			break;
 //==================================================================================//
 //								drawing shapes section       						//
 //==================================================================================//
@@ -166,8 +169,21 @@ void ApplicationManager::Deletefig(CFigure*c)
 void ApplicationManager::UpdateInterface() const
 {
 	pOut->ClearDrawArea();
+	
 	for(int i=0; i<FigCount; i++)
-		FigList[i]->Draw(pOut);		//Call Draw function (virtual member fn)
+		if (FigList[i] != NULL)
+		{
+			FigList[i]->Draw(pOut);
+		}//Call Draw function (virtual member fn)
+}
+void ApplicationManager::Clearall()//when 
+{
+	for (int i = 0; i < FigCount; i++)
+	{
+		delete FigList[i];
+		FigList[i] = NULL;
+	}
+	FigCount = 0;
 }
 ////////////////////////////////////////////////////////////////////////////////////
 //Return a pointer to the input

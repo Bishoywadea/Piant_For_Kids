@@ -39,6 +39,7 @@ public:
 	Input *GetInput() const; //Return pointer to the input
 	Output *GetOutput() const; //Return pointer to the output
 	void UpdateInterface() const;	//Redraws all the drawing window	
+	void Clearall();//prototype of claer all func, add undo and redo as stated in phase 1 //SARAH
 };
 
 #endif

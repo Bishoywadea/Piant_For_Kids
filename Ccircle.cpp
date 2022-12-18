@@ -22,7 +22,7 @@ void Ccircle::PrintInfo(Output* pOut)
 
 }
 
-bool Ccircle::IsOnFig(int x, int y)  //Checks to deciding the click is on figure or not //BISHOY
+bool Ccircle::IsOnFig(int x, int y) const  //Checks to deciding the click is on figure or not //BISHOY
 {
 	Point P;
 	P.x = x;
