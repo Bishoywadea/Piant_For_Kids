@@ -12,7 +12,7 @@ public:
 	CRectangle(Point , Point, GfxInfo FigureGfxInfo );
 	virtual void Draw(Output* pOut) const;
 	void PrintInfo(Output* pOut);
-	virtual bool IsOnFig(int x, int y) const;
+	virtual bool IsOnFig(int x, int y) ;
 	void MOVE(Point p1);
 };
 
