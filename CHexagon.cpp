@@ -1,8 +1,9 @@
 #include "CHexagon.h"
-
+#include<fstream>
 CHexagon::CHexagon(Point P1, GfxInfo FigureGfxInfo):CFigure(FigureGfxInfo)
 {
 	Center = P1;
+	pvid=ID;
 }
 
 void CHexagon::Draw(Output* pOut) const
@@ -37,4 +38,17 @@ bool CHexagon::IsOnFig(int x, int y) const  //Checks to deciding the click is on
 	P.y = y;
 	//to see if the point on the hexa or not //BISHOY
 	return (50 >= CalcDistance(Center, P));
+}
+
+void CHexagon::Save(ofstream& OutFile)
+{
+	OutFile << "HEXAGON\t" << pvid << "\t" << Center.x << "\t" << Center.y << "\t" << ConvertColorToString(UI.DrawColor) << "\t";
+	if (FigGfxInfo.isFilled)
+	{
+		OutFile << ConvertColorToString(UI.FillColor) << endl;
+	}
+	else
+	{
+		OutFile << "NO COLOR" << endl;
+	}
 }

@@ -12,8 +12,7 @@
 #include"ActDelete.h"
 #include"Createplaymood.h"
 #include"AddColor.h"
-
-
+#include"SaveAction.h"
 //Constructor
 ApplicationManager::ApplicationManager()
 {
@@ -51,9 +50,11 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		case SHAPES_MENU:
 			pAct = new Shapesmood(this);
 			break;
+
 		case TO_DRAW:
 			pAct = new Backicon(this);
 			break;
+
 		case COLOUR_MENU:
 			pAct = new AddColor(this);
 			break;
@@ -61,17 +62,24 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		case ACT_SELECT:
 			pAct = new SelectAction(this);
 			break;
+
 		case ACT_MOVE:
 			pAct = new MoveAction(this);
 			break;
+
 		case ACT_DELETE:
 			pAct = new ActDelete(this);
 			break;
+
 		case TO_PLAY:
 			pAct = new Createplaymood(this);
 			break;
+
 		case ACT_CLEARALL:
 			Clearall();
+			break;
+		case ACT_SAVE:
+			pAct = new SaveAction(this,FigCount);
 			break;
 //==================================================================================//
 //								drawing shapes section       						//
@@ -91,7 +99,6 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		case DRAW_SQUARE:
 			pAct = new AddSquare(this);
 			break;
-		
 		case EXIT:
 			///create ExitAction here
 			
@@ -128,6 +135,7 @@ CFigure *ApplicationManager::GetFigure(int x, int y) const
 	}
 	return NULL;
 }
+
 CFigure* ApplicationManager::Returnselectedfig() const
 {
 	bool f=0;
@@ -137,16 +145,23 @@ CFigure* ApplicationManager::Returnselectedfig() const
 		{
 			f = 1;
 			return FigList[i];
-
 		}
-		
 	}
 	if (!f)
 	{
 		return NULL;
 	}
-
 }
+	/*
+	for (int i = 0; i < FigCount; i++)
+	{
+		if (FigList[i]->IsSelected())
+		{
+			return FigList[i];
+		}
+	}
+	return NULL;*/  
+
 void ApplicationManager::Deletefig(CFigure*c)
 {
 	for (int i = 0; i < FigCount; i++)
@@ -159,6 +174,13 @@ void ApplicationManager::Deletefig(CFigure*c)
 			break;
 
 		}
+	}
+}
+void ApplicationManager::SaveAll(ofstream& OutFile)
+{
+	for (int i = 0; i < FigCount; i++)
+	{
+		FigList[i]->Save( OutFile);
 	}
 }
 //==================================================================================//

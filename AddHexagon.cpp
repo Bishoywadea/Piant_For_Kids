@@ -4,7 +4,6 @@
 
 AddHexagon::AddHexagon(ApplicationManager* pApp):Action(pApp)
 {
-	
 }
 
 void AddHexagon::ReadActionParameters()

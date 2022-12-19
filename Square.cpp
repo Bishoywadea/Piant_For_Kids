@@ -7,6 +7,7 @@ Square::Square(Point P1, GfxInfo FigureGfxInfo):CFigure(FigureGfxInfo)
 	LowerRight.y = Center.y + 50;
 	UpperLeft.x = Center.x - 50;
 	UpperLeft.y = Center.y - 50;
+	pvid = ID;
 }
 
 void Square::Draw(Output* pOut) const
@@ -40,4 +41,17 @@ void Square::MOVE(Point p)
 	Center.x = p.x;
 	Center.y = p.y;
 
+}
+
+void Square::Save(ofstream& OutFile)
+{
+	OutFile << "SQUARE\t" << pvid << "\t" << Center.x << "\t" << Center.y << "\t" << ConvertColorToString(UI.DrawColor) << "\t";
+	if (FigGfxInfo.isFilled)
+	{
+		OutFile << ConvertColorToString(UI.FillColor) << endl;
+	}
+	else
+	{
+		OutFile << "NO COLOR" << endl;
+	}
 }

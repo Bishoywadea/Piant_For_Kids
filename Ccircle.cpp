@@ -1,5 +1,5 @@
 #include "Ccircle.h"
-
+#include<fstream>
 Ccircle::Ccircle(Point P1, Point P2, GfxInfo FigureGfxInfo) :CFigure(FigureGfxInfo)
 {
 	Center= P1;
@@ -39,6 +39,19 @@ void Ccircle::MOVE(Point p)
 	Center.y = p.y;
 	Radius.x = p.x + rlen;
 	Radius.y = p.y;
+	pvid = ID;
+}
 
+void Ccircle::Save(ofstream& OutFile)
+{
+	OutFile << "Circle\t"<< pvid<<"\t" << Center.x << "\t" << Center.y << "\t" << ConvertColorToString(UI.DrawColor) << "\t";
+	if (FigGfxInfo.isFilled)
+	{
+		OutFile << ConvertColorToString(UI.FillColor) << endl;
+	}
+	else
+	{
+		OutFile << "NO COLOR" << endl;
+	}
 }
 

@@ -2,12 +2,12 @@
 
 #include "..\defs.h"
 #include "..\GUI\Output.h"
-
+#include<fstream>
 //Base class for all figures
 class CFigure
 {
 protected:
-	int ID;		//Each figure has an ID
+	static int ID;		//Each figure has an ID
 	bool Selected;	//true if the figure is selected.
 	GfxInfo FigGfxInfo;	//Figure graphis info
 	
@@ -37,7 +37,8 @@ public:
 	
 	double CalcDistance(Point A, Point B) const;   //function to calc distance to help in deciding the click on figure or not in functon (IsOnFig) //BISHOY
 	virtual bool IsOnFig(int, int) const = 0;      //Checks to deciding the click is on figure or not //BISHOY
-  virtual void MOVE(Point p1) = 0;//function to move figure to point p1 //SARAH
- 
+    virtual void MOVE(Point p1) = 0;               //function to move figure to point p1 //SARAH
+	virtual void Save(ofstream& OutFile)=0;        //function responisble for every figure save its data in the out file //BISHOY
+	string ConvertColorToString(color c);          //function to convert color type to string to be able to write them in the out file //BISHOY
 };
 
