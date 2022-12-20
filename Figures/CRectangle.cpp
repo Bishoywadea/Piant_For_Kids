@@ -60,7 +60,7 @@ void CRectangle::Save(ofstream& OutFile)
 	OutFile << "RECTANGLE\t" << pvid << "\t" << Corner1.x << "\t" << Corner1.y << "\t" << Corner2.x << "\t" << Corner2.y << "\t" << ConvertColorToString(UI.DrawColor) << "\t";
 	if (FigGfxInfo.isFilled)
 	{
-		OutFile << ConvertColorToString(UI.FillColor) << endl;
+		OutFile << ConvertColorToString(FigGfxInfo.FillClr) << endl;
 	}
 	else
 	{

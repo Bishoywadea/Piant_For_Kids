@@ -16,11 +16,8 @@ void CHexagon::PrintInfo(Output* pOut)
 	string c = to_string(Center.x)+","+to_string(Center.y);
 	string Id = to_string(ID);
 	string isselected = to_string(Selected);
-	
 	pOut->PrintMessage("Figure type: Hexagon,Center: "+c+" ID: "+Id+" Is selected: "+isselected);
 	
-	
-
 }
 
 void CHexagon::MOVE(Point p)
@@ -45,7 +42,7 @@ void CHexagon::Save(ofstream& OutFile)
 	OutFile << "HEXAGON\t" << pvid << "\t" << Center.x << "\t" << Center.y << "\t" << ConvertColorToString(UI.DrawColor) << "\t";
 	if (FigGfxInfo.isFilled)
 	{
-		OutFile << ConvertColorToString(UI.FillColor) << endl;
+		OutFile << ConvertColorToString(FigGfxInfo.FillClr) << endl;
 	}
 	else
 	{

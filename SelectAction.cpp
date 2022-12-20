@@ -48,7 +48,7 @@ void SelectAction::Selected() {
 	}
 	else
 	{
-		fig->SetSelected(0);
+		fig->SetSelected(false);
 		SelectedFig->SetSelected(true); //Sets the figure as "selected"
 		Output* pOut = pManager->GetOutput(); //Get a Pointer to the Output Interface
 		SelectedFig->PrintInfo(pOut); //Print the selected figure info on the status bar

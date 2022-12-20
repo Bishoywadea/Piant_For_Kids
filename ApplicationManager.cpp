@@ -78,6 +78,7 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		case ACT_CLEARALL:
 			Clearall();
 			break;
+
 		case ACT_SAVE:
 			pAct = new SaveAction(this,FigCount);
 			break;

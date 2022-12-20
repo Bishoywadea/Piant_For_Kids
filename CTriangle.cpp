@@ -67,7 +67,7 @@ void CTriangle::Save(ofstream& OutFile)
 	OutFile << "TRIANGLE\t" << pvid << "\t" << p1.x << "\t" << p1.y << "\t" << p2.x << "\t" << p2.y << "\t" << p3.x << "\t" << p3.y << "\t" << ConvertColorToString(UI.DrawColor) << "\t";
 	if (FigGfxInfo.isFilled)
 	{
-		OutFile << ConvertColorToString(UI.FillColor) << endl;
+		OutFile << ConvertColorToString(FigGfxInfo.FillClr) << endl;
 	}
 	else
 	{

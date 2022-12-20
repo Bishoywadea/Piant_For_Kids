@@ -5,6 +5,7 @@ Ccircle::Ccircle(Point P1, Point P2, GfxInfo FigureGfxInfo) :CFigure(FigureGfxIn
 	Center= P1;
 	Radius= P2;
 	radius = CalcDistance(P1, P2);
+	pvid = ID;
 }
 
 void Ccircle::Draw(Output* pOut) const
@@ -47,7 +48,7 @@ void Ccircle::Save(ofstream& OutFile)
 	OutFile << "Circle\t"<< pvid<<"\t" << Center.x << "\t" << Center.y << "\t" << ConvertColorToString(UI.DrawColor) << "\t";
 	if (FigGfxInfo.isFilled)
 	{
-		OutFile << ConvertColorToString(UI.FillColor) << endl;
+		OutFile << ConvertColorToString(FigGfxInfo.FillClr) << endl;
 	}
 	else
 	{

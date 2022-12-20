@@ -48,7 +48,7 @@ void Square::Save(ofstream& OutFile)
 	OutFile << "SQUARE\t" << pvid << "\t" << Center.x << "\t" << Center.y << "\t" << ConvertColorToString(UI.DrawColor) << "\t";
 	if (FigGfxInfo.isFilled)
 	{
-		OutFile << ConvertColorToString(UI.FillColor) << endl;
+		OutFile << ConvertColorToString(FigGfxInfo.FillClr) << endl;
 	}
 	else
 	{
