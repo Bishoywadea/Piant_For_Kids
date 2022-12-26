@@ -1,9 +1,14 @@
 #include "CRectangle.h"
-
+#include<algorithm>
 CRectangle::CRectangle(Point P1, Point P2, GfxInfo FigureGfxInfo):CFigure(FigureGfxInfo)
 {
 	Corner1 = P1;
 	Corner2 = P2;
+	pvid = ID;
+}
+
+CRectangle::CRectangle()
+{
 }
 	
 
@@ -30,8 +35,13 @@ bool CRectangle::IsOnFig(int x, int y) const
 	P.y = y;
 	//to see if the point lie on the rec or not //BISHOY
 	if (P.x >= min(Corner1.x, Corner2.x) && P.x <= max(Corner2.x, Corner1.x) && P.y >= min(Corner1.y, Corner2.y) && P.y <= max(Corner2.y, Corner1.y))
+	{
 		return 1;
-	else return 0;
+	}
+	else
+	{
+		return 0;
+	}
 }
 
 ShapesMenuItem CRectangle::Returnshapestype()
@@ -52,5 +62,38 @@ void CRectangle::MOVE(Point p1)
 	Corner2.y = p1.y - deltay;
 	//Draw(Output* pOut);
 
+}
+
+void CRectangle::Save(ofstream& OutFile)
+{
+	OutFile << "RECTANGLE\t" << pvid << "\t" << Corner1.x << "\t" << Corner1.y << "\t" << Corner2.x << "\t" << Corner2.y << "\t" << ConvertColorToString(UI.DrawColor) << "\t";
+	if (FigGfxInfo.isFilled)
+	{
+		OutFile << ConvertColorToString(FigGfxInfo.FillClr) << endl;
+	}
+	else
+	{
+		OutFile << "NOCOLOR" << endl;
+	}
+}
+
+void CRectangle::Load(ifstream& InFile)
+{
+	string DrawClr;
+	string FillClr;
+	InFile >> pvid >> Corner1.x >> Corner1.y >> Corner2.x >> Corner2.y;
+	InFile >> DrawClr;
+	FigGfxInfo.DrawClr = ConvertStringToColor(DrawClr);
+	InFile >> FillClr;
+	if (FillClr == "NOCOLOR")
+	{
+		FigGfxInfo.isFilled = false;
+	}
+	else {
+		FigGfxInfo.isFilled = true;
+		FigGfxInfo.FillClr = ConvertStringToColor(FillClr);
+	}
+	FigGfxInfo.BorderWdth = UI.PenWidth;
+	Selected = false;
 }
 

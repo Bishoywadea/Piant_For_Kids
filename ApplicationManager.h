@@ -34,7 +34,9 @@ public:
 	void AddFigure(CFigure* pFig);          //Adds a new figure to the FigList
 	CFigure *GetFigure(int x, int y) const; //Search for a figure given a point inside the figure
 	CFigure* Returnselectedfig() const;//function that loops through fig list to find selected figure and returns it, if not found return null
-     void Deletefig(CFigure*c);//deletes fig//SARAH
+    void Deletefig(CFigure*c);//deletes fig//SARAH
+	void SaveAll(ofstream& OutFile); //function to loop on the fig list and call save function of every element in it //BISHOY
+	void DeleteFigList();            //function do delete all fig list to be used in load action
 	// -- Interface Management Functions
 	Input *GetInput() const; //Return pointer to the input
 	Output *GetOutput() const; //Return pointer to the output
@@ -43,6 +45,7 @@ public:
 	
 	CFigure* returnfigonpoint(Point p);
 	CFigure** returnfiglist();
+	void Clearall();//prototype of claer all func, add undo and redo as stated in phase 1 //SARAH
 };
 
 #endif

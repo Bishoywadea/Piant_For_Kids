@@ -7,6 +7,11 @@ Square::Square(Point P1, GfxInfo FigureGfxInfo):CFigure(FigureGfxInfo)
 	LowerRight.y = Center.y + 50;
 	UpperLeft.x = Center.x - 50;
 	UpperLeft.y = Center.y - 50;
+	pvid = ID;
+}
+
+Square::Square()
+{
 }
 
 void Square::Draw(Output* pOut) const
@@ -45,4 +50,42 @@ void Square::MOVE(Point p)
 	Center.x = p.x;
 	Center.y = p.y;
 
+}
+
+void Square::Save(ofstream& OutFile)
+{
+	OutFile << "SQUARE\t" << pvid << "\t" << Center.x << "\t" << Center.y << "\t" << ConvertColorToString(UI.DrawColor) << "\t";
+	if (FigGfxInfo.isFilled)
+	{
+		OutFile << ConvertColorToString(FigGfxInfo.FillClr) << endl;
+	}
+	else
+	{
+		OutFile << "NOCOLOR" << endl;
+	}
+}
+
+void Square::Load(ifstream& InFile)
+{
+	//loading the parameters with a specific format
+	string DrawClr;
+	string FillClr;
+	InFile >> pvid >> Center.x >> Center.y;
+	InFile >> DrawClr;
+	FigGfxInfo.DrawClr = ConvertStringToColor(DrawClr);
+	InFile >> FillClr;
+	if (FillClr == "NOCOLOR")
+	{
+		FigGfxInfo.isFilled = false;
+	}
+	else {
+		FigGfxInfo.isFilled = true;
+		FigGfxInfo.FillClr = ConvertStringToColor(FillClr);
+	}
+	Selected = false;
+	FigGfxInfo.BorderWdth = UI.PenWidth;
+	LowerRight.x = Center.x + 50;
+	LowerRight.y = Center.y + 50;
+	UpperLeft.x = Center.x - 50;
+	UpperLeft.y = Center.y - 50;
 }

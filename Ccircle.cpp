@@ -1,10 +1,15 @@
 #include "Ccircle.h"
-
+#include<fstream>
 Ccircle::Ccircle(Point P1, Point P2, GfxInfo FigureGfxInfo) :CFigure(FigureGfxInfo)
 {
 	Center= P1;
 	Radius= P2;
 	radius = CalcDistance(P1, P2);
+	pvid = ID;
+}
+
+Ccircle::Ccircle()
+{
 }
 
 void Ccircle::Draw(Output* pOut) const
@@ -39,7 +44,41 @@ void Ccircle::MOVE(Point p)
 	Center.y = p.y;
 	Radius.x = p.x + rlen;
 	Radius.y = p.y;
+	pvid = ID;
+}
 
+void Ccircle::Save(ofstream& OutFile)
+{
+	OutFile << "Circle\t"<< pvid<<"\t" << Center.x << "\t" << Center.y << "\t" << ConvertColorToString(UI.DrawColor) << "\t";
+	if (FigGfxInfo.isFilled)
+	{
+		OutFile << ConvertColorToString(FigGfxInfo.FillClr) << endl;
+	}
+	else
+	{
+		OutFile << "NOCOLOR" << endl;
+	}
+}
+
+void Ccircle::Load(ifstream& InFile)
+{
+	string DrawClr;
+	string FillClr;
+	InFile >> pvid >> Center.x >> Center.y >> Radius.x >> Radius.y;
+	InFile >> DrawClr;
+	FigGfxInfo.DrawClr = ConvertStringToColor(DrawClr);
+	InFile >> FillClr;
+	if (FillClr == "NOCOLOR")
+	{
+		FigGfxInfo.isFilled = false;
+	}
+	else {
+		FigGfxInfo.isFilled = true;
+		FigGfxInfo.FillClr = ConvertStringToColor(FillClr);
+	}
+	Selected = false;
+	FigGfxInfo.BorderWdth = UI.PenWidth;
+	radius = CalcDistance(Center, Radius);
 }
 ShapesMenuItem Ccircle::Returnshapestype()
 {

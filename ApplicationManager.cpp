@@ -6,8 +6,8 @@
 #include "AddSquare.h"
 #include "AddTriangle.h"
 #include "Shapesmood.h"
-#include"back_icon.h"
-#include"SelectAction.h"
+#include "back_icon.h"
+#include "SelectAction.h"
 #include"MoveAction.h"
 #include"ActDelete.h"
 #include"Createplaymood.h"
@@ -17,6 +17,8 @@
 
 
 
+#include"SaveAction.h"
+#include"LoadAction.h"
 //Constructor
 ApplicationManager::ApplicationManager()
 {
@@ -54,9 +56,11 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		case SHAPES_MENU:
 			pAct = new Shapesmood(this);
 			break;
+
 		case TO_DRAW:
 			pAct = new Backicon(this);
 			break;
+
 		case COLOUR_MENU:
 			pAct = new AddColor(this);
 			break;
@@ -64,12 +68,15 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		case ACT_SELECT:
 			pAct = new SelectAction(this);
 			break;
+
 		case ACT_MOVE:
 			pAct = new MoveAction(this);
 			break;
+
 		case ACT_DELETE:
 			pAct = new ActDelete(this);
 			break;
+
 		case TO_PLAY:
 			pAct = new Createplaymood(this);
 			break;
@@ -80,6 +87,18 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 			pAct = new DrawColour(this);
 			break;
 
+
+		case ACT_CLEARALL:
+			Clearall();
+			break;
+
+		case ACT_SAVE:
+			pAct = new SaveAction(this,FigCount);
+			break;
+
+		case ACT_LOAD:
+			pAct = new LoadAction(this);
+			break;
 //==================================================================================//
 //								drawing shapes section       						//
 //==================================================================================//
@@ -98,7 +117,6 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		case DRAW_SQUARE:
 			pAct = new AddSquare(this);
 			break;
-		
 		case EXIT:
 			///create ExitAction here
 			
@@ -135,6 +153,7 @@ CFigure *ApplicationManager::GetFigure(int x, int y) const
 	}
 	return NULL;
 }
+
 CFigure* ApplicationManager::Returnselectedfig() const
 {
 	bool f=0;
@@ -144,16 +163,15 @@ CFigure* ApplicationManager::Returnselectedfig() const
 		{
 			f = 1;
 			return FigList[i];
-
 		}
-		
 	}
 	if (!f)
 	{
 		return NULL;
 	}
-
+	return NULL;
 }
+
 void ApplicationManager::Deletefig(CFigure*c)
 {
 	for (int i = 0; i < FigCount; i++)
@@ -167,6 +185,22 @@ void ApplicationManager::Deletefig(CFigure*c)
 
 		}
 	}
+}
+void ApplicationManager::SaveAll(ofstream& OutFile)
+{
+	for (int i = 0; i < FigCount; i++)
+	{
+		FigList[i]->Save( OutFile);
+	}
+}
+void ApplicationManager::DeleteFigList()
+{
+	for (int i = 0; i < FigCount; i++)
+	{
+		delete FigList[i];
+		FigList[i] = NULL;
+	}
+	FigCount = 0;
 }
 //==================================================================================//
 //							Interface Management Functions							//
@@ -201,6 +235,21 @@ CFigure* ApplicationManager::returnfigonpoint(Point p)
 CFigure** ApplicationManager::returnfiglist()
 {
 	return FigList;
+	
+	for(int i=0; i<FigCount; i++)
+		if (FigList[i] != NULL)
+		{
+			FigList[i]->Draw(pOut);
+		}//Call Draw function (virtual member fn)
+}
+void ApplicationManager::Clearall()//when 
+{
+	for (int i = 0; i < FigCount; i++)
+	{
+		delete FigList[i];
+		FigList[i] = NULL;
+	}
+	FigCount = 0;
 }
 
 ////////////////////////////////////////////////////////////////////////////////////

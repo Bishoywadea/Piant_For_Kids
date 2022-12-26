@@ -177,7 +177,9 @@
     <ClCompile Include="Createplaymood.cpp" />
     <ClCompile Include="CTriangle.cpp" />
     <ClCompile Include="DrawColour.cpp" />
+    <ClCompile Include="LoadAction.cpp" />
     <ClCompile Include="MoveAction.cpp" />
+    <ClCompile Include="SaveAction.cpp" />
     <ClCompile Include="SelectAction.cpp" />
     <ClCompile Include="Shapesmood.cpp" />
     <ClCompile Include="Figures\CFigure.cpp" />
@@ -223,7 +225,9 @@
     <ClInclude Include="Createplaymood.h" />
     <ClInclude Include="CTriangle.h" />
     <ClInclude Include="DrawColour.h" />
+    <ClInclude Include="LoadAction.h" />
     <ClInclude Include="MoveAction.h" />
+    <ClInclude Include="SaveAction.h" />
     <ClInclude Include="SelectAction.h" />
     <ClInclude Include="Shapesmood.h" />
     <ClInclude Include="Figures\CFigure.h" />
