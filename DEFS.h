@@ -7,12 +7,13 @@
 enum ActionType //The actions supported (you can add more if needed)
 {
 	SHAPES_MENU,
+	BACK_ICON,
 	COLOUR_MENU,
 	BACK,
 	DRAW_RECT,		//Draw Rectangle
 	EXIT,			//Exit
 	TO_DRAW,		//Switch interface to Draw mode
-   	//Switch interface to Play mode
+	//Switch interface to Play mode
 	EMPTY,			//A click on empty place in the toolbar
 	DRAWING_AREA,	//A click on the drawing area
 	ACT_RED,
@@ -23,28 +24,34 @@ enum ActionType //The actions supported (you can add more if needed)
 	HIDE_SHAPSANDCOLOURS,
 	HIDE_COLOURS,
 	ACT_DELETE,
-	ACT_SELECTONE,
+	ACT_SELECT,
 	ACT_MOVE,
 	ACT_UNDO,
+	ACT_SAVE,
+	ACT_LOAD,
 	ACT_REDO,
 	ACT_BLUE,
 	ACT_BLACK,
 	DRAW_CIRCLE,
 	DRAW_HEXAGON,
 	DRAW_TRIANGLE,
+	DRAW_SQUARE,
 	ACT_DRAWMOOD,
 	ACT_HIDESHAPES,
 	ACT_HIDECOLOURS,
 	ACT_HIDESHAPESANDCOLOURS,
+	ACT_CLEARALL,
 	TO_PLAY,
 
 	STATUS			//A click on the status bar
 
-	///TODO: Add the other action types of the two modes
+	///TODO: Add the other action types of the two modes  (DONE)
 };
 
 struct Point	//To be used for figures points
-{ int x,y; };
+{
+	int x, y;
+};
 
 struct GfxInfo	//Graphical info of each figure (you may add more members)
 {
