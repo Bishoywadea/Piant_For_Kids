@@ -11,8 +11,9 @@ class AddHexagon :public Action
 {
 	Point p1;
 	GfxInfo HexGfxInfo;
+	bool Sound;
 public:
-	AddHexagon(ApplicationManager* pApp);
+	AddHexagon(ApplicationManager* pApp,bool IsEnabled);
 
 	//Reads rectangle parameters
 	virtual void ReadActionParameters();

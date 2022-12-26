@@ -1,14 +1,18 @@
 
 #include"AddCircle.h"
-AddCircle::AddCircle(ApplicationManager* pApp):Action(pApp)
+AddCircle::AddCircle(ApplicationManager* pApp,bool IsEnabled):Action(pApp)
 {
-	
+	Sound = IsEnabled;
 }
 
 void AddCircle::ReadActionParameters()
 {
 	//Get a Pointer to the Input / Output Interfaces
 	Output* pOut = pManager->GetOutput();
+	if (Sound)
+	{
+		PlaySound(TEXT("Sounds\\circle.wav"), NULL, SND_ASYNC);
+	}
 	pOut->PrintMessage("DRAW CIRCLE");
 	Input* pIn = pManager->GetInput();
 	//check bounds for circle

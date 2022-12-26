@@ -12,8 +12,9 @@ class AddSquare:public Action
 private:
 	Point P1; //Square Center
 	GfxInfo SquaGfxInfo;
+	bool Sound;
 public:
-	AddSquare(ApplicationManager* pApp);
+	AddSquare(ApplicationManager* pApp, bool IsEnabled);
 
 	//Reads Square parameters
 	virtual void ReadActionParameters();

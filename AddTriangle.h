@@ -12,8 +12,9 @@ class AddTriangle:public Action
 private:
 	Point P1, P2, P3; //Triangle Corners
 	GfxInfo TriGfxInfo;
+	bool Sound;
 public:
-	AddTriangle(ApplicationManager* pApp);
+	AddTriangle(ApplicationManager* pApp,bool IsEnabled);
 
 	//Reads rectangle parameters
 	virtual void ReadActionParameters();
