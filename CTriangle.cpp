@@ -8,6 +8,10 @@ CTriangle::CTriangle(Point P1, Point P2, Point P3, GfxInfo FigureGfxInfo):CFigur
 	pvid = ID;
 }
 
+CTriangle::CTriangle()
+{
+}
+
 void CTriangle::Draw(Output* pOut) const
 {
 	pOut->DrawTri(p1, p2, p3, FigGfxInfo, Selected);
@@ -71,7 +75,27 @@ void CTriangle::Save(ofstream& OutFile)
 	}
 	else
 	{
-		OutFile << "NO COLOR" << endl;
+		OutFile << "NOCOLOR" << endl;
 	}
+}
+
+void CTriangle::Load(ifstream& InFile)
+{
+	string DrawClr;
+	string FillClr;
+	InFile >> pvid >> p1.x >> p1.y >> p2.x >> p2.y>>p3.x>>p3.y;
+	InFile >> DrawClr;
+	FigGfxInfo.DrawClr = ConvertStringToColor(DrawClr);
+	InFile >> FillClr;
+	if (FillClr == "NOCOLOR")
+	{
+		FigGfxInfo.isFilled = false;
+	}
+	else {
+		FigGfxInfo.isFilled = true;
+		FigGfxInfo.FillClr = ConvertStringToColor(FillClr);
+	}
+	FigGfxInfo.BorderWdth = UI.PenWidth;
+	Selected = false;
 }
 

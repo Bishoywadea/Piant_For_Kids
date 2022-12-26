@@ -8,6 +8,10 @@ Ccircle::Ccircle(Point P1, Point P2, GfxInfo FigureGfxInfo) :CFigure(FigureGfxIn
 	pvid = ID;
 }
 
+Ccircle::Ccircle()
+{
+}
+
 void Ccircle::Draw(Output* pOut) const
 {
 	pOut->DrawCircle(Center, Radius, FigGfxInfo, Selected);
@@ -52,7 +56,28 @@ void Ccircle::Save(ofstream& OutFile)
 	}
 	else
 	{
-		OutFile << "NO COLOR" << endl;
+		OutFile << "NOCOLOR" << endl;
 	}
+}
+
+void Ccircle::Load(ifstream& InFile)
+{
+	string DrawClr;
+	string FillClr;
+	InFile >> pvid >> Center.x >> Center.y >> Radius.x >> Radius.y;
+	InFile >> DrawClr;
+	FigGfxInfo.DrawClr = ConvertStringToColor(DrawClr);
+	InFile >> FillClr;
+	if (FillClr == "NOCOLOR")
+	{
+		FigGfxInfo.isFilled = false;
+	}
+	else {
+		FigGfxInfo.isFilled = true;
+		FigGfxInfo.FillClr = ConvertStringToColor(FillClr);
+	}
+	Selected = false;
+	FigGfxInfo.BorderWdth = UI.PenWidth;
+	radius = CalcDistance(Center, Radius);
 }
 

@@ -175,6 +175,7 @@
     <ClCompile Include="CMUgraphicsLib\jpeg\jutils.c" />
     <ClCompile Include="Createplaymood.cpp" />
     <ClCompile Include="CTriangle.cpp" />
+    <ClCompile Include="LoadAction.cpp" />
     <ClCompile Include="MoveAction.cpp" />
     <ClCompile Include="SaveAction.cpp" />
     <ClCompile Include="SelectAction.cpp" />
@@ -220,6 +221,7 @@
     <ClInclude Include="CMUgraphicsLib\jpeg\jversion.h" />
     <ClInclude Include="Createplaymood.h" />
     <ClInclude Include="CTriangle.h" />
+    <ClInclude Include="LoadAction.h" />
     <ClInclude Include="MoveAction.h" />
     <ClInclude Include="SaveAction.h" />
     <ClInclude Include="SelectAction.h" />

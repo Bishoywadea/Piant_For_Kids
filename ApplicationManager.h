@@ -36,6 +36,7 @@ public:
 	CFigure* Returnselectedfig() const;//function that loops through fig list to find selected figure and returns it, if not found return null
     void Deletefig(CFigure*c);//deletes fig//SARAH
 	void SaveAll(ofstream& OutFile); //function to loop on the fig list and call save function of every element in it //BISHOY
+	void DeleteFigList();            //function do delete all fig list to be used in load action
 	// -- Interface Management Functions
 	Input *GetInput() const; //Return pointer to the input
 	Output *GetOutput() const; //Return pointer to the output

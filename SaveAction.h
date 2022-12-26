@@ -10,9 +10,9 @@ class SaveAction :public Action
 	string SaveName;
 	ofstream OutFile;
 public:
-	SaveAction(ApplicationManager* pApp,int FigCount);
+	SaveAction(ApplicationManager* pApp,int number);
 	void Heading(int number);
-	void SaveAction::ReadActionParameters();
+	void ReadActionParameters();
 	virtual void Execute();
 	string ConvertColorToString(color c);
 };

@@ -6,6 +6,10 @@ CRectangle::CRectangle(Point P1, Point P2, GfxInfo FigureGfxInfo):CFigure(Figure
 	Corner2 = P2;
 	pvid = ID;
 }
+
+CRectangle::CRectangle()
+{
+}
 	
 
 void CRectangle::Draw(Output* pOut) const
@@ -64,7 +68,27 @@ void CRectangle::Save(ofstream& OutFile)
 	}
 	else
 	{
-		OutFile << "NO COLOR" << endl;
+		OutFile << "NOCOLOR" << endl;
 	}
+}
+
+void CRectangle::Load(ifstream& InFile)
+{
+	string DrawClr;
+	string FillClr;
+	InFile >> pvid >> Corner1.x >> Corner1.y >> Corner2.x >> Corner2.y;
+	InFile >> DrawClr;
+	FigGfxInfo.DrawClr = ConvertStringToColor(DrawClr);
+	InFile >> FillClr;
+	if (FillClr == "NOCOLOR")
+	{
+		FigGfxInfo.isFilled = false;
+	}
+	else {
+		FigGfxInfo.isFilled = true;
+		FigGfxInfo.FillClr = ConvertStringToColor(FillClr);
+	}
+	FigGfxInfo.BorderWdth = UI.PenWidth;
+	Selected = false;
 }
 

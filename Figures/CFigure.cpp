@@ -7,6 +7,10 @@ CFigure::CFigure(GfxInfo FigureGfxInfo)
 	ID++;
 }
 
+CFigure::CFigure()
+{
+}
+
 int CFigure::ID = 0;
 
 void CFigure::SetSelected(bool s)
@@ -58,6 +62,44 @@ string CFigure::ConvertColorToString(color c)
 	else
 	{
 		return "NO COLOR";
+	}
+}
+
+color CFigure::ConvertStringToColor(string name)
+{
+	if (name == "RED")
+	{
+		return RED;
+	}
+
+	else if (name == "BLACK")
+	{
+		return BLACK;
+	}
+
+	else if (name == "BLUE")
+	{
+		return BLUE;
+	}
+
+	else if (name == "GREEN")
+	{
+		return GREEN;
+	}
+
+	else if (name == "ORANGE")
+	{
+		return ORANGE;
+	}
+
+	else if (name == "YELLOW")
+	{
+		return YELLOW;
+	}
+
+	else
+	{
+		return WHITE;
 	}
 }
 

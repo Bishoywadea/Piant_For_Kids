@@ -196,6 +196,9 @@
     <ClCompile Include="SaveAction.cpp">
       <Filter>Action Classes</Filter>
     </ClCompile>
+    <ClCompile Include="LoadAction.cpp">
+      <Filter>Action Classes</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CMUgraphicsLib\auxil.h">
@@ -313,9 +316,6 @@
     <ClInclude Include="back_icon.h">
       <Filter>Action Classes</Filter>
     </ClInclude>
-    <ClInclude Include="SelectAction.h">
-      <Filter>Action Classes</Filter>
-    </ClInclude>
     <ClInclude Include="MoveAction.h">
       <Filter>Action Classes</Filter>
     </ClInclude>
@@ -329,6 +329,12 @@
       <Filter>Action Classes</Filter>
     </ClInclude>
     <ClInclude Include="SaveAction.h">
+      <Filter>Action Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="SelectAction.h">
+      <Filter>Action Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="LoadAction.h">
       <Filter>Action Classes</Filter>
     </ClInclude>
   </ItemGroup>

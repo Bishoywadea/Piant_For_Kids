@@ -6,6 +6,10 @@ CHexagon::CHexagon(Point P1, GfxInfo FigureGfxInfo):CFigure(FigureGfxInfo)
 	pvid=ID;
 }
 
+CHexagon::CHexagon()
+{
+}
+
 void CHexagon::Draw(Output* pOut) const
 {
 	pOut->DrawHexa(Center, FigGfxInfo, Selected);
@@ -46,6 +50,26 @@ void CHexagon::Save(ofstream& OutFile)
 	}
 	else
 	{
-		OutFile << "NO COLOR" << endl;
+		OutFile << "NOCOLOR" << endl;
 	}
+}
+
+void CHexagon::Load(ifstream& InFile)
+{
+	string DrawClr;
+	string FillClr;
+	InFile >> pvid >> Center.x >> Center.y;
+	InFile >> DrawClr;
+	FigGfxInfo.DrawClr = ConvertStringToColor(DrawClr);
+	InFile >> FillClr;
+	if (FillClr == "NOCOLOR")
+	{
+		FigGfxInfo.isFilled = false;
+	}
+	else {
+		FigGfxInfo.isFilled = true;
+		FigGfxInfo.FillClr = ConvertStringToColor(FillClr);
+	}
+	FigGfxInfo.BorderWdth = UI.PenWidth;
+	Selected = false;
 }

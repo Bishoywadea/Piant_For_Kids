@@ -11,11 +11,13 @@ private:
 	int pvid;
 public:
 	CRectangle(Point , Point, GfxInfo FigureGfxInfo );
+	CRectangle();
 	virtual void Draw(Output* pOut) const;
 	void PrintInfo(Output* pOut);
 	virtual bool IsOnFig(int x, int y) const;
 	void MOVE(Point p1);
 	virtual void Save(ofstream& OutFile);
+	virtual void Load(ifstream& InFile);
 };
 
 #endif

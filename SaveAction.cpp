@@ -1,10 +1,9 @@
 #include "SaveAction.h"
 #include"ApplicationManager.h"
-#include<fstream>
 
-SaveAction::SaveAction(ApplicationManager* pApp, int FigCount):Action(pApp)
+SaveAction::SaveAction(ApplicationManager* pApp,int number):Action(pApp)
 {
-	Fignumber = FigCount;
+	Fignumber = number;
 }
 
 void SaveAction::Heading(int number)
@@ -21,13 +20,13 @@ void SaveAction::ReadActionParameters()
 	Input* pIn = pManager->GetInput();
 	pOut->PrintMessage("Enter Save Name");
 	SaveName = pIn->GetSrting(pOut) + ".txt";
-	OutFile.open(SaveName);
 	pOut->ClearStatusBar();
 }
 
 void SaveAction::Execute()
 {
 	ReadActionParameters();
+	OutFile.open(SaveName);
 	Heading(Fignumber);
 	pManager->SaveAll(OutFile);
 	OutFile.close();

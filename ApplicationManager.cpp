@@ -6,13 +6,14 @@
 #include "AddSquare.h"
 #include "AddTriangle.h"
 #include "Shapesmood.h"
-#include"back_icon.h"
-#include"SelectAction.h"
+#include "back_icon.h"
+#include "SelectAction.h"
 #include"MoveAction.h"
 #include"ActDelete.h"
 #include"Createplaymood.h"
 #include"AddColor.h"
 #include"SaveAction.h"
+#include"LoadAction.h"
 //Constructor
 ApplicationManager::ApplicationManager()
 {
@@ -81,6 +82,10 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 
 		case ACT_SAVE:
 			pAct = new SaveAction(this,FigCount);
+			break;
+
+		case ACT_LOAD:
+			pAct = new LoadAction(this);
 			break;
 //==================================================================================//
 //								drawing shapes section       						//
@@ -152,16 +157,8 @@ CFigure* ApplicationManager::Returnselectedfig() const
 	{
 		return NULL;
 	}
+	return NULL;
 }
-	/*
-	for (int i = 0; i < FigCount; i++)
-	{
-		if (FigList[i]->IsSelected())
-		{
-			return FigList[i];
-		}
-	}
-	return NULL;*/  
 
 void ApplicationManager::Deletefig(CFigure*c)
 {
@@ -183,6 +180,15 @@ void ApplicationManager::SaveAll(ofstream& OutFile)
 	{
 		FigList[i]->Save( OutFile);
 	}
+}
+void ApplicationManager::DeleteFigList()
+{
+	for (int i = 0; i < FigCount; i++)
+	{
+		delete FigList[i];
+		FigList[i] = NULL;
+	}
+	FigCount = 0;
 }
 //==================================================================================//
 //							Interface Management Functions							//
