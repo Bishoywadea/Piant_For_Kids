@@ -63,8 +63,10 @@ ActionType Input::GetUserAction() const
 			case ITM_SAVE: return ACT_SAVE;              //icon to save the draw 
 			case ITM_LOAD: return ACT_LOAD;              //icon to save the draw 
 			case ITM_MOVE: return ACT_MOVE;              //icon to move the selected shape
-			case ITM_REDO: return ACT_REDO;              //icon to redo
+			case ITM_REDO: return ACT_REDO;    //icon to redo
+			case ITM_CLEARALL: return ACT_CLEARALL;
 			case ITM_PLAYMOOD: return TO_PLAY;           //icon to go to play mode
+			case ITM_DRAWCOLOUR:return ACT_CHNGDRAWCOLOUR;
 			default: return EMPTY;	//A click on empty place in desgin toolbar
 			}
 		}
@@ -97,6 +99,7 @@ ActionType Input::GetUserAction() const
 			case ITM_TRI: return DRAW_TRIANGLE;    //icon to draw triangle
 			case ITM_HEX: return DRAW_HEXAGON;     //icon to draw hexagon
 			case ITM_BACk: return TO_DRAW;       //back icon
+
 			default: return BACK_ICON;	           //A click on empty place in desgin toolbar
 			}
 		}

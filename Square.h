@@ -13,7 +13,9 @@ public:
 	virtual void Draw(Output* pOut) const;
 	void PrintInfo(Output* pOut);
 	virtual bool IsOnFig(int x, int y) const;
+	ShapesMenuItem Returnshapestype();//returns type of shape in enum
 	void MOVE(Point );
+
 };
 
 

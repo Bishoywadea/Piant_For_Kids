@@ -7,7 +7,7 @@ Output::Output()
 	//Initialize user interface parameters
 	UI.InterfaceMode = MODE_DRAW;
 
-	UI.width = 1250;
+	UI.width = 1500;
 	UI.height = 650;
 	UI.wx = 5;
 	UI.wy = 5;
@@ -95,6 +95,9 @@ void Output::CreateDrawToolBar() const
 	MenuItemImages[ITM_STOPREC] = "images\\MenuItems\\Menu_Stoprec.jpg";
 	MenuItemImages[ITM_PLAYREC] = "images\\MenuItems\\Menu_Playrec.jpg";
 	MenuItemImages[ITM_PLAYMOOD] = "images\\MenuItems\\Menu_Playmood.jpg";
+	MenuItemImages[ITM_CLEARALL] = "images\\MenuItems\\Menu_Clearall.jpg";
+	MenuItemImages[ITM_DRAWCOLOUR] = "images\\MenuItems\\Colour_Menu.jpg";
+
 
 	//TODO: Prepare images for each menu item and add it to the list  (DONE)
 

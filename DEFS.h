@@ -29,6 +29,7 @@ enum ActionType //The actions supported (you can add more if needed)
 	ACT_UNDO,
 	ACT_SAVE,
 	ACT_LOAD,
+	ACT_CHNGDRAWCOLOUR,
 	ACT_REDO,
 	ACT_BLUE,
 	ACT_BLACK,
@@ -40,6 +41,7 @@ enum ActionType //The actions supported (you can add more if needed)
 	ACT_HIDESHAPES,
 	ACT_HIDECOLOURS,
 	ACT_HIDESHAPESANDCOLOURS,
+	ACT_CLEARALL,
 	TO_PLAY,
 
 	STATUS			//A click on the status bar

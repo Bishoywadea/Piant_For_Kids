@@ -35,6 +35,11 @@ bool Square::IsOnFig(int x, int y) const
 	else return 0;
 }
 
+ShapesMenuItem Square::Returnshapestype()
+{
+	return ShapesMenuItem(ITM_SQU);
+}
+
 void Square::MOVE(Point p)
 {
 	Center.x = p.x;

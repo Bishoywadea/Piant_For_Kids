@@ -193,6 +193,12 @@
     <ClCompile Include="AddColor.cpp">
       <Filter>Action Classes</Filter>
     </ClCompile>
+    <ClCompile Include="DrawColour.cpp">
+      <Filter>Action Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="Actclearall.cpp">
+      <Filter>Action Classes</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CMUgraphicsLib\auxil.h">
@@ -323,6 +329,12 @@
       <Filter>Action Classes</Filter>
     </ClInclude>
     <ClInclude Include="AddColor.h">
+      <Filter>Action Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="DrawColour.h">
+      <Filter>Action Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="Actclearall.h">
       <Filter>Action Classes</Filter>
     </ClInclude>
   </ItemGroup>

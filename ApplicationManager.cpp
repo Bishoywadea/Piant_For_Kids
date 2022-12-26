@@ -12,6 +12,9 @@
 #include"ActDelete.h"
 #include"Createplaymood.h"
 #include"AddColor.h"
+#include"DrawColour.h"
+#include"Actclearall.h"
+
 
 
 //Constructor
@@ -70,6 +73,13 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		case TO_PLAY:
 			pAct = new Createplaymood(this);
 			break;
+		case ACT_CLEARALL:
+			pAct = new Actclearall(this);
+			break;
+		case ACT_CHNGDRAWCOLOUR:
+			pAct = new DrawColour(this);
+			break;
+
 //==================================================================================//
 //								drawing shapes section       						//
 //==================================================================================//
@@ -166,9 +176,33 @@ void ApplicationManager::Deletefig(CFigure*c)
 void ApplicationManager::UpdateInterface() const
 {
 	pOut->ClearDrawArea();
-	for(int i=0; i<FigCount; i++)
-		FigList[i]->Draw(pOut);		//Call Draw function (virtual member fn)
+
+	for (int i = 0; i < FigCount; i++)
+		if (FigList[i] != NULL)
+		{
+			FigList[i]->Draw(pOut);
+		}//Call Draw function (virtual member fn)
+
 }
+int ApplicationManager::getfigcount() const
+{
+	return FigCount;
+}
+CFigure* ApplicationManager::returnfigonpoint(Point p)
+{
+	for (int i = 0; i < FigCount; i++)
+	{
+		if (FigList[i]->IsOnFig(p.x, p.y))
+			return FigList[i];
+	}
+	return nullptr;
+}
+
+CFigure** ApplicationManager::returnfiglist()
+{
+	return FigList;
+}
+
 ////////////////////////////////////////////////////////////////////////////////////
 //Return a pointer to the input
 Input *ApplicationManager::GetInput() const
@@ -180,9 +214,9 @@ Output *ApplicationManager::GetOutput() const
 //Destructor
 ApplicationManager::~ApplicationManager()
 {
-	for(int i=0; i<FigCount; i++)
+	for (int i = 0; i < FigCount; i++)
 		delete FigList[i];
 	delete pIn;
 	delete pOut;
-	
+
 }

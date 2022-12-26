@@ -128,6 +128,7 @@
     </Bscmake>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Actclearall.cpp" />
     <ClCompile Include="ActDelete.cpp" />
     <ClCompile Include="AddCircle.cpp" />
     <ClCompile Include="AddColor.cpp" />
@@ -175,6 +176,7 @@
     <ClCompile Include="CMUgraphicsLib\jpeg\jutils.c" />
     <ClCompile Include="Createplaymood.cpp" />
     <ClCompile Include="CTriangle.cpp" />
+    <ClCompile Include="DrawColour.cpp" />
     <ClCompile Include="MoveAction.cpp" />
     <ClCompile Include="SelectAction.cpp" />
     <ClCompile Include="Shapesmood.cpp" />
@@ -188,6 +190,7 @@
     <ClCompile Include="Square.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Actclearall.h" />
     <ClInclude Include="ActDelete.h" />
     <ClInclude Include="AddCircle.h" />
     <ClInclude Include="AddColor.h" />
@@ -219,6 +222,7 @@
     <ClInclude Include="CMUgraphicsLib\jpeg\jversion.h" />
     <ClInclude Include="Createplaymood.h" />
     <ClInclude Include="CTriangle.h" />
+    <ClInclude Include="DrawColour.h" />
     <ClInclude Include="MoveAction.h" />
     <ClInclude Include="SelectAction.h" />
     <ClInclude Include="Shapesmood.h" />

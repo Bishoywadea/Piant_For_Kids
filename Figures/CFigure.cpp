@@ -5,6 +5,11 @@ CFigure::CFigure(GfxInfo FigureGfxInfo)
 	Selected = false;
 }
 
+ShapesMenuItem CFigure::Returnshapestype()
+{
+	return ShapesMenuItem();
+}
+
 void CFigure::SetSelected(bool s)
 {	Selected = s; }
 

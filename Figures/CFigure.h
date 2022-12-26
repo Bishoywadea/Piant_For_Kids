@@ -14,7 +14,9 @@ protected:
 	/// Add more parameters if needed.
 
 public:
+
 	CFigure(GfxInfo FigureGfxInfo);
+	virtual ShapesMenuItem Returnshapestype()=0;//returns type of shape in enum
 
 	void SetSelected(bool s);	//select/unselect the figure
 	bool IsSelected() const;	//check whether fig is selected

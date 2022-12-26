@@ -38,3 +38,7 @@ bool CHexagon::IsOnFig(int x, int y) const  //Checks to deciding the click is on
 	//to see if the point on the hexa or not //BISHOY
 	return (50 >= CalcDistance(Center, P));
 }
+ShapesMenuItem CHexagon::Returnshapestype()
+{
+	return ITM_HEX;
+}

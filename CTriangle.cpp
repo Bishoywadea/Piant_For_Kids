@@ -28,7 +28,7 @@ void CTriangle::PrintInfo(Output* pOut)
 
 }
 
-bool CTriangle::IsOnFig(int x, int y)
+bool CTriangle::IsOnFig(int x, int y) const
 {
 	float A = area(p1.x, p1.y, p2.x, p2.y, p3.x, p3.y);
 	float A1 = area(x, y, p2.x, p2.y, p3.x, p3.y);
@@ -41,7 +41,33 @@ bool CTriangle::IsOnFig(int x, int y)
 	return false;
 }
 
-float CTriangle::area(int x1, int y1, int x2, int y2, int x3, int y3)
+void CTriangle::MOVE(Point p)
+{
+	Point Center;
+	Center.x = ((p1.x + p2.x + p3.x) / 3);
+	Center.y= ((p1.y + p2.y + p3.y) / 3);
+	float deltaxone = Center.x-p1.x;
+	float deltayone = Center.y - p1.y;
+	float deltaxtwo = Center.x - p2.x;
+	float deltaytwo = Center.y - p2.y;
+	float deltaxthree = Center.x - p3.x;
+	float deltaythree = Center.y - p3.y;
+	p1.x = p.x - deltaxone;
+	p1.y = p.y - deltayone;
+	p2.x = p.x - deltaxtwo;
+	p2.y = p.y - deltaytwo;
+	p3.x = p.x - deltaxthree;
+	p3.y = p.y - deltaythree;
+
+
+}
+
+ShapesMenuItem CTriangle::Returnshapestype()
+{
+	return ITM_TRI;
+}
+
+float CTriangle::area(int x1, int y1, int x2, int y2, int x3, int y3) const
 {
 	return abs(x1 * (y2 - y3) + x2 * (y3 - y1) + x3 * (y1 - y2)) / 2.0;
 }
