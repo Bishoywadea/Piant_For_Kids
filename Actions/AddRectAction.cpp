@@ -20,16 +20,9 @@ void AddRectAction::ReadActionParameters()
 	
 	//Read 1st corner and store in point P1
 	pIn->GetPointClicked(P1.x, P1.y);
-	do{
-	if (P1.y < UI.ToolBarHeight)
-		pOut->PrintMessage("Drawing a Rectangle ==> Can not draw on tool bar");
-}while (P1.y < UI.ToolBarHeight);
-pOut->PrintMessage("Drawing a Rectangle ==> non-filled,  Click another point");
-do {
+
 	pIn->GetPointClicked(P2.x, P2.y);
-	if (P2.y < UI.ToolBarHeight)
-		pOut->PrintMessage("Drawing a Rectangle ==> Can not draw on tool bar");
-} while (P2.y < UI.ToolBarHeight);
+	
 
 	
 	RectGfxInfo.isFilled = false;	//default is not filled

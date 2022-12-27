@@ -14,7 +14,7 @@
 #include"AddColor.h"
 #include"DrawColour.h"
 #include"Actclearall.h"
-
+#include"HideByColour.h"
 
 
 #include"SaveAction.h"
@@ -86,10 +86,11 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		case ACT_CHNGDRAWCOLOUR:
 			pAct = new DrawColour(this);
 			break;
-
-
-		case ACT_CLEARALL:
-			Clearall();
+	
+		case ACT_HIDECOLOURS:
+			
+			pAct = new  HideByColour(this);
+			
 			break;
 
 		case ACT_SAVE:
@@ -222,6 +223,18 @@ int ApplicationManager::getfigcount() const
 {
 	return FigCount;
 }
+int ApplicationManager::returnfigcolourcount(color c) const
+{
+	int count = 0;
+	for (int i = 0; i < FigCount; i++)
+	{
+		if (FigList[i]->getfigcolour() == c)
+		{
+			count++;
+		}
+	}
+	return count;
+}
 CFigure* ApplicationManager::returnfigonpoint(Point p)
 {
 	for (int i = 0; i < FigCount; i++)
@@ -242,15 +255,30 @@ CFigure** ApplicationManager::returnfiglist()
 			FigList[i]->Draw(pOut);
 		}//Call Draw function (virtual member fn)
 }
-void ApplicationManager::Clearall()//when 
+bool ApplicationManager::ifanyiscolored()
 {
+	int count = 0;
 	for (int i = 0; i < FigCount; i++)
 	{
-		delete FigList[i];
-		FigList[i] = NULL;
+		if (FigList[i]->getfigcolour()!=BEIGE)
+		{
+			count++;
+		}
 	}
-	FigCount = 0;
+	if (count == 0)
+		return 0;
+	else
+		return 1;
 }
+//void ApplicationManager::Clearall()//when 
+//{
+//	for (int i = 0; i < FigCount; i++)
+//	{
+//		delete FigList[i];
+//		FigList[i] = NULL;
+//	}
+//	FigCount = 0;
+//}
 
 ////////////////////////////////////////////////////////////////////////////////////
 //Return a pointer to the input

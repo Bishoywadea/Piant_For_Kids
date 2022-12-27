@@ -1,8 +1,9 @@
 #include "SaveAction.h"
 #include"ApplicationManager.h"
 
-SaveAction::SaveAction(ApplicationManager* pApp,int number):Action(pApp)
+SaveAction::SaveAction(ApplicationManager* pApp,int number,string s):Action(pApp)
 {
+	SaveName = s;
 	Fignumber = number;
 }
 
@@ -17,9 +18,14 @@ void SaveAction::Heading(int number)
 void SaveAction::ReadActionParameters()
 {
 	Output* pOut = pManager->GetOutput();
-	Input* pIn = pManager->GetInput();
-	pOut->PrintMessage("Enter Save Name");
-	SaveName = pIn->GetSrting(pOut) + ".txt";
+	if (SaveName == "UNinitializedno")
+	{
+		Input* pIn = pManager->GetInput();
+
+		pOut->PrintMessage("Enter Save Name");
+		SaveName = pIn->GetSrting(pOut) + ".txt";
+	}
+	
 	pOut->ClearStatusBar();
 }
 

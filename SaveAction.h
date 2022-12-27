@@ -10,7 +10,7 @@ class SaveAction :public Action
 	string SaveName;
 	ofstream OutFile;
 public:
-	SaveAction(ApplicationManager* pApp,int number);
+	SaveAction(ApplicationManager* pApp,int number,string s="UNinitializedno");
 	void Heading(int number);
 	void ReadActionParameters();
 	virtual void Execute();

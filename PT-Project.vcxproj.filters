@@ -205,6 +205,12 @@
     <ClCompile Include="LoadAction.cpp">
       <Filter>Action Classes</Filter>
     </ClCompile>
+    <ClCompile Include="HideByColour.cpp">
+      <Filter>Action Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="ActHideByshapes.cpp">
+      <Filter>Action Classes</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CMUgraphicsLib\auxil.h">
@@ -347,6 +353,12 @@
       <Filter>Action Classes</Filter>
     </ClInclude>
     <ClInclude Include="LoadAction.h">
+      <Filter>Action Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="HideByColour.h">
+      <Filter>Action Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="ActHideByshapes.h">
       <Filter>Action Classes</Filter>
     </ClInclude>
   </ItemGroup>

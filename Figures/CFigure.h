@@ -13,7 +13,7 @@ protected:
 	/// Add more parameters if needed.
 
 public:
-
+	color getfigcolour();
 	CFigure(GfxInfo FigureGfxInfo);
 	CFigure();
 	virtual ShapesMenuItem Returnshapestype()=0;//returns type of shape in enum

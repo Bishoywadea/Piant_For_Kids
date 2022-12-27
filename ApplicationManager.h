@@ -42,10 +42,11 @@ public:
 	Output *GetOutput() const; //Return pointer to the output
 	void UpdateInterface() const;	//Redraws all the drawing window	
 	int getfigcount() const;
-	
-	CFigure* returnfigonpoint(Point p);
+	int returnfigcolourcount(color c)const;
+	CFigure* returnfigonpoint(Point p);//finds fig within point//sarah
 	CFigure** returnfiglist();
-	void Clearall();//prototype of claer all func, add undo and redo as stated in phase 1 //SARAH
+	bool ifanyiscolored();
+	//void Clearall();//prototype of claer all func, add undo and redo as stated in phase 1 //SARAH
 };
 
 #endif
