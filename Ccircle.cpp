@@ -49,7 +49,7 @@ void Ccircle::MOVE(Point p)
 
 void Ccircle::Save(ofstream& OutFile)
 {
-	OutFile << "Circle\t"<< pvid<<"\t" << Center.x << "\t" << Center.y << "\t" << ConvertColorToString(UI.DrawColor) << "\t";
+	OutFile << "Circle\t"<< pvid<<"\t" << Center.x << "\t" << Center.y << "\t" << ConvertColorToString(FigGfxInfo.DrawClr) << "\t";
 	if (FigGfxInfo.isFilled)
 	{
 		OutFile << ConvertColorToString(FigGfxInfo.FillClr) << endl;

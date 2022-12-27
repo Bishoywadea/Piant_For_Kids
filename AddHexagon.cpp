@@ -2,8 +2,9 @@
 #include "AddHexagon.h"
 
 
-AddHexagon::AddHexagon(ApplicationManager* pApp):Action(pApp)
+AddHexagon::AddHexagon(ApplicationManager* pApp,bool IsEnabled):Action(pApp)
 {
+	Sound = IsEnabled;
 }
 
 void AddHexagon::ReadActionParameters()
@@ -12,6 +13,11 @@ void AddHexagon::ReadActionParameters()
 	Output* pOut = pManager->GetOutput();
 	
 	Input* pIn = pManager->GetInput();
+
+	if (Sound)
+	{
+		PlaySound(TEXT("Sounds\\circle.wav"), NULL, SND_ASYNC);
+	}
 
 	pOut->PrintMessage("New Hexagon: Click at Center");
 

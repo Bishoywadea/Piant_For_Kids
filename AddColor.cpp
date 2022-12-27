@@ -1,7 +1,8 @@
 #include "AddColor.h"
 
-AddColor::AddColor(ApplicationManager* pApp):Action(pApp)
+AddColor::AddColor(ApplicationManager* pApp,bool IsEnabled):Action(pApp)
 {
+	Sound = IsEnabled;
 }
 
 void AddColor::ReadActionParameters()
@@ -22,14 +23,21 @@ void AddColor::ReadActionParameters()
 	 case ACT_RED:
 		 c = RED;
 		 UI.FillColor = RED;
-		// UI.FillColor = RED;
+		 if (Sound)
+		 {
+			 PlaySound(TEXT("Sounds\\red.wav"), NULL, SND_ASYNC);
+		 }
 		 pOut->PrintMessage("RED Color");
+
 		 break;
 	 case ACT_BLUE:
 		 c = BLUE;
 		 UI.FillColor = BLUE;
 
-		// UI.FillColor = BLUE;
+		 if (Sound)
+		 {
+			 PlaySound(TEXT("Sounds\\blue.wav"), NULL, SND_ASYNC);
+		 }
 
 		 pOut->PrintMessage("Blue Color");
 		 break;
@@ -37,25 +45,37 @@ void AddColor::ReadActionParameters()
 		 c = BLACK;
 		 UI.FillColor = BLACK;
 		
-		 //UI.FillColor = BLACK;
+		 if (Sound)
+		 {
+			 PlaySound(TEXT("Sounds\\black.wav"), NULL, SND_ASYNC);
+		 }
 		 pOut->PrintMessage("BLACK Color");
 		 break;
 	 case ACT_ORANGE:
 		 c = ORANGE;
 		 UI.FillColor = ORANGE;
-		 //UI.FillColor = ORANGE;
+		 if (Sound)
+		 {
+			 PlaySound(TEXT("Sounds\\orange.wav"), NULL, SND_ASYNC);
+		 }
 		 pOut->PrintMessage("ORANGE Color");
 		 break;
 	 case ACT_YELLOW:
 		 c = YELLOW;
 		 UI.FillColor = YELLOW;
-		 //UI.FillColor = YELLOW;
+		 if (Sound)
+		 {
+			 PlaySound(TEXT("Sounds\\yellow.wav"), NULL, SND_ASYNC);
+		 }
 		 pOut->PrintMessage("YELLOW Color");
 		 break;
 	 case ACT_GREEN:
 		 c = GREEN;
 		 UI.FillColor = GREEN;
-		 //UI.FillColor = GREEN;
+		 if (Sound)
+		 {
+			 PlaySound(TEXT("Sounds\\green.wav"), NULL, SND_ASYNC);
+		 }
 		 pOut->PrintMessage("GREEN Color");
 		 break;
 	 }

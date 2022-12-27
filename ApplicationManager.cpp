@@ -8,15 +8,13 @@
 #include "Shapesmood.h"
 #include "back_icon.h"
 #include "SelectAction.h"
-#include"MoveAction.h"
-#include"ActDelete.h"
-#include"Createplaymood.h"
-#include"AddColor.h"
-#include"DrawColour.h"
-#include"Actclearall.h"
-
-
-
+#include "MoveAction.h"
+#include "ActDelete.h"
+#include "Createplaymood.h"
+#include "AddColor.h"
+#include "DrawColour.h"
+#include "Actclearall.h"
+#include "ActSound.h"
 #include"SaveAction.h"
 #include"LoadAction.h"
 //Constructor
@@ -27,7 +25,7 @@ ApplicationManager::ApplicationManager()
 	pIn = pOut->CreateInput();
 	
 	FigCount = 0;
-		
+	IsEnabled = 1;
 	//Create an array of figure pointers and set them to NULL		
 	for(int i=0; i<MaxFigCount; i++)
 		FigList[i] = NULL;	
@@ -62,7 +60,7 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 			break;
 
 		case COLOUR_MENU:
-			pAct = new AddColor(this);
+			pAct = new AddColor(this, IsEnabled);
 			break;
 
 		case ACT_SELECT:
@@ -87,9 +85,8 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 			pAct = new DrawColour(this);
 			break;
 
-
-		case ACT_CLEARALL:
-			Clearall();
+		case Sound :
+			pAct = new ActSound(this, &IsEnabled);
 			break;
 
 		case ACT_SAVE:
@@ -103,19 +100,19 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 //								drawing shapes section       						//
 //==================================================================================//
 		case DRAW_RECT:
-			pAct = new AddRectAction(this);
+			pAct = new AddRectAction(this, IsEnabled);
 			break;
 		case DRAW_CIRCLE:
-			pAct = new AddCircle(this);
+			pAct = new AddCircle(this, IsEnabled);
 			break;
 		case DRAW_HEXAGON:
-			pAct = new AddHexagon(this);
+			pAct = new AddHexagon(this, IsEnabled);
 			break;
 		case DRAW_TRIANGLE:
-			pAct = new AddTriangle(this);
+			pAct = new AddTriangle(this, IsEnabled);
 			break;
 		case DRAW_SQUARE:
-			pAct = new AddSquare(this);
+			pAct = new AddSquare(this,IsEnabled);
 			break;
 		case EXIT:
 			///create ExitAction here
