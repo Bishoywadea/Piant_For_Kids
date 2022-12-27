@@ -1,22 +1,10 @@
 #include "CFigure.h"
-
 CFigure::CFigure(GfxInfo FigureGfxInfo)
 { 
 	FigGfxInfo = FigureGfxInfo;	//Default status is non-filled.
 	Selected = false;
-	ID++;
+	Ccount=0;
 }
-
-ShapesMenuItem CFigure::Returnshapestype()
-{
-	return ShapesMenuItem();
-}
-
-CFigure::CFigure()
-{
-}
-
-int CFigure::ID = 0;
 
 void CFigure::SetSelected(bool s)
 {	Selected = s; }
@@ -31,81 +19,25 @@ void CFigure::ChngFillClr(color Fclr)
 {	
 	FigGfxInfo.isFilled = true;
 	FigGfxInfo.FillClr = Fclr; 
-}
+	Carr[Ccount]=Fclr;
+	Ccount++;
 
+}
+void CFigure::undof()
+{
+	if(Ccount-1==0)
+	{
+		FigGfxInfo.isFilled=false;
+		Ccount--;
+	}
+	else
+	{
+		FigGfxInfo.FillClr=Carr[Ccount-2];
+		Ccount--;
+}
+}
 double CFigure::CalcDistance(Point A, Point B) const
 {
 	return sqrt((A.x - B.x) * (A.x - B.x) + (A.y - B.y) * (A.y - B.y));
 }
-
-string CFigure::ConvertColorToString(color c)
-{
-	if (c == RED)
-	{
-		return "RED";
-	}
-	else if (c == BLACK)
-	{
-		return "BLACK";
-	}
-	else if (c == BLUE)
-	{
-		return "BLUE";
-	}
-	else if (c == GREEN)
-	{
-		return "GREEN";
-	}
-	else if (c == ORANGE)
-	{
-		return "ORANGE";
-	}
-	else if (c == YELLOW)
-	{
-		return "YELLOW";
-	}
-	else
-	{
-		return "NO COLOR";
-	}
-}
-
-color CFigure::ConvertStringToColor(string name)
-{
-	if (name == "RED")
-	{
-		return RED;
-	}
-
-	else if (name == "BLACK")
-	{
-		return BLACK;
-	}
-
-	else if (name == "BLUE")
-	{
-		return BLUE;
-	}
-
-	else if (name == "GREEN")
-	{
-		return GREEN;
-	}
-
-	else if (name == "ORANGE")
-	{
-		return ORANGE;
-	}
-
-	else if (name == "YELLOW")
-	{
-		return YELLOW;
-	}
-
-	else
-	{
-		return WHITE;
-	}
-}
-
 
