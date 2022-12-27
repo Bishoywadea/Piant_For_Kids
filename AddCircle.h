@@ -12,8 +12,9 @@ class AddCircle :
 private:
 	Point P1, P2; //Rectangle Corners
 	GfxInfo CircGfxInfo;
+	bool Sound;
 public:
-	AddCircle(ApplicationManager* pApp);
+	AddCircle(ApplicationManager* pApp,bool IsEnabled);
 
 	//Reads rectangle parameters
 	virtual void ReadActionParameters();

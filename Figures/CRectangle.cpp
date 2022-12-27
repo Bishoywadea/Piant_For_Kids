@@ -66,7 +66,7 @@ void CRectangle::MOVE(Point p1)
 
 void CRectangle::Save(ofstream& OutFile)
 {
-	OutFile << "RECTANGLE\t" << pvid << "\t" << Corner1.x << "\t" << Corner1.y << "\t" << Corner2.x << "\t" << Corner2.y << "\t" << ConvertColorToString(UI.DrawColor) << "\t";
+	OutFile << "RECTANGLE\t" << pvid << "\t" << Corner1.x << "\t" << Corner1.y << "\t" << Corner2.x << "\t" << Corner2.y << "\t" << ConvertColorToString(FigGfxInfo.DrawClr) << "\t";
 	if (FigGfxInfo.isFilled)
 	{
 		OutFile << ConvertColorToString(FigGfxInfo.FillClr) << endl;

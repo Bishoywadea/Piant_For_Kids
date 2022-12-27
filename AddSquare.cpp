@@ -1,7 +1,7 @@
 #include "AddSquare.h"
 #include <stdlib.h>
 
-AddSquare::AddSquare(ApplicationManager* pApp):Action(pApp)
+AddSquare::AddSquare(ApplicationManager* pApp, bool IsEnabled):Action(pApp)
 {
 	
 }
@@ -11,7 +11,10 @@ void AddSquare::ReadActionParameters()
 	//Get a Pointer to the Input / Output Interfaces
 	Output* pOut = pManager->GetOutput();
 	Input* pIn = pManager->GetInput();
-
+	if (Sound)
+	{
+		PlaySound(TEXT("Sounds\\Square.wav"), NULL, SND_ASYNC);
+	}
 	pOut->PrintMessage("New Square: Click at Center");
 
 	//Read Center and store in point P1

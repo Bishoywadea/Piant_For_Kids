@@ -1,8 +1,8 @@
 #include "AddTriangle.h"
 
-AddTriangle::AddTriangle(ApplicationManager* pApp):Action(pApp)
+AddTriangle::AddTriangle(ApplicationManager* pApp,bool IsEnabled):Action(pApp)
 {
-	
+	Sound = IsEnabled;
 }
 
 void AddTriangle::ReadActionParameters()
@@ -10,6 +10,11 @@ void AddTriangle::ReadActionParameters()
 	//Get a Pointer to the Input / Output Interfaces
 	Output* pOut = pManager->GetOutput();
 	Input* pIn = pManager->GetInput();
+
+	if (Sound)
+	{
+		PlaySound(TEXT("Sounds\\triangle.wav"), NULL, SND_ASYNC);
+	}
 	
 	// 2.3.1 - Drawing non-filled and non-Highlighted Triangle
 	pOut->PrintMessage("Drawing a Triangle,  Click three points");

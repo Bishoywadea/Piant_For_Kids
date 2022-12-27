@@ -7,6 +7,7 @@
 //This file contains info that is needed by Input and Output classes to
 //handle the user interface
 
+
 enum GUI_MODE	//Graphical user interface mode
 {
 	MODE_DRAW,	//Drawing mode (startup mode)
@@ -34,8 +35,8 @@ enum DrawMenuItem //The items of the Draw menu (you should add more items)
 	ITM_LOAD,
 	ITM_CLEARALL,
 	ITM_DRAWCOLOUR,
+	ITM_SOUND,
 	ITM_EXIT,//Exit item
-	
 	DRAW_ITM_COUNT		//no. of menu items ==> This should be the last line in this enum
 };
 
@@ -98,7 +99,7 @@ struct UI_Info	//User Interface Info.
 	color BkGrndColor;		//Background color
 	color StatusBarColor;	//Status bar color
 	int PenWidth;			//width of the pen that draws shapes
-
+	bool Sound;
 	/// Add more members if needed
 
 }UI;	//create a global object UI

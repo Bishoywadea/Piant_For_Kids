@@ -67,6 +67,7 @@ ActionType Input::GetUserAction() const
 			case ITM_CLEARALL: return ACT_CLEARALL;
 			case ITM_PLAYMOOD: return TO_PLAY;           //icon to go to play mode
 			case ITM_DRAWCOLOUR:return ACT_CHNGDRAWCOLOUR;
+			case ITM_SOUND:return Sound;
 			default: return EMPTY;	//A click on empty place in desgin toolbar
 			}
 		}

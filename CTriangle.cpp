@@ -66,6 +66,7 @@ ShapesMenuItem CTriangle::Returnshapestype()
 	return ITM_TRI;
 }
 
+float CTriangle::area(int x1, int y1, int x2, int y2, int x3, int y3) const
 
 
 float CTriangle::area(int x1, int y1, int x2, int y2, int x3, int y3) const
@@ -75,7 +76,7 @@ float CTriangle::area(int x1, int y1, int x2, int y2, int x3, int y3) const
 
 void CTriangle::Save(ofstream& OutFile)
 {
-	OutFile << "TRIANGLE\t" << pvid << "\t" << p1.x << "\t" << p1.y << "\t" << p2.x << "\t" << p2.y << "\t" << p3.x << "\t" << p3.y << "\t" << ConvertColorToString(UI.DrawColor) << "\t";
+	OutFile << "TRIANGLE\t" << pvid << "\t" << p1.x << "\t" << p1.y << "\t" << p2.x << "\t" << p2.y << "\t" << p3.x << "\t" << p3.y << "\t" << ConvertColorToString(FigGfxInfo.DrawClr) << "\t";
 	if (FigGfxInfo.isFilled)
 	{
 		OutFile << ConvertColorToString(FigGfxInfo.FillClr) << endl;
