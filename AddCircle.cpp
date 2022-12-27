@@ -1,18 +1,14 @@
-
+#include "Actions/Action.h"
 #include"AddCircle.h"
-AddCircle::AddCircle(ApplicationManager* pApp,bool IsEnabled):Action(pApp)
+AddCircle::AddCircle(ApplicationManager* pApp):Action(pApp)
 {
-	Sound = IsEnabled;
+	
 }
 
 void AddCircle::ReadActionParameters()
 {
 	//Get a Pointer to the Input / Output Interfaces
 	Output* pOut = pManager->GetOutput();
-	if (Sound)
-	{
-		PlaySound(TEXT("Sounds\\circle.wav"), NULL, SND_ASYNC);
-	}
 	pOut->PrintMessage("DRAW CIRCLE");
 	Input* pIn = pManager->GetInput();
 	//check bounds for circle
@@ -55,4 +51,13 @@ void AddCircle::Execute()
 
 	//Add the Circle to the list of figures
 	pManager->AddFigure(C);
+}
+void AddCircle::undo()
+{
+	DeletedFig=pManager->Deletelastfig();
+}
+void AddCircle::redo()
+{
+	pManager->AddFigure(DeletedFig);
+
 }

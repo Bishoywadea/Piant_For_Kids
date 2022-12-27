@@ -11,15 +11,17 @@ class AddHexagon :public Action
 {
 	Point p1;
 	GfxInfo HexGfxInfo;
-	bool Sound;
+	CFigure *DeletedFig;
 public:
-	AddHexagon(ApplicationManager* pApp,bool IsEnabled);
+	AddHexagon(ApplicationManager* pApp);
 
 	//Reads rectangle parameters
 	virtual void ReadActionParameters();
 
 	//Add rectangle to the ApplicationManager
 	virtual void Execute();
+	virtual void undo();
+	virtual void redo();
 
 };
 

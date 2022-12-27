@@ -38,7 +38,17 @@ void MoveAction::Execute()
 
 	}
 	ReadActionParameters();
-	CFigure* oldfig = Fig;
-	Fig->MOVE(p1);//this move function is over ridden in each CFigures class
+	//CFigure* oldfig = Fig;
+	unp1=Fig->MOVE(p1);//this move function is overridden in each CFigures class
 	
+}
+void MoveAction::undo()
+{
+	Fig = pManager->Returnselectedfig();
+	Fig->MOVE(unp1);
+}
+void MoveAction::redo()
+{
+	Fig = pManager->Returnselectedfig();
+	Fig->MOVE(p1);
 }

@@ -1,10 +1,10 @@
 #include "AddHexagon.h"
 #include "AddHexagon.h"
+#include "Actions/Action.h"
 
-
-AddHexagon::AddHexagon(ApplicationManager* pApp,bool IsEnabled):Action(pApp)
+AddHexagon::AddHexagon(ApplicationManager* pApp):Action(pApp)
 {
-	Sound = IsEnabled;
+	
 }
 
 void AddHexagon::ReadActionParameters()
@@ -13,11 +13,6 @@ void AddHexagon::ReadActionParameters()
 	Output* pOut = pManager->GetOutput();
 	
 	Input* pIn = pManager->GetInput();
-
-	if (Sound)
-	{
-		PlaySound(TEXT("Sounds\\circle.wav"), NULL, SND_ASYNC);
-	}
 
 	pOut->PrintMessage("New Hexagon: Click at Center");
 
@@ -50,4 +45,12 @@ void AddHexagon::Execute()
 
 	//Add the Hexagon to the list of figures
 	pManager->AddFigure(H);
+}
+void AddHexagon::undo()
+{
+	DeletedFig=pManager->Deletelastfig();
+}
+void AddHexagon::redo()
+{
+	pManager->AddFigure(DeletedFig);
 }

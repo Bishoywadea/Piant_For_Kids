@@ -11,6 +11,8 @@ public:
 	Createplaymood(ApplicationManager* pApp);
 	void ReadActionParameters();
 	void Execute();///create the playmood toolbar//SARAH
+    virtual	void undo();
+	virtual void redo();
 
 };
 
