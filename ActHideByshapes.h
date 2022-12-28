@@ -1,5 +1,43 @@
 #pragma once
+
 class ActHideByshapes
 {
 };
+
+
+
+#pragma once
+#include "Actions/Action.h"
+#include "ApplicationManager.h"
+#include "GUI\Output.h"
+#include "GUI\Input.h"
+#include<cstdlib>
+#include"AddColor.h"
+#include "HideByColour.h"
+#include"SaveAction.h"
+#include "LoadAction.h"
+#include"Figures/CRectangle.h"
+#include"AddCircle.h"
+#include"AddHexagon.h"
+#include"AddSquare.h"
+#include"AddTriangle.h"
+#include"ACTHIDE.h"
+
+#include"ActDelete.h"
+#include<random>
+
+
+class HideByshapes :public ACTHIDE
+{
+
+	Action* A;
+
+public:
+	HideByshapes(ApplicationManager* pApp);
+	void ReadActionParameters();
+	void Execute();
+	
+};
+
+
 

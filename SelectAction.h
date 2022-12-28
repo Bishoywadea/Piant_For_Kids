@@ -15,6 +15,8 @@ public:
 	virtual void Execute();
 	void Selected();
 	void Unselected();
+	virtual void undo();
+	virtual void redo();
 };
 
 

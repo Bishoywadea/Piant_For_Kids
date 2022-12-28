@@ -15,5 +15,7 @@ public:
 	ActDelete(ApplicationManager* pApp,CFigure *f=nullptr);
 	void ReadActionParameters();
 	void Execute();
+	virtual void undo();
+	virtual void redo();
 };
 

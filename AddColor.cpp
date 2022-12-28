@@ -1,8 +1,9 @@
 #include "AddColor.h"
-
-AddColor::AddColor(ApplicationManager* pApp,bool IsEnabled):Action(pApp)
+#include "Actions/Action.h"
+AddColor::AddColor(ApplicationManager* pApp):Action(pApp)
 {
-	Sound = IsEnabled;
+	countfilled=0;
+	countredo=0;
 }
 
 void AddColor::ReadActionParameters()
@@ -23,59 +24,32 @@ void AddColor::ReadActionParameters()
 	 case ACT_RED:
 		 c = RED;
 		 UI.FillColor = RED;
-		 if (Sound)
-		 {
-			 PlaySound(TEXT("Sounds\\red.wav"), NULL, SND_ASYNC);
-		 }
 		 pOut->PrintMessage("RED Color");
-
 		 break;
 	 case ACT_BLUE:
 		 c = BLUE;
 		 UI.FillColor = BLUE;
-
-		 if (Sound)
-		 {
-			 PlaySound(TEXT("Sounds\\blue.wav"), NULL, SND_ASYNC);
-		 }
 
 		 pOut->PrintMessage("Blue Color");
 		 break;
 	 case ACT_BLACK:
 		 c = BLACK;
 		 UI.FillColor = BLACK;
-		
-		 if (Sound)
-		 {
-			 PlaySound(TEXT("Sounds\\black.wav"), NULL, SND_ASYNC);
-		 }
 		 pOut->PrintMessage("BLACK Color");
 		 break;
 	 case ACT_ORANGE:
 		 c = ORANGE;
 		 UI.FillColor = ORANGE;
-		 if (Sound)
-		 {
-			 PlaySound(TEXT("Sounds\\orange.wav"), NULL, SND_ASYNC);
-		 }
 		 pOut->PrintMessage("ORANGE Color");
 		 break;
 	 case ACT_YELLOW:
 		 c = YELLOW;
 		 UI.FillColor = YELLOW;
-		 if (Sound)
-		 {
-			 PlaySound(TEXT("Sounds\\yellow.wav"), NULL, SND_ASYNC);
-		 }
 		 pOut->PrintMessage("YELLOW Color");
 		 break;
 	 case ACT_GREEN:
 		 c = GREEN;
 		 UI.FillColor = GREEN;
-		 if (Sound)
-		 {
-			 PlaySound(TEXT("Sounds\\green.wav"), NULL, SND_ASYNC);
-		 }
 		 pOut->PrintMessage("GREEN Color");
 		 break;
 	 }
@@ -96,7 +70,23 @@ void AddColor::Execute()
 		pOut->PrintMessage("Please select a figure");
 		return;
 	}
-	
+	Wasfilled[countfilled]=F;
+	countfilled++;
 	F->ChngFillClr(c);
 
+}
+void AddColor::undo()
+{
+	Wasfilled[countfilled-1]->undof();
+	countfilled--;
+	countredo++;
+
+}
+void AddColor::redo()
+{
+    countfilled+=countredo;
+	Wasfilled[countfilled-1]->ChngFillClr(c);
+	countfilled--;
+	countfilled+=countredo;
+	countredo=0;
 }

@@ -1,3 +1,4 @@
+
 #include "HideByColour.h"
 #include"SaveAction.h"
 #include "LoadAction.h"
@@ -15,6 +16,13 @@ HideByColour::HideByColour(ApplicationManager* pApp):Action(pApp)
 	A = new SaveAction(pManager, pManager->getfigcount(),h);
 	A->Execute();
 
+
+#include"HideByColour.h"
+
+HideByColour::HideByColour(ApplicationManager* pApp):ACTHIDE(pApp)
+{
+	
+
 }
 void HideByColour::ReadActionParameters()
 {
@@ -31,6 +39,12 @@ void HideByColour::Execute()
 	{//loop to make sure color picked has at least one fig present
 
 		int ran = rand() % 5;
+
+	do
+	{//loop to make sure color picked has at least one fig present
+
+		int ran = rand() % 6;
+
 		if (pManager->getfigcount() == 0)
 		{
 			return;
@@ -113,6 +127,7 @@ void HideByColour::Execute()
 	//pOut->ClearStatusBar();
 }
 
+
 HideByColour::~HideByColour()
 {
 	A = new LoadAction(pManager, to_string(i));
@@ -120,4 +135,5 @@ HideByColour::~HideByColour()
 	i++;
 
 }
+
 

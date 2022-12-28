@@ -1,13 +1,13 @@
 #include "AddRectAction.h"
 #include "..\Figures\CRectangle.h"
-#include "..\ApplicationManager.h"
 
+#include "..\ApplicationManager.h"
 #include "..\GUI\input.h"
 #include "..\GUI\Output.h"
 
-AddRectAction::AddRectAction(ApplicationManager * pApp ,bool IsEnabled):Action(pApp)
+AddRectAction::AddRectAction(ApplicationManager * pApp):Action(pApp)
 {
-	Sound = IsEnabled;
+	
 }
 
 void AddRectAction::ReadActionParameters() 
@@ -15,10 +15,7 @@ void AddRectAction::ReadActionParameters()
 	//Get a Pointer to the Input / Output Interfaces
 	Output* pOut = pManager->GetOutput();
 	Input* pIn = pManager->GetInput();
-	if (Sound)
-	{
-		PlaySound(TEXT("Sounds\\rectangle.wav"), NULL, SND_ASYNC);
-	}
+
 	pOut->PrintMessage("New Rectangle: Click at first corner");
 	
 	//Read 1st corner and store in point P1
@@ -48,4 +45,12 @@ void AddRectAction::Execute()
 
 	//Add the rectangle to the list of figures
 	pManager->AddFigure(R);
+}
+void AddRectAction::undo()
+{
+	DeletedFig=pManager->Deletelastfig();
+}
+void AddRectAction::redo()
+{
+	pManager->AddFigure(DeletedFig);
 }

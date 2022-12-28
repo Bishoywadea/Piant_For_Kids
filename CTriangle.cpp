@@ -5,11 +5,12 @@ CTriangle::CTriangle(Point P1, Point P2, Point P3, GfxInfo FigureGfxInfo):CFigur
 	p1 = P1;
 	p2 = P2;
 	p3 = P3;
-	pvid = ID;
-}
-
-CTriangle::CTriangle()
-{
+	/*x1 = p1.x;
+	y1 = p1.y;
+	x2 = p2.x;
+	y2 = p2.y;
+	x3 = p3.x;
+	y3 = p3.y;*/
 }
 
 void CTriangle::Draw(Output* pOut) const
@@ -39,8 +40,7 @@ bool CTriangle::IsOnFig(int x, int y) const
 	}
 	return false;
 }
-
-void CTriangle::MOVE(Point p)
+Point CTriangle::MOVE(Point p)
 {
 	Point Center;
 	Center.x = ((p1.x + p2.x + p3.x) / 3);
@@ -57,7 +57,7 @@ void CTriangle::MOVE(Point p)
 	p2.y = p.y - deltaytwo;
 	p3.x = p.x - deltaxthree;
 	p3.y = p.y - deltaythree;
-
+	return Center;
 
 }
 
@@ -65,6 +65,9 @@ ShapesMenuItem CTriangle::Returnshapestype()
 {
 	return ITM_TRI;
 }
+
+
+
 
 float CTriangle::area(int x1, int y1, int x2, int y2, int x3, int y3) const
 
@@ -83,7 +86,7 @@ void CTriangle::Save(ofstream& OutFile)
 	}
 	else
 	{
-		OutFile << "NOCOLOR" << endl;
+		OutFile << "BEIGE" << endl;
 	}
 }
 
@@ -95,7 +98,7 @@ void CTriangle::Load(ifstream& InFile)
 	InFile >> DrawClr;
 	FigGfxInfo.DrawClr = ConvertStringToColor(DrawClr);
 	InFile >> FillClr;
-	if (FillClr == "NOCOLOR")
+	if (FillClr == "BEIGE")
 	{
 		FigGfxInfo.isFilled = false;
 	}

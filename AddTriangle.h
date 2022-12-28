@@ -12,14 +12,16 @@ class AddTriangle:public Action
 private:
 	Point P1, P2, P3; //Triangle Corners
 	GfxInfo TriGfxInfo;
-	bool Sound;
+	CFigure *DeletedFig;
 public:
-	AddTriangle(ApplicationManager* pApp,bool IsEnabled);
+	AddTriangle(ApplicationManager* pApp);
 
 	//Reads rectangle parameters
 	virtual void ReadActionParameters();
 
 	//Add rectangle to the ApplicationManager
 	virtual void Execute();
+	virtual void undo();
+	virtual void redo();
 };
 

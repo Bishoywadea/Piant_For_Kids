@@ -17,3 +17,12 @@ void Createplaymood::Execute()
 	pOut->CreatePlayToolBar();
 
 }
+void Createplaymood::undo()
+{
+
+
+}
+void Createplaymood::redo()
+{
+
+}

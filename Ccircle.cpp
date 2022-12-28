@@ -1,15 +1,10 @@
 #include "Ccircle.h"
-#include<fstream>
+
 Ccircle::Ccircle(Point P1, Point P2, GfxInfo FigureGfxInfo) :CFigure(FigureGfxInfo)
 {
 	Center= P1;
 	Radius= P2;
 	radius = CalcDistance(P1, P2);
-	pvid = ID;
-}
-
-Ccircle::Ccircle()
-{
 }
 
 void Ccircle::Draw(Output* pOut) const
@@ -36,14 +31,15 @@ bool Ccircle::IsOnFig(int x, int y) const  //Checks to deciding the click is on 
 	return (radius >= CalcDistance(Center, P));
 }
 
-void Ccircle::MOVE(Point p)
+Point Ccircle::MOVE(Point p)
 {
-	Point cent = Center;
+	Point C0 = Center;
 	float rlen = sqrt(pow((Radius.x - Center.x), 2) + pow((Radius.y - Center.y), 2));
 	Center.x = p.x;
 	Center.y = p.y;
 	Radius.x = p.x + rlen;
 	Radius.y = p.y;
+	return C0;
 	pvid = ID;
 }
 
@@ -56,7 +52,7 @@ void Ccircle::Save(ofstream& OutFile)
 	}
 	else
 	{
-		OutFile << "NOCOLOR" << endl;
+		OutFile << "BEIGE" << endl;
 	}
 }
 
@@ -68,7 +64,7 @@ void Ccircle::Load(ifstream& InFile)
 	InFile >> DrawClr;
 	FigGfxInfo.DrawClr = ConvertStringToColor(DrawClr);
 	InFile >> FillClr;
-	if (FillClr == "NOCOLOR")
+	if (FillClr == "BEIGE")
 	{
 		FigGfxInfo.isFilled = false;
 	}

@@ -1,13 +1,8 @@
 #include "CHexagon.h"
-#include<fstream>
+
 CHexagon::CHexagon(Point P1, GfxInfo FigureGfxInfo):CFigure(FigureGfxInfo)
 {
 	Center = P1;
-	pvid=ID;
-}
-
-CHexagon::CHexagon()
-{
 }
 
 void CHexagon::Draw(Output* pOut) const
@@ -20,15 +15,19 @@ void CHexagon::PrintInfo(Output* pOut)
 	string c = to_string(Center.x)+","+to_string(Center.y);
 	string Id = to_string(ID);
 	string isselected = to_string(Selected);
+	
 	pOut->PrintMessage("Figure type: Hexagon,Center: "+c+" ID: "+Id+" Is selected: "+isselected);
 	
+	
+
 }
 
-void CHexagon::MOVE(Point p)
+Point CHexagon::MOVE(Point p)
 {
+	Point C0=Center;
 	Center.x = p.x;
 	Center.y = p.y;
-	
+	return C0;
 }
 
 
@@ -54,7 +53,7 @@ void CHexagon::Save(ofstream& OutFile)
 	}
 	else
 	{
-		OutFile << "NOCOLOR" << endl;
+		OutFile << "BEIGE" << endl;
 	}
 }
 
@@ -66,7 +65,7 @@ void CHexagon::Load(ifstream& InFile)
 	InFile >> DrawClr;
 	FigGfxInfo.DrawClr = ConvertStringToColor(DrawClr);
 	InFile >> FillClr;
-	if (FillClr == "NOCOLOR")
+	if (FillClr == "BEIGE")
 	{
 		FigGfxInfo.isFilled = false;
 	}

@@ -193,12 +193,13 @@
     <ClCompile Include="AddColor.cpp">
       <Filter>Action Classes</Filter>
     </ClCompile>
-    <ClCompile Include="DrawColour.cpp">
+    <ClCompile Include="Undo.cpp">
       <Filter>Action Classes</Filter>
     </ClCompile>
-    <ClCompile Include="Actclearall.cpp">
+    <ClCompile Include="Redo.cpp">
       <Filter>Action Classes</Filter>
     </ClCompile>
+
     <ClCompile Include="SaveAction.cpp">
       <Filter>Action Classes</Filter>
     </ClCompile>
@@ -212,6 +213,8 @@
       <Filter>Action Classes</Filter>
     </ClCompile>
     <ClCompile Include="ActSound.cpp">
+    <ClCompile Include="ACTHIDE.cpp">
+
       <Filter>Action Classes</Filter>
     </ClCompile>
   </ItemGroup>
@@ -331,6 +334,9 @@
     <ClInclude Include="back_icon.h">
       <Filter>Action Classes</Filter>
     </ClInclude>
+    <ClInclude Include="SelectAction.h">
+      <Filter>Action Classes</Filter>
+    </ClInclude>
     <ClInclude Include="MoveAction.h">
       <Filter>Action Classes</Filter>
     </ClInclude>
@@ -343,21 +349,14 @@
     <ClInclude Include="AddColor.h">
       <Filter>Action Classes</Filter>
     </ClInclude>
-    <ClInclude Include="DrawColour.h">
+    <ClInclude Include="resource.h" />
+    <ClInclude Include="Undo.h">
       <Filter>Action Classes</Filter>
     </ClInclude>
-    <ClInclude Include="Actclearall.h">
+    <ClInclude Include="Redo.h">
       <Filter>Action Classes</Filter>
     </ClInclude>
-    <ClInclude Include="SaveAction.h">
-      <Filter>Action Classes</Filter>
-    </ClInclude>
-    <ClInclude Include="SelectAction.h">
-      <Filter>Action Classes</Filter>
-    </ClInclude>
-    <ClInclude Include="LoadAction.h">
-      <Filter>Action Classes</Filter>
-    </ClInclude>
+
     <ClInclude Include="HideByColour.h">
       <Filter>Action Classes</Filter>
     </ClInclude>
@@ -365,11 +364,17 @@
       <Filter>Action Classes</Filter>
     </ClInclude>
     <ClInclude Include="ActSound.h">
+
+    <ClInclude Include="ACTHIDE.h">
+
       <Filter>Action Classes</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />
     <None Include="ClassDiagram1.cd" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="PT Project.rc" />
   </ItemGroup>
 </Project>

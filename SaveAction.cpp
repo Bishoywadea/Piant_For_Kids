@@ -3,7 +3,10 @@
 
 SaveAction::SaveAction(ApplicationManager* pApp,int number,string s):Action(pApp)
 {
-	SaveName = s;
+	
+
+	SaveName = s+".txt";
+
 	Fignumber = number;
 }
 
@@ -18,7 +21,11 @@ void SaveAction::Heading(int number)
 void SaveAction::ReadActionParameters()
 {
 	Output* pOut = pManager->GetOutput();
-	if (SaveName == "UNinitializedno")
+
+
+
+	if (SaveName == "UNinitializedno.txt")
+
 	{
 		Input* pIn = pManager->GetInput();
 
@@ -26,6 +33,11 @@ void SaveAction::ReadActionParameters()
 		SaveName = pIn->GetSrting(pOut) + ".txt";
 	}
 	
+
+	Input* pIn = pManager->GetInput();
+	pOut->PrintMessage("Enter Save Name");
+	SaveName = pIn->GetSrting(pOut) + ".txt";
+
 	pOut->ClearStatusBar();
 }
 
@@ -63,6 +75,10 @@ string SaveAction::ConvertColorToString(color c)
 		else if (c == YELLOW)
 		{
 			return "YELLOW";
+		}
+		else if (c == BEIGE)
+		{
+			return "BEIGE";
 		}
 		else
 		{

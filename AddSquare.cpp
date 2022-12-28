@@ -1,25 +1,21 @@
 #include "AddSquare.h"
-#include <stdlib.h>
 
-AddSquare::AddSquare(ApplicationManager* pApp, bool IsEnabled):Action(pApp)
+AddSquare::AddSquare(ApplicationManager* pApp):Action(pApp)
 {
 	
 }
-
+#include "Actions/Action.h"
 void AddSquare::ReadActionParameters()
 {
 	//Get a Pointer to the Input / Output Interfaces
 	Output* pOut = pManager->GetOutput();
 	Input* pIn = pManager->GetInput();
-	if (Sound)
-	{
-		PlaySound(TEXT("Sounds\\Square.wav"), NULL, SND_ASYNC);
-	}
+
 	pOut->PrintMessage("New Square: Click at Center");
 
 	//Read Center and store in point P1
 	pIn->GetPointClicked(P1.x, P1.y);
-	
+
 
 	SquaGfxInfo.isFilled = false;	//default is not filled
 	//get drawing, filling colors and pen width from the interface
@@ -40,4 +36,12 @@ void AddSquare::Execute()
 
 	//Add the rectangle to the list of figures
 	pManager->AddFigure(S);
+}
+void AddSquare::undo()
+{
+	DeletedFig=pManager->Deletelastfig();
+}
+void AddSquare::redo()
+{
+	pManager->AddFigure(DeletedFig);
 }

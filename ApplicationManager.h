@@ -1,6 +1,6 @@
 #ifndef APPLICATION_MANAGER_H
 #define APPLICATION_MANAGER_H
-
+#include"Actions/Action.h"
 #include "DEFS.h"
 #include "Figures\CFigure.h"
 #include "GUI\input.h"
@@ -13,14 +13,19 @@ class ApplicationManager
 
 private:
 	int FigCount;		//Actual number of figures
-	bool IsEnabled;
 	CFigure* FigList[MaxFigCount];	//List of all figures (Array of pointers)
-
+	CFigure* DeletedList[5];
 	CFigure* SelectedFig; //Pointer to the selected figure
-
+	
 	//Pointers to Input and Output classes
 	Input *pIn;
 	Output *pOut;
+	Action*Undoarr[5];
+	Action*Redoarr[5];
+	CFigure*WasSelected[5];
+	int i;
+	int countre;
+	int countdel;
 
 public:	
 	ApplicationManager(); 
@@ -36,8 +41,10 @@ public:
 	CFigure *GetFigure(int x, int y) const; //Search for a figure given a point inside the figure
 	CFigure* Returnselectedfig() const;//function that loops through fig list to find selected figure and returns it, if not found return null
     void Deletefig(CFigure*c);//deletes fig//SARAH
-	void SaveAll(ofstream& OutFile); //function to loop on the fig list and call save function of every element in it //BISHOY
-	void DeleteFigList();            //function do delete all fig list to be used in load action
+	Action* Undof();
+	Action* Redof();
+	CFigure* Deletelastfig();
+	void ReDraw();
 	// -- Interface Management Functions
 	Input *GetInput() const; //Return pointer to the input
 	Output *GetOutput() const; //Return pointer to the output
@@ -47,7 +54,22 @@ public:
 	CFigure* returnfigonpoint(Point p);//finds fig within point//sarah
 	CFigure** returnfiglist();
 	bool ifanyiscolored();
+
 	//void Clearall();//prototype of claer all func, add undo and redo as stated in phase 1 //SARAH
+
+	int returncountoffigrect();
+
+	int returncountoffigcirc();
+
+	int returncountoffighexagon();
+
+	int returncountoffigtriangle();
+
+	int returncountoffigsquare();
+
+
+
+
 };
 
 #endif
