@@ -8,7 +8,7 @@ private:
 	ifstream InputFile;
 	string fileName;
 public:
-	LoadAction(ApplicationManager* pApp);
+	LoadAction(ApplicationManager* pApp,string s="UNINITIALIZEDNO");
     void ReadActionParameters();
 	virtual void Execute();
 	color ConvertStringToColor(string);

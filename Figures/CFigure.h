@@ -15,6 +15,10 @@ protected:
 	/// Add more parameters if needed.
 
 public:
+
+	color getfigcolour();
+
+
 	CFigure(GfxInfo FigureGfxInfo);
 
 	void SetSelected(bool s);	//select/unselect the figure

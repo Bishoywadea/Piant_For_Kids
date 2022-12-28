@@ -9,8 +9,10 @@
 
 class ActDelete:public Action
 {
+private:
+	CFigure* fig;
 public:
-	ActDelete(ApplicationManager* pApp);
+	ActDelete(ApplicationManager* pApp,CFigure *f=nullptr);
 	void ReadActionParameters();
 	void Execute();
 	virtual void undo();

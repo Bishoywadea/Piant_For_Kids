@@ -9,9 +9,11 @@
 #include "CHexagon.h"
 
 
-LoadAction::LoadAction(ApplicationManager* pApp) :Action(pApp)
+LoadAction::LoadAction(ApplicationManager* pApp,string s) :Action(pApp)
 {
+
 	fileName = s+".txt";
+
 }
 
 
@@ -22,15 +24,22 @@ void LoadAction::ReadActionParameters()
 	//Get a Pointer to the Input / Output Interfaces
 	Output* pOut = pManager->GetOutput();
 	Input* pIn = pManager->GetInput();
+
+	if (fileName == "UNINITIALIZEDNO")
+
 	if (fileName == "UNINITIALIZEDNO.txt")
 
 	pOut->PrintMessage("Enter the name of the file you want to load");
 	if (fileName == "UNINITIALIZEDNO.txt")
+
 	{
 		pOut->PrintMessage("Enter the name of the file you want to load");
 
 
 		fileName = pIn->GetSrting(pOut) + ".txt";
+
+	}
+
 		//Clear the status bar
 		InputFile.open(fileName);
 		pOut->ClearDrawArea();
@@ -55,6 +64,7 @@ void LoadAction::ReadActionParameters()
 	}
 }
 	fileName = pIn->GetSrting(pOut) + ".txt";
+
 	//Clear the status bar
 	InputFile.open(fileName);
 	pOut->ClearDrawArea();

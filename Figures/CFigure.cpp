@@ -1,7 +1,21 @@
 #include "CFigure.h"
+
+
+color CFigure::getfigcolour()
+{
+	return FigGfxInfo.FillClr;
+}
+
+
 CFigure::CFigure(GfxInfo FigureGfxInfo)
 { 
 	FigGfxInfo = FigureGfxInfo;	//Default status is non-filled.
+	FigGfxInfo.FillClr = UI.FillColor;
+	if (UI.FillColor != BEIGE)
+	{
+		FigGfxInfo.isFilled = 1;
+	}
+
 	Selected = false;
 	Ccount=0;
 }

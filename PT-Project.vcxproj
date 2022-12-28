@@ -129,7 +129,9 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="ActDelete.cpp" />
+
     <ClCompile Include="ACTHIDE.cpp" />
+
     <ClCompile Include="ActHideByshapes.cpp" />
     <ClCompile Include="AddCircle.cpp" />
     <ClCompile Include="AddColor.cpp" />
@@ -177,6 +179,11 @@
     <ClCompile Include="CMUgraphicsLib\jpeg\jutils.c" />
     <ClCompile Include="Createplaymood.cpp" />
     <ClCompile Include="CTriangle.cpp" />
+
+    <ClCompile Include="DrawColour.cpp" />
+    <ClCompile Include="HideByColour.cpp" />
+    <ClCompile Include="LoadAction.cpp" />
+
     <ClCompile Include="MoveAction.cpp" />
     <ClCompile Include="Redo.cpp" />
     <ClCompile Include="SelectAction.cpp" />
@@ -193,7 +200,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ActDelete.h" />
+
     <ClInclude Include="ACTHIDE.h" />
+
     <ClInclude Include="ActHideByshapes.h" />
     <ClInclude Include="AddCircle.h" />
     <ClInclude Include="AddColor.h" />
@@ -225,6 +234,11 @@
     <ClInclude Include="CMUgraphicsLib\jpeg\jversion.h" />
     <ClInclude Include="Createplaymood.h" />
     <ClInclude Include="CTriangle.h" />
+
+    <ClInclude Include="DrawColour.h" />
+    <ClInclude Include="HideByColour.h" />
+    <ClInclude Include="LoadAction.h" />
+
     <ClInclude Include="MoveAction.h" />
     <ClInclude Include="Redo.h" />
     <ClInclude Include="resource.h" />

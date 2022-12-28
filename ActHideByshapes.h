@@ -1,5 +1,11 @@
 #pragma once
 
+class ActHideByshapes
+{
+};
+
+
+
 #pragma once
 #include "Actions/Action.h"
 #include "ApplicationManager.h"
@@ -32,5 +38,6 @@ public:
 	void Execute();
 	
 };
+
 
 

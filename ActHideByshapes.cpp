@@ -1,5 +1,6 @@
 #include "ActHideByshapes.h"
 
+
 //HideByshapes::HideByshapes(ApplicationManager* pApp):Action(pApp)
 //{
 //	string h = to_string(i) + ".txt";
@@ -268,5 +269,6 @@ void HideByshapes::Execute()
 	} while (k == 0);
 	delete this;
 }
+
 
 

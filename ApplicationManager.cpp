@@ -7,15 +7,36 @@
 #include "AddTriangle.h"
 #include"ActHideByshapes.h"
 #include "Shapesmood.h"
+
+#include "back_icon.h"
+#include "SelectAction.h"
+#include "MoveAction.h"
+#include "ActDelete.h"
+#include "Createplaymood.h"
+#include "AddColor.h"
+#include "DrawColour.h"
+#include "Actclearall.h"
+#include "ActSound.h"
 #include"back_icon.h"
 #include"SelectAction.h"
+
 #include"MoveAction.h"
 #include"ActDelete.h"
 #include"Createplaymood.h"
 #include"AddColor.h"
+
+#include"DrawColour.h"
+#include"Actclearall.h"
+#include"HideByColour.h"
+
+
+#include"SaveAction.h"
+#include"LoadAction.h"
+
 #include"Actions/Action.h"
 #include "Undo.h"
 #include "Redo.h"
+
 //Constructor
 ApplicationManager::ApplicationManager()
 {
@@ -75,8 +96,33 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		case ACT_DELETE:
 			pAct = new ActDelete(this);
 			break;
+
+
+		case TO_PLAY:
+			pAct = new Createplaymood(this);
+			break;
+		case ACT_CLEARALL:
+			pAct = new Actclearall(this);
+			break;
+		case ACT_CHNGDRAWCOLOUR:
+			pAct = new DrawColour(this);
+			break;
+
+		case Sound :
+			pAct = new ActSound(this, &IsEnabled);
+	
+		case ACT_HIDECOLOURS:
+			
+			pAct = new  HideByColour(this);
+			
+			break;
+
+		case ACT_SAVE:
+			pAct = new SaveAction(this,FigCount);
+
 		case ACT_UNDO:
 			pAct=new Undo(this);
+
 			break;
 		case ACT_REDO:
 			pAct=new Redo(this);
@@ -290,6 +336,46 @@ Action* ApplicationManager::Redof()
 void ApplicationManager::UpdateInterface() const
 {
 	pOut->ClearDrawArea();
+
+
+	for (int i = 0; i < FigCount; i++)
+		if (FigList[i] != NULL)
+		{
+			FigList[i]->Draw(pOut);
+		}//Call Draw function (virtual member fn)
+
+}
+int ApplicationManager::getfigcount() const
+{
+	return FigCount;
+}
+int ApplicationManager::returnfigcolourcount(color c) const
+{
+	int count = 0;
+	for (int i = 0; i < FigCount; i++)
+	{
+		if (FigList[i]->getfigcolour() == c)
+		{
+			count++;
+		}
+	}
+	return count;
+}
+CFigure* ApplicationManager::returnfigonpoint(Point p)
+{
+	for (int i = 0; i < FigCount; i++)
+	{
+		if (FigList[i]->IsOnFig(p.x, p.y))
+			return FigList[i];
+	}
+	return nullptr;
+}
+
+CFigure** ApplicationManager::returnfiglist()
+{
+	return FigList;
+
+
 	
 	for(int i=0; i<FigCount; i++)
 		if (FigList[i] != NULL)
@@ -297,15 +383,34 @@ void ApplicationManager::UpdateInterface() const
 			FigList[i]->Draw(pOut);
 		}//Call Draw function (virtual member fn)
 }
-void ApplicationManager::Clearall()//when 
+bool ApplicationManager::ifanyiscolored()
 {
+	int count = 0;
 	for (int i = 0; i < FigCount; i++)
 	{
-		delete FigList[i];
-		FigList[i] = NULL;
+		if (FigList[i]->getfigcolour()!=BEIGE)
+		{
+			count++;
+		}
 	}
-	FigCount = 0;
+	if (count == 0)
+		return 0;
+	else
+		return 1;
 }
+
+//void ApplicationManager::Clearall()//when 
+//{
+//	for (int i = 0; i < FigCount; i++)
+//	{
+//		delete FigList[i];
+//		FigList[i] = NULL;
+//	}
+//	FigCount = 0;
+//}
+
+
+
 ////////////////////////////////////////////////////////////////////////////////////
 //Return a pointer to the input
 Input *ApplicationManager::GetInput() const

@@ -25,6 +25,9 @@ public:
     ShapesMenuItem Returnshapestype();//returns type of shape in enum
   
   
+
+    float area(int x1, int y1, int x2, int y2, int x3, int y3) const;
+
     float area(int x1, int y1, int x2, int y2, int x3, int y3) const;
   
     virtual void Save(ofstream& OutFile);

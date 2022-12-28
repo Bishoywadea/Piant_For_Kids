@@ -1,4 +1,22 @@
 
+#include "HideByColour.h"
+#include"SaveAction.h"
+#include "LoadAction.h"
+#include"ActDelete.h"
+#include<random>
+int HideByColour::i = 0;
+HideByColour::HideByColour(ApplicationManager* pApp):Action(pApp)
+{
+	if (i != 0)
+	{
+		A = new LoadAction(pManager, to_string(i));
+		A->Execute();
+	}
+	string h =to_string(i);
+	A = new SaveAction(pManager, pManager->getfigcount(),h);
+	A->Execute();
+
+
 #include"HideByColour.h"
 
 HideByColour::HideByColour(ApplicationManager* pApp):ACTHIDE(pApp)
@@ -16,10 +34,17 @@ void HideByColour::Execute()
 	Output* pOut = pManager->GetOutput();
 	Input* pIn = pManager->GetInput();
 
+	srand(time(NULL));//random seed
+	do
+	{//loop to make sure color picked has at least one fig present
+
+		int ran = rand() % 5;
+
 	do
 	{//loop to make sure color picked has at least one fig present
 
 		int ran = rand() % 6;
+
 		if (pManager->getfigcount() == 0)
 		{
 			return;
@@ -100,6 +125,15 @@ void HideByColour::Execute()
 	pOut->PrintMessage("nom of correct picks,no of wrong picks " + to_string(correct)+", "+to_string(wrong));
 	delete this;
 	//pOut->ClearStatusBar();
+}
+
+
+HideByColour::~HideByColour()
+{
+	A = new LoadAction(pManager, to_string(i));
+	A->Execute();
+	i++;
+
 }
 
 

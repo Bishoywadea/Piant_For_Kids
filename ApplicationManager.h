@@ -55,6 +55,8 @@ public:
 	CFigure** returnfiglist();
 	bool ifanyiscolored();
 
+	//void Clearall();//prototype of claer all func, add undo and redo as stated in phase 1 //SARAH
+
 	int returncountoffigrect();
 
 	int returncountoffigcirc();
@@ -64,6 +66,7 @@ public:
 	int returncountoffigtriangle();
 
 	int returncountoffigsquare();
+
 
 
 
