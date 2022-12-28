@@ -1,4 +1,4 @@
-
+#include "Actions/Action.h"
 #include"AddCircle.h"
 AddCircle::AddCircle(ApplicationManager* pApp):Action(pApp)
 {
@@ -51,4 +51,13 @@ void AddCircle::Execute()
 
 	//Add the Circle to the list of figures
 	pManager->AddFigure(C);
+}
+void AddCircle::undo()
+{
+	DeletedFig=pManager->Deletelastfig();
+}
+void AddCircle::redo()
+{
+	pManager->AddFigure(DeletedFig);
+
 }

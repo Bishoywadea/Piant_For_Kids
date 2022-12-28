@@ -19,3 +19,11 @@ void Shapesmood::Execute()
 void Shapesmood::ReadActionParameters()
 {
 }
+void Shapesmood::undo()
+{
+
+}
+void Shapesmood::redo()
+{
+
+}

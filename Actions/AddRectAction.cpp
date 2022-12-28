@@ -1,7 +1,7 @@
 #include "AddRectAction.h"
 #include "..\Figures\CRectangle.h"
-#include "..\ApplicationManager.h"
 
+#include "..\ApplicationManager.h"
 #include "..\GUI\input.h"
 #include "..\GUI\Output.h"
 
@@ -52,4 +52,12 @@ void AddRectAction::Execute()
 
 	//Add the rectangle to the list of figures
 	pManager->AddFigure(R);
+}
+void AddRectAction::undo()
+{
+	DeletedFig=pManager->Deletelastfig();
+}
+void AddRectAction::redo()
+{
+	pManager->AddFigure(DeletedFig);
 }

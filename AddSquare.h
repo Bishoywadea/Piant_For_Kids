@@ -11,6 +11,7 @@ class AddSquare:public Action
 {
 private:
 	Point P1; //Square Center
+	CFigure *DeletedFig;
 	GfxInfo SquaGfxInfo;
 public:
 	AddSquare(ApplicationManager* pApp);
@@ -20,5 +21,7 @@ public:
 
 	//Add Square to the ApplicationManager
 	virtual void Execute();
+    virtual void undo();
+	virtual void redo();
 };
 

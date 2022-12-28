@@ -1,7 +1,9 @@
 #include "AddColor.h"
-
+#include "Actions/Action.h"
 AddColor::AddColor(ApplicationManager* pApp):Action(pApp)
 {
+	countfilled=0;
+	countredo=0;
 }
 
 void AddColor::ReadActionParameters()
@@ -22,40 +24,32 @@ void AddColor::ReadActionParameters()
 	 case ACT_RED:
 		 c = RED;
 		 UI.FillColor = RED;
-		// UI.FillColor = RED;
 		 pOut->PrintMessage("RED Color");
 		 break;
 	 case ACT_BLUE:
 		 c = BLUE;
 		 UI.FillColor = BLUE;
 
-		// UI.FillColor = BLUE;
-
 		 pOut->PrintMessage("Blue Color");
 		 break;
 	 case ACT_BLACK:
 		 c = BLACK;
 		 UI.FillColor = BLACK;
-		
-		 //UI.FillColor = BLACK;
 		 pOut->PrintMessage("BLACK Color");
 		 break;
 	 case ACT_ORANGE:
 		 c = ORANGE;
 		 UI.FillColor = ORANGE;
-		 //UI.FillColor = ORANGE;
 		 pOut->PrintMessage("ORANGE Color");
 		 break;
 	 case ACT_YELLOW:
 		 c = YELLOW;
 		 UI.FillColor = YELLOW;
-		 //UI.FillColor = YELLOW;
 		 pOut->PrintMessage("YELLOW Color");
 		 break;
 	 case ACT_GREEN:
 		 c = GREEN;
 		 UI.FillColor = GREEN;
-		 //UI.FillColor = GREEN;
 		 pOut->PrintMessage("GREEN Color");
 		 break;
 	 }
@@ -76,7 +70,23 @@ void AddColor::Execute()
 		pOut->PrintMessage("Please select a figure");
 		return;
 	}
-	
+	Wasfilled[countfilled]=F;
+	countfilled++;
 	F->ChngFillClr(c);
 
+}
+void AddColor::undo()
+{
+	Wasfilled[countfilled-1]->undof();
+	countfilled--;
+	countredo++;
+
+}
+void AddColor::redo()
+{
+    countfilled+=countredo;
+	Wasfilled[countfilled-1]->ChngFillClr(c);
+	countfilled--;
+	countfilled+=countredo;
+	countredo=0;
 }

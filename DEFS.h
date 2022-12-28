@@ -29,7 +29,6 @@ enum ActionType //The actions supported (you can add more if needed)
 	ACT_UNDO,
 	ACT_SAVE,
 	ACT_LOAD,
-	ACT_CHNGDRAWCOLOUR,
 	ACT_REDO,
 	ACT_BLUE,
 	ACT_BLACK,

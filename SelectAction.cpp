@@ -30,7 +30,8 @@ void SelectAction::Execute()
 	SelectedFig = pManager->GetFigure(P.x, P.y);
 
 	//to select or unselect a fig
-	if (SelectedFig != NULL) {
+	if (SelectedFig != NULL)
+	{
 		if (SelectedFig->IsSelected())
 			Unselected();
 		else
@@ -48,7 +49,7 @@ void SelectAction::Selected() {
 	}
 	else
 	{
-		fig->SetSelected(false);
+		fig->SetSelected(0);
 		SelectedFig->SetSelected(true); //Sets the figure as "selected"
 		Output* pOut = pManager->GetOutput(); //Get a Pointer to the Output Interface
 		SelectedFig->PrintInfo(pOut); //Print the selected figure info on the status bar
@@ -57,4 +58,14 @@ void SelectAction::Selected() {
 
 void SelectAction::Unselected() {
 	SelectedFig->SetSelected(false); //Sets the figure as "unselected"
+}
+
+void SelectAction::undo()
+{
+
+
+}
+void SelectAction::redo()
+{
+
 }

@@ -12,5 +12,7 @@ public:
 	//Execute action (code depends on action type)
 	virtual void Execute();
 	virtual void ReadActionParameters();
+	virtual void undo();
+	virtual void redo();
 };
 

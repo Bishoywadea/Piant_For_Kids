@@ -12,6 +12,7 @@ class AddTriangle:public Action
 private:
 	Point P1, P2, P3; //Triangle Corners
 	GfxInfo TriGfxInfo;
+	CFigure *DeletedFig;
 public:
 	AddTriangle(ApplicationManager* pApp);
 
@@ -20,5 +21,7 @@ public:
 
 	//Add rectangle to the ApplicationManager
 	virtual void Execute();
+	virtual void undo();
+	virtual void redo();
 };
 

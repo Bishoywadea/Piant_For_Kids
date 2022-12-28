@@ -10,8 +10,9 @@ class AddCircle :
     public Action
 {
 private:
-	Point P1, P2; //Rectangle Corners
+	Point P1, P2; //Circle center and a point 
 	GfxInfo CircGfxInfo;
+	CFigure *DeletedFig;
 public:
 	AddCircle(ApplicationManager* pApp);
 
@@ -20,5 +21,8 @@ public:
 
 	//Add rectangle to the ApplicationManager
 	virtual void Execute();
+	virtual void undo();
+	virtual void redo();
+
 };
 

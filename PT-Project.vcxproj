@@ -17,7 +17,7 @@
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
-    <PlatformToolset>v143</PlatformToolset>
+    <PlatformToolset>v110</PlatformToolset>
     <UseOfMfc>false</UseOfMfc>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
@@ -128,7 +128,6 @@
     </Bscmake>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Actclearall.cpp" />
     <ClCompile Include="ActDelete.cpp" />
     <ClCompile Include="AddCircle.cpp" />
     <ClCompile Include="AddColor.cpp" />
@@ -176,10 +175,8 @@
     <ClCompile Include="CMUgraphicsLib\jpeg\jutils.c" />
     <ClCompile Include="Createplaymood.cpp" />
     <ClCompile Include="CTriangle.cpp" />
-    <ClCompile Include="DrawColour.cpp" />
-    <ClCompile Include="LoadAction.cpp" />
     <ClCompile Include="MoveAction.cpp" />
-    <ClCompile Include="SaveAction.cpp" />
+    <ClCompile Include="Redo.cpp" />
     <ClCompile Include="SelectAction.cpp" />
     <ClCompile Include="Shapesmood.cpp" />
     <ClCompile Include="Figures\CFigure.cpp" />
@@ -190,9 +187,9 @@
     <ClCompile Include="ApplicationManager.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Square.cpp" />
+    <ClCompile Include="Undo.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Actclearall.h" />
     <ClInclude Include="ActDelete.h" />
     <ClInclude Include="AddCircle.h" />
     <ClInclude Include="AddColor.h" />
@@ -224,26 +221,32 @@
     <ClInclude Include="CMUgraphicsLib\jpeg\jversion.h" />
     <ClInclude Include="Createplaymood.h" />
     <ClInclude Include="CTriangle.h" />
-    <ClInclude Include="DrawColour.h" />
-    <ClInclude Include="LoadAction.h" />
     <ClInclude Include="MoveAction.h" />
-    <ClInclude Include="SaveAction.h" />
+    <ClInclude Include="Redo.h" />
+    <ClInclude Include="resource.h" />
     <ClInclude Include="SelectAction.h" />
     <ClInclude Include="Shapesmood.h" />
     <ClInclude Include="Figures\CFigure.h" />
     <ClInclude Include="Figures\CRectangle.h" />
     <ClInclude Include="Actions\Action.h" />
-    <ClInclude Include="Actions\AddRectAction.h" />
+    <ClInclude Include="Actions\AddRectAction.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+      </ExcludedFromBuild>
+    </ClInclude>
     <ClInclude Include="GUI\Input.h" />
     <ClInclude Include="GUI\Output.h" />
     <ClInclude Include="GUI\UI_Info.h" />
     <ClInclude Include="ApplicationManager.h" />
     <ClInclude Include="DEFS.h" />
     <ClInclude Include="Square.h" />
+    <ClInclude Include="Undo.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />
     <None Include="ClassDiagram1.cd" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="PT Project.rc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

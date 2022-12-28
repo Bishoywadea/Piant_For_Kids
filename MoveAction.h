@@ -12,11 +12,14 @@ class MoveAction :public Action
 private:
 	CFigure* Fig;
 	Point p1;
+	Point unp1;
 	
 public:
 	MoveAction(ApplicationManager* pApp);
-	void ReadActionParameters();//creads point where we want to move fig and stores in p1
+	void ReadActionParameters();//creates point where we want to move fig and stores in p1
 	void Execute();//excutes the moving
+	virtual void undo();
+    virtual void redo();
 
 };
 

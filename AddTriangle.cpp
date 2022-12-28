@@ -50,3 +50,11 @@ void AddTriangle::Execute()
 	//Add the Triangle to the list of figures
 	pManager->AddFigure(T);
 }
+void AddTriangle::undo()
+{
+	DeletedFig=pManager->Deletelastfig();
+}
+void AddTriangle::redo()
+{
+	pManager->AddFigure(DeletedFig);
+}

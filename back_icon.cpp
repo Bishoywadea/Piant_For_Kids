@@ -17,3 +17,11 @@ void Backicon::Execute()
 void Backicon::ReadActionParameters()
 {
 }
+void Backicon::undo()
+{
+
+}
+void Backicon::redo()
+{
+
+}

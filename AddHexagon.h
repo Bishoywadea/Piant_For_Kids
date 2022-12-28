@@ -11,6 +11,7 @@ class AddHexagon :public Action
 {
 	Point p1;
 	GfxInfo HexGfxInfo;
+	CFigure *DeletedFig;
 public:
 	AddHexagon(ApplicationManager* pApp);
 
@@ -19,6 +20,8 @@ public:
 
 	//Add rectangle to the ApplicationManager
 	virtual void Execute();
+	virtual void undo();
+	virtual void redo();
 
 };
 

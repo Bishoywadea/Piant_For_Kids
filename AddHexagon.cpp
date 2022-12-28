@@ -1,9 +1,10 @@
 #include "AddHexagon.h"
 #include "AddHexagon.h"
-
+#include "Actions/Action.h"
 
 AddHexagon::AddHexagon(ApplicationManager* pApp):Action(pApp)
 {
+	
 }
 
 void AddHexagon::ReadActionParameters()
@@ -44,4 +45,12 @@ void AddHexagon::Execute()
 
 	//Add the Hexagon to the list of figures
 	pManager->AddFigure(H);
+}
+void AddHexagon::undo()
+{
+	DeletedFig=pManager->Deletelastfig();
+}
+void AddHexagon::redo()
+{
+	pManager->AddFigure(DeletedFig);
 }
