@@ -61,8 +61,49 @@ Point CTriangle::MOVE(Point p)
 
 }
 
+ShapesMenuItem CTriangle::Returnshapestype()
+{
+	return ITM_TRI;
+}
+
+
+
+
 float CTriangle::area(int x1, int y1, int x2, int y2, int x3, int y3) const
 {
 	return abs(x1 * (y2 - y3) + x2 * (y3 - y1) + x3 * (y1 - y2)) / 2.0;
+}
+
+void CTriangle::Save(ofstream& OutFile)
+{
+	OutFile << "TRIANGLE\t" << pvid << "\t" << p1.x << "\t" << p1.y << "\t" << p2.x << "\t" << p2.y << "\t" << p3.x << "\t" << p3.y << "\t" << ConvertColorToString(FigGfxInfo.DrawClr) << "\t";
+	if (FigGfxInfo.isFilled)
+	{
+		OutFile << ConvertColorToString(FigGfxInfo.FillClr) << endl;
+	}
+	else
+	{
+		OutFile << "BEIGE" << endl;
+	}
+}
+
+void CTriangle::Load(ifstream& InFile)
+{
+	string DrawClr;
+	string FillClr;
+	InFile >> pvid >> p1.x >> p1.y >> p2.x >> p2.y>>p3.x>>p3.y;
+	InFile >> DrawClr;
+	FigGfxInfo.DrawClr = ConvertStringToColor(DrawClr);
+	InFile >> FillClr;
+	if (FillClr == "BEIGE")
+	{
+		FigGfxInfo.isFilled = false;
+	}
+	else {
+		FigGfxInfo.isFilled = true;
+		FigGfxInfo.FillClr = ConvertStringToColor(FillClr);
+	}
+	FigGfxInfo.BorderWdth = UI.PenWidth;
+	Selected = false;
 }
 

@@ -129,6 +129,8 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="ActDelete.cpp" />
+    <ClCompile Include="ACTHIDE.cpp" />
+    <ClCompile Include="ActHideByshapes.cpp" />
     <ClCompile Include="AddCircle.cpp" />
     <ClCompile Include="AddColor.cpp" />
     <ClCompile Include="AddHexagon.cpp" />
@@ -191,6 +193,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ActDelete.h" />
+    <ClInclude Include="ACTHIDE.h" />
+    <ClInclude Include="ActHideByshapes.h" />
     <ClInclude Include="AddCircle.h" />
     <ClInclude Include="AddColor.h" />
     <ClInclude Include="AddHexagon.h" />

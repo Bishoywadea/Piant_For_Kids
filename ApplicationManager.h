@@ -49,7 +49,24 @@ public:
 	Input *GetInput() const; //Return pointer to the input
 	Output *GetOutput() const; //Return pointer to the output
 	void UpdateInterface() const;	//Redraws all the drawing window	
-	void Clearall();//prototype of claer all func, add undo and redo as stated in phase 1 //SARAH
+	int getfigcount() const;
+	int returnfigcolourcount(color c)const;
+	CFigure* returnfigonpoint(Point p);//finds fig within point//sarah
+	CFigure** returnfiglist();
+	bool ifanyiscolored();
+
+	int returncountoffigrect();
+
+	int returncountoffigcirc();
+
+	int returncountoffighexagon();
+
+	int returncountoffigtriangle();
+
+	int returncountoffigsquare();
+
+
+
 };
 
 #endif

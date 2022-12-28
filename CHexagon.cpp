@@ -39,3 +39,40 @@ bool CHexagon::IsOnFig(int x, int y) const  //Checks to deciding the click is on
 	//to see if the point on the hexa or not //BISHOY
 	return (50 >= CalcDistance(Center, P));
 }
+ShapesMenuItem CHexagon::Returnshapestype()
+{
+	return ITM_HEX;
+}
+
+void CHexagon::Save(ofstream& OutFile)
+{
+	OutFile << "HEXAGON\t" << pvid << "\t" << Center.x << "\t" << Center.y << "\t" << ConvertColorToString(FigGfxInfo.DrawClr) << "\t";
+	if (FigGfxInfo.isFilled)
+	{
+		OutFile << ConvertColorToString(FigGfxInfo.FillClr) << endl;
+	}
+	else
+	{
+		OutFile << "BEIGE" << endl;
+	}
+}
+
+void CHexagon::Load(ifstream& InFile)
+{
+	string DrawClr;
+	string FillClr;
+	InFile >> pvid >> Center.x >> Center.y;
+	InFile >> DrawClr;
+	FigGfxInfo.DrawClr = ConvertStringToColor(DrawClr);
+	InFile >> FillClr;
+	if (FillClr == "BEIGE")
+	{
+		FigGfxInfo.isFilled = false;
+	}
+	else {
+		FigGfxInfo.isFilled = true;
+		FigGfxInfo.FillClr = ConvertStringToColor(FillClr);
+	}
+	FigGfxInfo.BorderWdth = UI.PenWidth;
+	Selected = false;
+}

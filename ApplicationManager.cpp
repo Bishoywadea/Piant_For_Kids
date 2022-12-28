@@ -5,6 +5,7 @@
 #include "AddHexagon.h"
 #include "AddSquare.h"
 #include "AddTriangle.h"
+#include"ActHideByshapes.h"
 #include "Shapesmood.h"
 #include"back_icon.h"
 #include"SelectAction.h"
@@ -102,7 +103,12 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 			pAct = new AddTriangle(this);
 			break;
 		case DRAW_SQUARE:
+			pAct = new AddSquare(this,IsEnabled);
+
 			pAct = new AddSquare(this);
+			break;
+		case ACT_HIDESHAPES:
+			pAct = new HideByshapes(this);
 			break;
 		
 		case EXIT:

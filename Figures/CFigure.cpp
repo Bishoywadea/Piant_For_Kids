@@ -32,9 +32,8 @@ void CFigure::undof()
 	}
 	else
 	{
-		FigGfxInfo.FillClr=Carr[Ccount-2];
-		Ccount--;
-}
+		return "BEIGE";
+	}
 }
 double CFigure::CalcDistance(Point A, Point B) const
 {

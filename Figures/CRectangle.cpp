@@ -47,5 +47,36 @@ Point CRectangle::MOVE(Point p1)
 	Corner2.y = p1.y - deltay;
 	return Center;
 
+void CRectangle::Save(ofstream& OutFile)
+{
+	OutFile << "RECTANGLE\t" << pvid << "\t" << Corner1.x << "\t" << Corner1.y << "\t" << Corner2.x << "\t" << Corner2.y << "\t" << ConvertColorToString(FigGfxInfo.DrawClr) << "\t";
+	if (FigGfxInfo.isFilled)
+	{
+		OutFile << ConvertColorToString(FigGfxInfo.FillClr) << endl;
+	}
+	else
+	{
+		OutFile << "BEIGE" << endl;
+	}
+}
+
+void CRectangle::Load(ifstream& InFile)
+{
+	string DrawClr;
+	string FillClr;
+	InFile >> pvid >> Corner1.x >> Corner1.y >> Corner2.x >> Corner2.y;
+	InFile >> DrawClr;
+	FigGfxInfo.DrawClr = ConvertStringToColor(DrawClr);
+	InFile >> FillClr;
+	if (FillClr == "BEIGE")
+	{
+		FigGfxInfo.isFilled = false;
+	}
+	else {
+		FigGfxInfo.isFilled = true;
+		FigGfxInfo.FillClr = ConvertStringToColor(FillClr);
+	}
+	FigGfxInfo.BorderWdth = UI.PenWidth;
+	Selected = false;
 }
 

@@ -40,5 +40,44 @@ Point Ccircle::MOVE(Point p)
 	Radius.x = p.x + rlen;
 	Radius.y = p.y;
 	return C0;
+	pvid = ID;
+}
+
+void Ccircle::Save(ofstream& OutFile)
+{
+	OutFile << "Circle\t"<< pvid<<"\t" << Center.x << "\t" << Center.y << "\t" << ConvertColorToString(FigGfxInfo.DrawClr) << "\t";
+	if (FigGfxInfo.isFilled)
+	{
+		OutFile << ConvertColorToString(FigGfxInfo.FillClr) << endl;
+	}
+	else
+	{
+		OutFile << "BEIGE" << endl;
+	}
+}
+
+void Ccircle::Load(ifstream& InFile)
+{
+	string DrawClr;
+	string FillClr;
+	InFile >> pvid >> Center.x >> Center.y >> Radius.x >> Radius.y;
+	InFile >> DrawClr;
+	FigGfxInfo.DrawClr = ConvertStringToColor(DrawClr);
+	InFile >> FillClr;
+	if (FillClr == "BEIGE")
+	{
+		FigGfxInfo.isFilled = false;
+	}
+	else {
+		FigGfxInfo.isFilled = true;
+		FigGfxInfo.FillClr = ConvertStringToColor(FillClr);
+	}
+	Selected = false;
+	FigGfxInfo.BorderWdth = UI.PenWidth;
+	radius = CalcDistance(Center, Radius);
+}
+ShapesMenuItem Ccircle::Returnshapestype()
+{
+	return ITM_CIR;
 }
 

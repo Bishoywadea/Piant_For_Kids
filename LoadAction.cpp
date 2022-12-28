@@ -22,6 +22,7 @@ void LoadAction::ReadActionParameters()
 	//Get a Pointer to the Input / Output Interfaces
 	Output* pOut = pManager->GetOutput();
 	Input* pIn = pManager->GetInput();
+	if (fileName == "UNINITIALIZEDNO.txt")
 
 	pOut->PrintMessage("Enter the name of the file you want to load");
 	if (fileName == "UNINITIALIZEDNO.txt")
@@ -29,6 +30,30 @@ void LoadAction::ReadActionParameters()
 		pOut->PrintMessage("Enter the name of the file you want to load");
 
 
+		fileName = pIn->GetSrting(pOut) + ".txt";
+		//Clear the status bar
+		InputFile.open(fileName);
+		pOut->ClearDrawArea();
+		//check if the file doesnot exists
+		if (InputFile.is_open())
+		{
+			pOut->PrintMessage("Your file has been successfully loaded");
+		}
+		else { pOut->PrintMessage("No file found with name: " + fileName); }
+	}
+	else
+	{
+		//Clear the status bar
+		InputFile.open(fileName);
+		pOut->ClearDrawArea();
+		//check if the file doesnot exists
+		if (InputFile.is_open())
+		{
+			pOut->PrintMessage("Play More!");
+		}
+		else { pOut->PrintMessage("Error :(" + fileName); }
+	}
+}
 	fileName = pIn->GetSrting(pOut) + ".txt";
 	//Clear the status bar
 	InputFile.open(fileName);
