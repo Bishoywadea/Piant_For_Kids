@@ -15,8 +15,9 @@
 #include "DrawColour.h"
 #include "Actclearall.h"
 #include "ActSound.h"
-#include"SaveAction.h"
-#include"LoadAction.h"
+#include "SaveAction.h"
+#include "LoadAction.h"
+#include "ActionDrag.h"
 //Constructor
 ApplicationManager::ApplicationManager()
 {
@@ -95,6 +96,10 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 
 		case ACT_LOAD:
 			pAct = new LoadAction(this);
+			break;
+
+		case Drag:
+			pAct = new ActionDrag(this);
 			break;
 //==================================================================================//
 //								drawing shapes section       						//

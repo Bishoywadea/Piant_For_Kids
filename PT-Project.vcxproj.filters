@@ -208,6 +208,9 @@
     <ClCompile Include="ActSound.cpp">
       <Filter>Action Classes</Filter>
     </ClCompile>
+    <ClCompile Include="ActionDrag.cpp">
+      <Filter>Action Classes</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CMUgraphicsLib\auxil.h">
@@ -353,6 +356,9 @@
       <Filter>Action Classes</Filter>
     </ClInclude>
     <ClInclude Include="ActSound.h">
+      <Filter>Action Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="ActionDrag.h">
       <Filter>Action Classes</Filter>
     </ClInclude>
   </ItemGroup>

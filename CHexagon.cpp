@@ -3,19 +3,19 @@
 CHexagon::CHexagon(Point P1, GfxInfo FigureGfxInfo):CFigure(FigureGfxInfo)
 {
 	Center = P1;
-	RightUp.x=Center.x+50;
+	RightUp.x = Center.x + 50;
 	RightUp.y = Center.y - ((0.866) * 100);
 	RightDown.x = Center.x + 50;
 	RightDown.y = Center.y + ((0.866) * 100);
-	Right.x = Center.x +100;
-	Right.y = Center.y ;
+	Right.x = Center.x + 100;
+	Right.y = Center.y;
 	LeftUp.x = Center.x - 50;
 	LeftUp.y = Center.y - ((0.866) * 100);
 	LeftDown.x = Center.x - 50;
 	LeftDown.y = Center.y + ((0.866) * 100);
 	Left.x = Center.x - 100;
 	Left.y = Center.y;
-	pvid=ID;
+	pvid = ID;
 }
 
 CHexagon::CHexagon()
@@ -40,7 +40,18 @@ void CHexagon::MOVE(Point p)
 {
 	Center.x = p.x;
 	Center.y = p.y;
-	
+	RightUp.x = Center.x + 50;
+	RightUp.y = Center.y - ((0.866) * 100);
+	RightDown.x = Center.x + 50;
+	RightDown.y = Center.y + ((0.866) * 100);
+	Right.x = Center.x + 100;
+	Right.y = Center.y;
+	LeftUp.x = Center.x - 50;
+	LeftUp.y = Center.y - ((0.866) * 100);
+	LeftDown.x = Center.x - 50;
+	LeftDown.y = Center.y + ((0.866) * 100);
+	Left.x = Center.x - 100;
+	Left.y = Center.y;
 }
 
 float CHexagon::area(int x1, int y1, int x2, int y2, int x3, int y3) const
@@ -63,7 +74,7 @@ bool CHexagon::IsOnFig(int x, int y) const  //Checks to deciding the click is on
 		return true;
 	}
 	A1 = area(x, y, LeftUp.x, LeftUp.y, Left.x, Left.y);
-	A2 = area(LeftDown.x, LeftDown.y,x, y, Left.x, Left.y);
+	A2 = area(LeftDown.x, LeftDown.y, x, y, Left.x, Left.y);
 	A3 = area(LeftDown.x, LeftDown.y, LeftUp.x, LeftUp.y, x, y);
 	if (A == A1 + A2 + A3)
 	{

@@ -98,7 +98,7 @@ void Output::CreateDrawToolBar() const
 	MenuItemImages[ITM_CLEARALL] = "images\\MenuItems\\Menu_Clearall.jpg";
 	MenuItemImages[ITM_DRAWCOLOUR] = "images\\MenuItems\\Colour_Menu.jpg";
 	MenuItemImages[ITM_SOUND] = "images\\MenuItems\\Menu_Sound.jpg";
-
+	MenuItemImages[ITM_Drag] = "images\\MenuItems\\Menu_Select1.jpg";
 
 	//TODO: Prepare images for each menu item and add it to the list  (DONE)
 

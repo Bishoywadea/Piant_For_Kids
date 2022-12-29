@@ -12,6 +12,11 @@ void Input::GetPointClicked(int& x, int& y) const
 	pWind->WaitMouseClick(x, y);	//Wait for mouse click
 }
 
+void Input::watchDrag(buttonstate& state, button btn, int& x, int& y)
+{
+	state = pWind->GetButtonState(btn, x, y);
+}
+
 string Input::GetSrting(Output* pO) const
 {
 	string Label;
@@ -68,6 +73,7 @@ ActionType Input::GetUserAction() const
 			case ITM_PLAYMOOD: return TO_PLAY;           //icon to go to play mode
 			case ITM_DRAWCOLOUR:return ACT_CHNGDRAWCOLOUR;
 			case ITM_SOUND:return Sound;
+			case ITM_Drag:return Drag;
 			default: return EMPTY;	//A click on empty place in desgin toolbar
 			}
 		}

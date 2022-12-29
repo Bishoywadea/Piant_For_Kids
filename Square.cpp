@@ -49,7 +49,10 @@ void Square::MOVE(Point p)
 {
 	Center.x = p.x;
 	Center.y = p.y;
-
+	LowerRight.x = Center.x + 50;
+	LowerRight.y = Center.y + 50;
+	UpperLeft.x = Center.x - 50;
+	UpperLeft.y = Center.y - 50;
 }
 
 void Square::Save(ofstream& OutFile)

@@ -44,6 +44,7 @@ enum ActionType //The actions supported (you can add more if needed)
 	ACT_CLEARALL,
 	TO_PLAY,
 	Sound,
+	Drag,
 	STATUS			//A click on the status bar
 
 	///TODO: Add the other action types of the two modes  (DONE)
