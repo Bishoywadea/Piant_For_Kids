@@ -9,8 +9,11 @@
 #include "CHexagon.h"
 
 
-LoadAction::LoadAction(ApplicationManager* pApp) :Action(pApp)
+LoadAction::LoadAction(ApplicationManager* pApp,string s) :Action(pApp)
 {
+
+	fileName = s+".txt";
+
 }
 
 
@@ -22,10 +25,46 @@ void LoadAction::ReadActionParameters()
 	Output* pOut = pManager->GetOutput();
 	Input* pIn = pManager->GetInput();
 
+	if (fileName == "UNINITIALIZEDNO")
+
+	if (fileName == "UNINITIALIZEDNO.txt")
+
 	pOut->PrintMessage("Enter the name of the file you want to load");
+	if (fileName == "UNINITIALIZEDNO.txt")
+
+	{
+		pOut->PrintMessage("Enter the name of the file you want to load");
 
 
+		fileName = pIn->GetSrting(pOut) + ".txt";
+
+	}
+
+		//Clear the status bar
+		InputFile.open(fileName);
+		pOut->ClearDrawArea();
+		//check if the file doesnot exists
+		if (InputFile.is_open())
+		{
+			pOut->PrintMessage("Your file has been successfully loaded");
+		}
+		else { pOut->PrintMessage("No file found with name: " + fileName); }
+	}
+	else
+	{
+		//Clear the status bar
+		InputFile.open(fileName);
+		pOut->ClearDrawArea();
+		//check if the file doesnot exists
+		if (InputFile.is_open())
+		{
+			pOut->PrintMessage("Play More!");
+		}
+		else { pOut->PrintMessage("Error :(" + fileName); }
+	}
+}
 	fileName = pIn->GetSrting(pOut) + ".txt";
+
 	//Clear the status bar
 	InputFile.open(fileName);
 	pOut->ClearDrawArea();
@@ -35,6 +74,30 @@ void LoadAction::ReadActionParameters()
 		pOut->PrintMessage("Your file has been successfully loaded");
 	}
 	else { pOut->PrintMessage("No file found with name: " + fileName); }
+}
+		fileName = pIn->GetSrting(pOut) + ".txt";
+		//Clear the status bar
+		InputFile.open(fileName);
+		pOut->ClearDrawArea();
+		//check if the file doesnot exists
+		if (InputFile.is_open())
+		{
+			pOut->PrintMessage("Your file has been successfully loaded");
+		}
+		else { pOut->PrintMessage("No file found with name: " + fileName); }
+	}
+	else
+	{
+		//Clear the status bar
+		InputFile.open(fileName);
+		pOut->ClearDrawArea();
+		//check if the file doesnot exists
+		if (InputFile.is_open())
+		{
+			pOut->PrintMessage("Play More!");
+		}
+		else { pOut->PrintMessage("Error :(" + fileName); }
+	}
 }
 
 //Execute action Load Action
@@ -129,7 +192,10 @@ color LoadAction::ConvertStringToColor(string name)
 	{
 		return YELLOW;
 	}
-
+	else if (name == "BEIGE")
+	{
+		return BEIGE;
+	}
 	else
 	{
 		return WHITE;

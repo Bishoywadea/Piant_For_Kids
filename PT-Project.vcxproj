@@ -177,8 +177,6 @@
     <ClCompile Include="CMUgraphicsLib\jpeg\jutils.c" />
     <ClCompile Include="Createplaymood.cpp" />
     <ClCompile Include="CTriangle.cpp" />
-    <ClCompile Include="DrawColour.cpp" />
-    <ClCompile Include="LoadAction.cpp" />
     <ClCompile Include="MoveAction.cpp" />
     <ClCompile Include="SaveAction.cpp" />
     <ClCompile Include="SelectAction.cpp" />
@@ -196,7 +194,6 @@
   <ItemGroup>
     <ClInclude Include="Actclearall.h" />
     <ClInclude Include="ActDelete.h" />
-    <ClInclude Include="ActionDrag.h" />
     <ClInclude Include="AddCircle.h" />
     <ClInclude Include="AddColor.h" />
     <ClInclude Include="AddHexagon.h" />
@@ -227,8 +224,6 @@
     <ClInclude Include="CMUgraphicsLib\jpeg\jversion.h" />
     <ClInclude Include="Createplaymood.h" />
     <ClInclude Include="CTriangle.h" />
-    <ClInclude Include="DrawColour.h" />
-    <ClInclude Include="LoadAction.h" />
     <ClInclude Include="MoveAction.h" />
     <ClInclude Include="SaveAction.h" />
     <ClInclude Include="SelectAction.h" />

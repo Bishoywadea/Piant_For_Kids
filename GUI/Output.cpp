@@ -18,9 +18,9 @@ Output::Output()
 	UI.MenuItemWidth = 80;
 
 	UI.DrawColor = BLACK;	//Drawing color
-	UI.FillColor = GREEN;	//Filling color
+	UI.FillColor = BEIGE;	//Filling color
 	UI.MsgColor = RED;		//Messages color
-	UI.BkGrndColor = LIGHTGOLDENRODYELLOW;	//Background color
+	UI.BkGrndColor = BEIGE;	//Background color
 	UI.HighlightColor = MAGENTA;	//This color should NOT be used to draw figures. use if for highlight only
 	UI.StatusBarColor = TURQUOISE;
 	UI.PenWidth = 3;	//width of the figures frames

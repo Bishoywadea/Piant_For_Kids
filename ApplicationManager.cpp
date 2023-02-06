@@ -5,6 +5,7 @@
 #include "AddHexagon.h"
 #include "AddSquare.h"
 #include "AddTriangle.h"
+#include"ActHideByshapes.h"
 #include "Shapesmood.h"
 #include "back_icon.h"
 #include "SelectAction.h"
@@ -75,9 +76,8 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		case ACT_DELETE:
 			pAct = new ActDelete(this);
 			break;
-
-		case TO_PLAY:
-			pAct = new Createplaymood(this);
+		case ACT_UNDO:
+			pAct=new Undo(this);
 			break;
 		case ACT_CLEARALL:
 			pAct = new Actclearall(this);
@@ -117,8 +117,9 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 			pAct = new AddTriangle(this, IsEnabled);
 			break;
 		case DRAW_SQUARE:
-			pAct = new AddSquare(this,IsEnabled);
+			pAct = new AddSquare(this);
 			break;
+		
 		case EXIT:
 			///create ExitAction here
 			
@@ -236,7 +237,7 @@ CFigure* ApplicationManager::returnfigonpoint(Point p)
 
 CFigure** ApplicationManager::returnfiglist()
 {
-	return FigList;
+	pOut->ClearDrawArea();
 	
 	for(int i=0; i<FigCount; i++)
 		if (FigList[i] != NULL)
@@ -244,16 +245,21 @@ CFigure** ApplicationManager::returnfiglist()
 			FigList[i]->Draw(pOut);
 		}//Call Draw function (virtual member fn)
 }
-void ApplicationManager::Clearall()//when 
+bool ApplicationManager::ifanyiscolored()
 {
+	int count = 0;
 	for (int i = 0; i < FigCount; i++)
 	{
-		delete FigList[i];
-		FigList[i] = NULL;
+		if (FigList[i]->getfigcolour()!=BEIGE)
+		{
+			count++;
+		}
 	}
-	FigCount = 0;
+	if (count == 0)
+		return 0;
+	else
+		return 1;
 }
-
 ////////////////////////////////////////////////////////////////////////////////////
 //Return a pointer to the input
 Input *ApplicationManager::GetInput() const

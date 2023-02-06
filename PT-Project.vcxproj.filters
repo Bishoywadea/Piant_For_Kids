@@ -211,6 +211,24 @@
     <ClCompile Include="ActionDrag.cpp">
       <Filter>Action Classes</Filter>
     </ClCompile>
+
+    <ClCompile Include="SaveAction.cpp">
+      <Filter>Action Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="LoadAction.cpp">
+      <Filter>Action Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="HideByColour.cpp">
+      <Filter>Action Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="ActHideByshapes.cpp">
+      <Filter>Action Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="ActSound.cpp">
+    <ClCompile Include="ACTHIDE.cpp">
+
+      <Filter>Action Classes</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CMUgraphicsLib\auxil.h">
@@ -359,6 +377,19 @@
       <Filter>Action Classes</Filter>
     </ClInclude>
     <ClInclude Include="ActionDrag.h">
+      <Filter>Action Classes</Filter>
+    </ClInclude>
+
+    <ClInclude Include="HideByColour.h">
+      <Filter>Action Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="ActHideByshapes.h">
+      <Filter>Action Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="ActSound.h">
+
+    <ClInclude Include="ACTHIDE.h">
+
       <Filter>Action Classes</Filter>
     </ClInclude>
   </ItemGroup>

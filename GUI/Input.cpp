@@ -168,8 +168,8 @@ ActionType Input::GetUserAction() const
 			{
 			case ITM_DRAWMOOD: return TO_DRAW;                               // icon to go back to draw mode
 			case ITM_HIDESHAPES: return HIDE_SHAPES;                         // icon to go hide shapes
-			case ITM_HIDESHAPESANDCOLOURS: return HIDE_SHAPSANDCOLOURS;      // icon to go hide shapes and colour
-			case ITM_HIDECOLOURS: return HIDE_COLOURS;                       // icon to go hide colours
+			case ITM_HIDECOLOURS: return ACT_HIDECOLOURS;      // icon to go hide shapes and colour
+			//case ITM_HIDECOLOURS: return HIDE_COLOURS;                       // icon to go hide colours
 			default: return EMPTY;	//A click on empty place in desgin toolbar
 			}
 		}
