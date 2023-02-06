@@ -3,18 +3,8 @@
 CHexagon::CHexagon(Point P1, GfxInfo FigureGfxInfo):CFigure(FigureGfxInfo)
 {
 	Center = P1;
-	RightUp.x = Center.x + 50;
-	RightUp.y = Center.y - ((0.866) * 100);
-	RightDown.x = Center.x + 50;
-	RightDown.y = Center.y + ((0.866) * 100);
-	Right.x = Center.x + 100;
-	Right.y = Center.y;
-	LeftUp.x = Center.x - 50;
-	LeftUp.y = Center.y - ((0.866) * 100);
-	LeftDown.x = Center.x - 50;
-	LeftDown.y = Center.y + ((0.866) * 100);
-	Left.x = Center.x - 100;
-	Left.y = Center.y;
+	side = 100;
+	UpdateCorners();
 	pvid = ID;
 }
 
@@ -24,7 +14,7 @@ CHexagon::CHexagon()
 
 void CHexagon::Draw(Output* pOut) const
 {
-	pOut->DrawHexa(Center, FigGfxInfo, Selected);
+	pOut->DrawHexa(Center, FigGfxInfo, Selected,side);
 }
 
 void CHexagon::PrintInfo(Output* pOut)
@@ -38,19 +28,46 @@ void CHexagon::PrintInfo(Output* pOut)
 
 void CHexagon::MOVE(Point p)
 {
+	C0=Center;
 	Center.x = p.x;
 	Center.y = p.y;
-	RightUp.x = Center.x + 50;
-	RightUp.y = Center.y - ((0.866) * 100);
-	RightDown.x = Center.x + 50;
-	RightDown.y = Center.y + ((0.866) * 100);
-	Right.x = Center.x + 100;
+	RightUp.x = Center.x + side;
+	RightUp.y = Center.y - ((0.866) * side);
+	RightDown.x = Center.x + side / 2;
+	RightDown.y = Center.y + ((0.866) * side);
+	Right.x = Center.x + side;
 	Right.y = Center.y;
-	LeftUp.x = Center.x - 50;
-	LeftUp.y = Center.y - ((0.866) * 100);
-	LeftDown.x = Center.x - 50;
-	LeftDown.y = Center.y + ((0.866) * 100);
-	Left.x = Center.x - 100;
+	LeftUp.x = Center.x - side / 2;
+	LeftUp.y = Center.y - ((0.866) * side);
+	LeftDown.x = Center.x - side/2;
+	LeftDown.y = Center.y + ((0.866) * side);
+	Left.x = Center.x - side;
+	Left.y = Center.y;
+}
+Point CHexagon::getcenter()
+{
+	return C0;
+
+}
+
+void CHexagon::GetTheCorner(Point A)
+{
+}
+
+void CHexagon::Resize(Point A)
+{
+	side = CalcDistance(A, Center);
+	RightUp.x = Center.x + side / 2;
+	RightUp.y = Center.y - ((0.866) * side);
+	RightDown.x = Center.x + side / 2;
+	RightDown.y = Center.y + ((0.866) * side);
+	Right.x = Center.x + side;
+	Right.y = Center.y;
+	LeftUp.x = Center.x - side / 2;
+	LeftUp.y = Center.y - ((0.866) * side);
+	LeftDown.x = Center.x - side / 2;
+	LeftDown.y = Center.y + ((0.866) * side);
+	Left.x = Center.x - side;
 	Left.y = Center.y;
 }
 
@@ -59,8 +76,9 @@ float CHexagon::area(int x1, int y1, int x2, int y2, int x3, int y3) const
 	return abs(x1 * (y2 - y3) + x2 * (y3 - y1) + x3 * (y1 - y2)) / 2.0;
 }
 
-bool CHexagon::IsOnFig(int x, int y) const  //Checks to deciding the click is on figure or not //BISHOY
+bool CHexagon::IsOnFig(int x, int y)   //Checks to deciding the click is on figure or not //BISHOY
 { 
+	UpdateCorners();
 	if (x >= LeftUp.x && x <= RightUp.x && y >= LeftUp.y && y <= LeftDown.y)
 	{
 		return true;
@@ -82,6 +100,23 @@ bool CHexagon::IsOnFig(int x, int y) const  //Checks to deciding the click is on
 	}
 	return false;
 }
+
+void CHexagon::UpdateCorners()
+{
+	RightUp.x = Center.x + side / 2;
+	RightUp.y = Center.y - ((0.866) * side);
+	RightDown.x = Center.x + side / 2;
+	RightDown.y = Center.y + ((0.866) * side);
+	Right.x = Center.x + side;
+	Right.y = Center.y;
+	LeftUp.x = Center.x - side / 2;
+	LeftUp.y = Center.y - ((0.866) * side);
+	LeftDown.x = Center.x - side / 2;
+	LeftDown.y = Center.y + ((0.866) * side);
+	Left.x = Center.x - side;
+	Left.y = Center.y;
+}
+
 ShapesMenuItem CHexagon::Returnshapestype()
 {
 	return ITM_HEX;
@@ -89,7 +124,7 @@ ShapesMenuItem CHexagon::Returnshapestype()
 
 void CHexagon::Save(ofstream& OutFile)
 {
-	OutFile << "HEXAGON\t" << pvid << "\t" << Center.x << "\t" << Center.y << "\t" << ConvertColorToString(FigGfxInfo.DrawClr) << "\t";
+	OutFile << "HEXAGON\t" << pvid << "\t" << Center.x << "\t" << Center.y << "\t"<<side << "\t" << ConvertColorToString(FigGfxInfo.DrawClr) << "\t";
 	if (FigGfxInfo.isFilled)
 	{
 		OutFile << ConvertColorToString(FigGfxInfo.FillClr) << endl;
@@ -104,7 +139,7 @@ void CHexagon::Load(ifstream& InFile)
 {
 	string DrawClr;
 	string FillClr;
-	InFile >> pvid >> Center.x >> Center.y;
+	InFile >> pvid >> Center.x >> Center.y>>side;
 	InFile >> DrawClr;
 	FigGfxInfo.DrawClr = ConvertStringToColor(DrawClr);
 	InFile >> FillClr;
@@ -119,40 +154,8 @@ void CHexagon::Load(ifstream& InFile)
 	FigGfxInfo.BorderWdth = UI.PenWidth;
 	Selected = false;
 }
-ShapesMenuItem CHexagon::Returnshapestype()
-{
-	return ITM_HEX;
-}
 
-void CHexagon::Save(ofstream& OutFile)
+int CHexagon::iffigtype()
 {
-	OutFile << "HEXAGON\t" << pvid << "\t" << Center.x << "\t" << Center.y << "\t" << ConvertColorToString(FigGfxInfo.DrawClr) << "\t";
-	if (FigGfxInfo.isFilled)
-	{
-		OutFile << ConvertColorToString(FigGfxInfo.FillClr) << endl;
-	}
-	else
-	{
-		OutFile << "BEIGE" << endl;
-	}
-}
-
-void CHexagon::Load(ifstream& InFile)
-{
-	string DrawClr;
-	string FillClr;
-	InFile >> pvid >> Center.x >> Center.y;
-	InFile >> DrawClr;
-	FigGfxInfo.DrawClr = ConvertStringToColor(DrawClr);
-	InFile >> FillClr;
-	if (FillClr == "BEIGE")
-	{
-		FigGfxInfo.isFilled = false;
-	}
-	else {
-		FigGfxInfo.isFilled = true;
-		FigGfxInfo.FillClr = ConvertStringToColor(FillClr);
-	}
-	FigGfxInfo.BorderWdth = UI.PenWidth;
-	Selected = false;
+	return 4;
 }

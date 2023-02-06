@@ -13,6 +13,7 @@ private:
 	Point P1, P2; //Rectangle Corners
 	GfxInfo CircGfxInfo;
 	bool Sound;
+	CFigure *DeletedFig;
 public:
 	AddCircle(ApplicationManager* pApp,bool IsEnabled);
 
@@ -20,6 +21,10 @@ public:
 	virtual void ReadActionParameters();
 
 	//Add rectangle to the ApplicationManager
-	virtual void Execute();
+	virtual void Execute(bool b);
+	virtual void AddMeUndo(bool redo);
+	virtual void AddMeRec();
+	virtual void undo();
+	virtual void redo();
 };
 

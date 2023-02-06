@@ -12,9 +12,13 @@ public:
 	 Ccircle();
 	 void Draw(Output* pOut) const;
 	 void PrintInfo(Output* pOut);
-	 bool IsOnFig(int x, int y) const; //Checks to deciding the click is on figure or not //BISHOY
+	 bool IsOnFig(int x, int y) ; //Checks to deciding the click is on figure or not //BISHOY
 	 void MOVE(Point p);//Moves fig
+	 Point getcenter();
+	 virtual void GetTheCorner(Point A);
+	 virtual void Resize(Point A);
 	 ShapesMenuItem Returnshapestype() ;//returns type of shape in enum
 	 virtual void Save(ofstream& OutFile);
 	 virtual void Load(ifstream& InFile);
+	 int iffigtype();
 };

@@ -1,25 +1,8 @@
-
-#include "HideByColour.h"
-#include"SaveAction.h"
-#include "LoadAction.h"
-#include"ActDelete.h"
-#include<random>
-int HideByColour::i = 0;
-HideByColour::HideByColour(ApplicationManager* pApp):Action(pApp)
-{
-	if (i != 0)
-	{
-		A = new LoadAction(pManager, to_string(i));
-		A->Execute();
-	}
-	string h =to_string(i);
-	A = new SaveAction(pManager, pManager->getfigcount(),h);
-	A->Execute();
-
-
 #include"HideByColour.h"
 
-HideByColour::HideByColour(ApplicationManager* pApp):ACTHIDE(pApp)
+#include"ActDelete.h"
+#include <time.h>;
+HideByColour::HideByColour(ApplicationManager* pApp):Action(pApp)
 {
 	
 
@@ -29,70 +12,100 @@ void HideByColour::ReadActionParameters()
 	
 }
 
-void HideByColour::Execute()
+void HideByColour::Execute(bool b)
 {
 	Output* pOut = pManager->GetOutput();
 	Input* pIn = pManager->GetInput();
+	if (pManager->getfigcount() == 0)
+	{
+		pOut->PrintMessage("No  figures are present");
+		return;
+	}
+	if (pManager->returnfigcolourcount(-1) == pManager->getfigcount())
+	{
+		pOut->PrintMessage("No colored figs,click to continue");
 
+		return;
+	}
+	ACTHIDE h(pManager);
+
+	bool ok=1;
+	int c1;
 	srand(time(NULL));//random seed
-	do
-	{//loop to make sure color picked has at least one fig present
-
-		int ran = rand() % 5;
-
 	do
 	{//loop to make sure color picked has at least one fig present
 
 		int ran = rand() % 6;
 
-		if (pManager->getfigcount() == 0)
-		{
-			return;
-		}
-		if (!pManager->ifanyiscolored())
-		{
-			pOut->PrintMessage("No colored figs");
-			return;
-		}
+		
+		
 		switch (ran)
 		{
 		case ITM_RED:
-			c = RED;
-			if (pManager->returnfigcolourcount(c))
-				pOut->PrintMessage("Pick red figures");
+			c1 = 0;
+			if (pManager->returnfigcolourcount(0))
+			{
+				pOut->PrintMessage("Pick red figures,click to continue");
+				ok = false;
+				break;
+			}
+			else
+				continue;
 
-			break;
+
 		case ITM_BLUE:
-			c = BLUE;
-			if (pManager->returnfigcolourcount(c))
-				pOut->PrintMessage("Pick blue figures");
-			break;
-		case ITM_BLACK:
-			c = BLACK;
-			if (pManager->returnfigcolourcount(c))
-				pOut->PrintMessage("Pick black figures");
-			break;
-		case ITM_GREEN:
-			c = GREEN;
-			if (pManager->returnfigcolourcount(c))
-				pOut->PrintMessage("Pick green figures");
-			break;
-		case ITM_ORANGE:
-			c = ORANGE;
-			if (pManager->returnfigcolourcount(c))
-				pOut->PrintMessage("Pick orange figures");
-			break;
-		case ITM_YELLOW:
-			c = YELLOW;
-			if (pManager->returnfigcolourcount(c))
-				pOut->PrintMessage("Pick yellow figures");
+			c1 = 1;
+			if (pManager->returnfigcolourcount(1)){
+				ok = false;
+				pOut->PrintMessage("Pick blue figures,click to continue");
+		//	pIn->GetUserAction();
 			break;
 		}
-	} while (pManager->returnfigcolourcount(c) == 0);
+		else
+			continue;
+		case ITM_BLACK:
+			c1 = 2;
+			if (pManager->returnfigcolourcount(2)){
+				ok = false;
+				pOut->PrintMessage("Pick black figures,click to continue");
+			//pIn->GetUserAction();
+			break;
+		}
+		else
+			continue;
+		case ITM_GREEN:
+			c1 = 3;
+			if (pManager->returnfigcolourcount(3)){
+				ok = false;
+				pOut->PrintMessage("Pick green figures,click to continue");
+				break;
+			}
+			else
+				continue;
+		case ITM_ORANGE:
+			c1 = 4;
+			if (pManager->returnfigcolourcount(4)){
+				ok = false;
+				pOut->PrintMessage("Pick orange figures,click to continue");
+				break;
+			}
+			else
+				continue;
+		case ITM_YELLOW:
+			c1 = 5;
+			if (pManager->returnfigcolourcount(5)){
+				ok = false;
+				pOut->PrintMessage("Pick yellow figures,click to continue");
+				break;
+			}
+			else
+				continue;
 
+			
+		}
+	} while (ok);
 
-
-	int m=pManager->returnfigcolourcount(c);//find how many figures of certain colour
+	int m=pManager->returnfigcolourcount(c1);//find how many figures of certain colour
 	int correct = 0;
 	int wrong = 0;
 	while (correct < m)
@@ -102,12 +115,12 @@ void HideByColour::Execute()
 		Point p;
 		pIn->GetPointClicked(p.x, p.y);
 		
-		CFigure*f=pManager->returnfigonpoint(p);
+		CFigure * f = pManager->GetFigure(p.x, p.y);
 		if (f == nullptr)
 		{
 			continue;
 		}
-		if (f->getfigcolour() == c)
+		if (f->getfigcolour() == c1)
 		{
 			correct++;
 			
@@ -117,23 +130,33 @@ void HideByColour::Execute()
 			wrong++;
 		}
 		pOut->PrintMessage("nom of correct picks,no of wrong picks " + to_string(correct) + "," + to_string(wrong));
-		A=new ActDelete(pManager,f);
-		A->Execute();
+		pManager->Deletefig(f);
+		pManager->UpdateInterface();
 	}//gets all clicks untill user clicks all correct figs
 	pOut->ClearStatusBar();
 	
 	pOut->PrintMessage("nom of correct picks,no of wrong picks " + to_string(correct)+", "+to_string(wrong));
-	delete this;
+	
 	//pOut->ClearStatusBar();
 }
 
-
-HideByColour::~HideByColour()
+void HideByColour::AddMeUndo(bool redo)
 {
-	A = new LoadAction(pManager, to_string(i));
-	A->Execute();
-	i++;
-
 }
+
+void HideByColour::AddMeRec()
+{
+}
+
+void HideByColour::undo()
+{
+}
+
+void HideByColour::redo()
+{
+}
+
+
+
 
 

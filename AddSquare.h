@@ -13,6 +13,7 @@ private:
 	Point P1; //Square Center
 	GfxInfo SquaGfxInfo;
 	bool Sound;
+	CFigure *DeletedFig;
 public:
 	AddSquare(ApplicationManager* pApp, bool IsEnabled);
 
@@ -20,6 +21,10 @@ public:
 	virtual void ReadActionParameters();
 
 	//Add Square to the ApplicationManager
-	virtual void Execute();
+	virtual void Execute(bool read);
+	virtual void AddMeUndo(bool redo);
+    virtual void undo();
+	virtual void redo();
+	virtual void AddMeRec();
 };
 

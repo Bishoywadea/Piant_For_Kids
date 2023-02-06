@@ -196,9 +196,6 @@
     <ClCompile Include="DrawColour.cpp">
       <Filter>Action Classes</Filter>
     </ClCompile>
-    <ClCompile Include="Actclearall.cpp">
-      <Filter>Action Classes</Filter>
-    </ClCompile>
     <ClCompile Include="SaveAction.cpp">
       <Filter>Action Classes</Filter>
     </ClCompile>
@@ -211,22 +208,47 @@
     <ClCompile Include="ActionDrag.cpp">
       <Filter>Action Classes</Filter>
     </ClCompile>
-
-    <ClCompile Include="SaveAction.cpp">
+    <ClCompile Include="Record.cpp">
       <Filter>Action Classes</Filter>
     </ClCompile>
-    <ClCompile Include="LoadAction.cpp">
+    <ClCompile Include="Redo.cpp">
       <Filter>Action Classes</Filter>
     </ClCompile>
-    <ClCompile Include="HideByColour.cpp">
+    <ClCompile Include="Stop.cpp">
+      <Filter>Action Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="Undo.cpp">
+      <Filter>Action Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="Play_Rec.cpp">
+      <Filter>Action Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="ActionResize.cpp">
+      <Filter>Action Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="Actclearall.cpp">
+      <Filter>Action Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="ACTHIDE.cpp">
       <Filter>Action Classes</Filter>
     </ClCompile>
     <ClCompile Include="ActHideByshapes.cpp">
       <Filter>Action Classes</Filter>
     </ClCompile>
-    <ClCompile Include="ActSound.cpp">
-    <ClCompile Include="ACTHIDE.cpp">
-
+    <ClCompile Include="HideByColour.cpp">
+      <Filter>Action Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="HideShapesAndColors.cpp">
+      <Filter>Action Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="Actions\Action.cpp" />
+    <ClCompile Include="FillColorMenu.cpp">
+      <Filter>Action Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="DrawColorMenu.cpp">
+      <Filter>Action Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="Exit.cpp">
       <Filter>Action Classes</Filter>
     </ClCompile>
   </ItemGroup>
@@ -361,9 +383,6 @@
     <ClInclude Include="DrawColour.h">
       <Filter>Action Classes</Filter>
     </ClInclude>
-    <ClInclude Include="Actclearall.h">
-      <Filter>Action Classes</Filter>
-    </ClInclude>
     <ClInclude Include="SaveAction.h">
       <Filter>Action Classes</Filter>
     </ClInclude>
@@ -379,17 +398,46 @@
     <ClInclude Include="ActionDrag.h">
       <Filter>Action Classes</Filter>
     </ClInclude>
-
-    <ClInclude Include="HideByColour.h">
+    <ClInclude Include="Record.h">
+      <Filter>Action Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="Redo.h">
+      <Filter>Action Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="Stop.h">
+      <Filter>Action Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="Undo.h">
+      <Filter>Action Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="Play_Rec.h">
+      <Filter>Action Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="ActionResize.h">
+      <Filter>Action Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="Actclearall.h">
+      <Filter>Action Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="ACTHIDE.h">
       <Filter>Action Classes</Filter>
     </ClInclude>
     <ClInclude Include="ActHideByshapes.h">
       <Filter>Action Classes</Filter>
     </ClInclude>
-    <ClInclude Include="ActSound.h">
-
-    <ClInclude Include="ACTHIDE.h">
-
+    <ClInclude Include="HideByColour.h">
+      <Filter>Action Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="HideShapesAndColors.h">
+      <Filter>Action Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="FillColorMenu.h">
+      <Filter>Action Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="DrawColorMenu.h">
+      <Filter>Action Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="Exit.h">
       <Filter>Action Classes</Filter>
     </ClInclude>
   </ItemGroup>

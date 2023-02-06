@@ -27,7 +27,7 @@ void Ccircle::PrintInfo(Output* pOut)
 
 }
 
-bool Ccircle::IsOnFig(int x, int y) const  //Checks to deciding the click is on figure or not //BISHOY
+bool Ccircle::IsOnFig(int x, int y)  //Checks to deciding the click is on figure or not //BISHOY
 {
 	Point P;
 	P.x = x;
@@ -38,7 +38,7 @@ bool Ccircle::IsOnFig(int x, int y) const  //Checks to deciding the click is on 
 
 void Ccircle::MOVE(Point p)
 {
-	Point cent = Center;
+	C0 = Center;
 	float rlen = sqrt(pow((Radius.x - Center.x), 2) + pow((Radius.y - Center.y), 2));
 	Center.x = p.x;
 	Center.y = p.y;
@@ -46,10 +46,24 @@ void Ccircle::MOVE(Point p)
 	Radius.y = p.y;
 	pvid = ID;
 }
+Point Ccircle::getcenter()
+{
+	return C0;
+
+}
+void Ccircle::GetTheCorner(Point A)
+{
+}
+
+void Ccircle::Resize(Point A)
+{
+	Radius = A;
+	radius = CalcDistance(A, Center);
+}
 
 void Ccircle::Save(ofstream& OutFile)
 {
-	OutFile << "Circle\t"<< pvid<<"\t" << Center.x << "\t" << Center.y << "\t" << ConvertColorToString(FigGfxInfo.DrawClr) << "\t";
+	OutFile << "Circle\t"<< pvid<<"\t" << Center.x << "\t" << Center.y << "\t" << Radius.x << "\t" << Radius.y << "\t" << ConvertColorToString(FigGfxInfo.DrawClr) << "\t";
 	if (FigGfxInfo.isFilled)
 	{
 		OutFile << ConvertColorToString(FigGfxInfo.FillClr) << endl;
@@ -71,6 +85,7 @@ void Ccircle::Load(ifstream& InFile)
 	if (FillClr == "NOCOLOR")
 	{
 		FigGfxInfo.isFilled = false;
+		
 	}
 	else {
 		FigGfxInfo.isFilled = true;
@@ -79,6 +94,10 @@ void Ccircle::Load(ifstream& InFile)
 	Selected = false;
 	FigGfxInfo.BorderWdth = UI.PenWidth;
 	radius = CalcDistance(Center, Radius);
+}
+int Ccircle::iffigtype()
+{
+	return 1;
 }
 ShapesMenuItem Ccircle::Returnshapestype()
 {

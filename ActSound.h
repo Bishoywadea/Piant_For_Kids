@@ -10,8 +10,11 @@ public:
 	ActSound(ApplicationManager* pApp, bool*);
 
 	virtual void ReadActionParameters();
-	virtual void Execute();
-
+	void Execute(bool read);
+	virtual void AddMeUndo(bool redo);
+	virtual void undo();
+    virtual void redo();
+	virtual void AddMeRec();
 	~ActSound();
 };
 

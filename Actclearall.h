@@ -1,5 +1,5 @@
-#pragma once
 
+#pragma once
 #include "Actions/Action.h"
 #include "ApplicationManager.h"
 #include "AddCircle.h"
@@ -12,6 +12,11 @@ class Actclearall: public Action
 public:
 	Actclearall(ApplicationManager* pApp);
 	void ReadActionParameters();
-	void Execute();
+	void Execute(bool b=1);
+	virtual void AddMeUndo(bool redo);
+	virtual void AddMeRec();
+	virtual void undo();
+	virtual void redo();
+
 };
 

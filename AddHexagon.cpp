@@ -14,35 +14,32 @@ void AddHexagon::ReadActionParameters()
 	
 	Input* pIn = pManager->GetInput();
 
-	if (Sound)
-	{
-		PlaySound(TEXT("Sounds\\circle.wav"), NULL, SND_ASYNC);
-	}
+	
 
 	pOut->PrintMessage("New Hexagon: Click at Center");
 
 	//Read Center and store in point P1
-	do {
-		pIn->GetPointClicked(p1.x, p1.y);
-		if (p1.y <= 50)
-			pOut->PrintMessage("Drawing a Hexagon, Can not draw on tool bar");
-	} while (p1.y <= 50);
-
-
-	HexGfxInfo.isFilled = false;	//default is not filled
 	
+		pIn->GetPointClicked(p1.x, p1.y);
+		
+
 	//get drawing, filling colors and pen width from the interface
 	HexGfxInfo.DrawClr = pOut->getCrntDrawColor();
 	HexGfxInfo.FillClr = pOut->getCrntFillColor();
-	HexGfxInfo.isFilled = false;
+	//HexGfxInfo.isFilled = false;
 
 	pOut->ClearStatusBar();
 
 }
 
-void AddHexagon::Execute()
+void AddHexagon::Execute(bool read)
 {
+	if (Sound)
+	{
+		PlaySound(TEXT("Sounds\\hexagon.wav"), NULL, SND_ASYNC);
+	}
 	//This action needs to read some parameters first
+	if(read)
 	ReadActionParameters();
 
 	//Create a Hexagon with the parameters read from the user
@@ -50,4 +47,22 @@ void AddHexagon::Execute()
 
 	//Add the Hexagon to the list of figures
 	pManager->AddFigure(H);
+	DeletedFig=H;
+}
+void AddHexagon::undo()
+{
+	DeletedFig=pManager->Deletelastfig();
+}
+void AddHexagon::redo()
+{
+	pManager->AddFigure(DeletedFig);
+}
+void AddHexagon::AddMeUndo(bool redo)
+{
+	pManager->AddToUndo(this,redo);
+
+}
+void AddHexagon::AddMeRec()
+{
+	pManager->AddToRec(this);
 }

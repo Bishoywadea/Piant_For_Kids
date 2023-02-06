@@ -3,10 +3,7 @@
 
 SaveAction::SaveAction(ApplicationManager* pApp,int number,string s):Action(pApp)
 {
-	
-
 	SaveName = s+".txt";
-
 	Fignumber = number;
 }
 
@@ -15,33 +12,30 @@ void SaveAction::Heading(int number)
 	int numberOfFiguers = number;
 	DrawColor = ConvertColorToString(UI.DrawColor);
 	FillColor = ConvertColorToString(UI.FillColor);
-	OutFile << DrawColor << "\t" << FillColor << "\n" << Fignumber<<endl;
+	if (UI.FillColor != UI.BkGrndColor)
+	{
+		OutFile << DrawColor << "\t" << FillColor << "\n" << Fignumber << endl;
+	}
+	else
+	{
+		OutFile << DrawColor << "\t" << "NOCOLOR" << "\n" << Fignumber << endl;
+	}
+	
 }
 
 void SaveAction::ReadActionParameters()
 {
 	Output* pOut = pManager->GetOutput();
-
-
-
-	if (SaveName == "UNinitializedno.txt")
-
+	Input* pIn = pManager->GetInput();
+	if (SaveName== "UNINITIALIZED.txt")
 	{
-		Input* pIn = pManager->GetInput();
-
 		pOut->PrintMessage("Enter Save Name");
 		SaveName = pIn->GetSrting(pOut) + ".txt";
 	}
-	
-
-	Input* pIn = pManager->GetInput();
-	pOut->PrintMessage("Enter Save Name");
-	SaveName = pIn->GetSrting(pOut) + ".txt";
-
 	pOut->ClearStatusBar();
 }
 
-void SaveAction::Execute()
+void SaveAction::Execute(bool read)
 {
 	ReadActionParameters();
 	OutFile.open(SaveName);
@@ -76,14 +70,30 @@ string SaveAction::ConvertColorToString(color c)
 		{
 			return "YELLOW";
 		}
-		else if (c == BEIGE)
-		{
-			return "BEIGE";
-		}
 		else
 		{
 			return "NO COLOR";
 		}
 }
+void SaveAction::undo()
+{
+
+
+}
+void SaveAction::redo()
+{
+
+}
+void SaveAction::AddMeUndo(bool redo)
+{
+
+
+}
+void SaveAction::AddMeRec()
+{
+
+	
+}
+
 
 

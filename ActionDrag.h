@@ -3,9 +3,9 @@
 #include"GUI/Input.h"
 #include"GUI/Output.h"
 #include"Actions/Action.h"
-#include<iostream>
-class ActionDrag :public Action
+class ActionDrag:public Action
 {
+	bool flag;
 	button btn;
 	buttonstate stat;
 	Point P;
@@ -15,6 +15,10 @@ public:
 	virtual void ReadActionParameters();
 
 	//Executes the select action
-	virtual void Execute();
+	    void Execute(bool b);
+		virtual void AddMeUndo(bool redo);
+	    virtual void undo();
+	    virtual void redo();
+	    virtual void AddMeRec();
 };
 

@@ -1,26 +1,12 @@
-
 #pragma once
-#include "Actions/Action.h"
-#include "ApplicationManager.h"
-#include "GUI\Output.h"
-#include "GUI\Input.h"
-#include<cstdlib>
-#include"AddColor.h"
 
-
-class HideByColour:public Action
-{
-	color c;
-	Action* A;
-	static int i;
-
-#include "HideByColour.h"
 #include"SaveAction.h"
 #include "LoadAction.h"
 #include"ActDelete.h"
+#include"Actions/Action.h"
 #include<random>
 #include"ACTHIDE.h"
-class HideByColour:public ACTHIDE
+class HideByColour:public Action
 {
 	color c;
 	Action* A;
@@ -29,9 +15,12 @@ class HideByColour:public ACTHIDE
 public:
 	HideByColour(ApplicationManager* pApp);
 	void ReadActionParameters();
-	void Execute();
+	void Execute(bool b=1);
+	virtual void AddMeUndo(bool redo);
+	virtual void AddMeRec();
+	virtual void undo() ;
+	virtual void redo() ;
 
-	~HideByColour();
 
 };
 

@@ -1,7 +1,8 @@
 #include "MoveAction.h"
 
-MoveAction::MoveAction(ApplicationManager* pApp) :Action(pApp)
+MoveAction::MoveAction(ApplicationManager* pApp,bool IsEnabled) :Action(pApp)
 {
+	Sound = IsEnabled;
 }
 
 void MoveAction::ReadActionParameters()
@@ -27,8 +28,12 @@ void MoveAction::ReadActionParameters()
 
 }
 
-void MoveAction::Execute()
+void MoveAction::Execute(bool read)
 {
+	if (Sound)
+	{
+		PlaySound(TEXT("Sounds\\move.wav"), NULL, SND_ASYNC);
+	}
 	Fig = pManager->Returnselectedfig();
 	if (Fig == NULL)
 	{
@@ -37,8 +42,31 @@ void MoveAction::Execute()
 		return;
 
 	}
+	if(read)
 	ReadActionParameters();
-	CFigure* oldfig = Fig;
-	Fig->MOVE(p1);//this move function is over ridden in each CFigures class
+	Fig->MOVE(p1);//this move function is overridden in each CFigures class
+	unp1=Fig->getcenter();
 	
+	
+}
+void MoveAction::undo()
+{
+	
+	Fig->MOVE(unp1);
+}
+void MoveAction::redo()
+{
+	
+	Fig->MOVE(p1);
+}
+
+void MoveAction::AddMeUndo(bool redo)
+{
+	pManager->AddToUndo(this,redo);
+
+}
+void MoveAction::AddMeRec()
+{
+
+	pManager->AddToRec(this);
 }

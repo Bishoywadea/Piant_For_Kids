@@ -6,15 +6,30 @@ Actclearall::Actclearall(ApplicationManager* pApp):Action(pApp)
 void Actclearall::ReadActionParameters()
 {
 }
-void Actclearall::Execute()
+void Actclearall::Execute(bool b)
 {
-	int FigCount = pManager->getfigcount();
-	CFigure** FigList = pManager->returnfiglist();
-		for (int i = 0; i < FigCount; i++)
-		{
-			delete FigList[i];
-			FigList[i] = NULL;
-		}
-		FigCount = 0;
+	Output* pOut= pManager->GetOutput();
+	
+	pManager->Clearall();
+	pManager->clearredo();
+	pManager->clearundo();
+	pManager->clearrecordings();
+	pOut->PrintMessage("Window is cleared");
 
+}
+
+void Actclearall::AddMeUndo(bool redo)
+{
+}
+
+void Actclearall::AddMeRec()
+{
+}
+
+void Actclearall::undo()
+{
+}
+
+void Actclearall::redo()
+{
 }

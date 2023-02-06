@@ -8,12 +8,16 @@
 
 
 class ActDelete:public Action
-{
-private:
-	CFigure* fig;
+{	
+	CFigure *DeletedFig;
+	bool Sound;
 public:
-	ActDelete(ApplicationManager* pApp,CFigure *f=nullptr);
+	ActDelete(ApplicationManager* pApp, bool IsEnabled);
 	void ReadActionParameters();
-	void Execute();
+	void Execute(bool read);
+	virtual void AddMeUndo(bool redo);     //Adds actions to undoarr array
+	virtual void undo();
+	virtual void redo();
+	virtual void AddMeRec();               //Adds actions to recordact array
 };
 

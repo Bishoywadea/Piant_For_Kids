@@ -1,7 +1,7 @@
 #include "ActDelete.h"
-ActDelete::ActDelete(ApplicationManager* pApp, CFigure* f) :Action(pApp)
+ActDelete::ActDelete(ApplicationManager* pApp,bool IsEnabled) :Action(pApp)
 {
-	fig = f;
+	Sound = IsEnabled;
 }
 
 void ActDelete::ReadActionParameters()
@@ -11,25 +11,32 @@ void ActDelete::ReadActionParameters()
 	
 }
 
-void ActDelete::Execute()
+void ActDelete::Execute(bool read)
 {
+	if (Sound)
+	{
+		PlaySound(TEXT("Sounds\\Delete.wav"), NULL, SND_ASYNC);
+	}
 	Output* pOut = pManager->GetOutput();
-
-	if (fig == nullptr)
-	{
-		fig = pManager->Returnselectedfig();
-
-
-		pManager->Deletefig(fig);//callls delete fig in appmanger class
-		pOut->PrintMessage("Selected figure is deleted");
-	}
-	else
-	{
-		pManager->Deletefig(fig);//callls delete fig in appmanger class
-		pManager->UpdateInterface();
-	}
 	CFigure*Fig =pManager->Returnselectedfig();
-	pManager->Deletefig(Fig);//callls delete fig in appmanger class
+	DeletedFig=Fig;
+	pManager->Deletefig(Fig);//calls delete fig in appmanger class
 	pOut->PrintMessage("Selected figure is deleted");
+}
+void ActDelete::AddMeUndo(bool redo)
+{
+	pManager->AddToUndo(this,redo);
+}
+void ActDelete::undo()
+{
+	pManager->AddFigure(DeletedFig);
+}
+void ActDelete::redo()
+{
+	pManager->Deletelastfig();
+}
+void ActDelete::AddMeRec()
+{
+	pManager->AddToRec(this);
 
 }

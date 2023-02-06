@@ -12,7 +12,8 @@ public:
 	window* CreateWind(int, int, int, int) const; //creates the application window
 	void CreateDrawToolBar() const;	//creates Draw mode toolbar & menu
 	void CreateShapesToolBar() const;
-	void CreateColourToolBar() const;
+	void CreateFillColourToolBar() const;
+	void CreateDrawColourToolBar() const;
 	void CreatePlayToolBar() const;	//creates Play mode toolbar & menu
 	void CreateStatusBar() const;	//create the status bar
 
@@ -24,9 +25,9 @@ public:
 
 	// -- Figures Drawing functions
 	void DrawRect(Point P1, Point P2, GfxInfo RectGfxInfo, bool selected = false) const;  //Draw a rectangle
-	void DrawSq(Point P1, GfxInfo SquareGfxInfo, bool selected)      const;
+	void DrawSq(Point P1, GfxInfo SquareGfxInfo, bool selected,float side)      const;
 	void DrawTri(Point P1, Point P2, Point P3, GfxInfo TriGfxInfo, bool selected)  const;
-	void DrawHexa(Point P1, GfxInfo TriGfxInfo, bool selected)  const;
+	void DrawHexa(Point P1, GfxInfo TriGfxInfo, bool selected,float side)  const;
 	void DrawCircle(Point center, Point border, GfxInfo CircleGfxInfo, bool selected)  const;
 	///Make similar functions for drawing all other figure types.
 

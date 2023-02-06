@@ -9,7 +9,11 @@ class Shapesmood:public Action
 public:
 	Shapesmood(ApplicationManager* pApp);
 	//Execute action (code depends on action type)
-	virtual void Execute() ;
+	virtual void Execute(bool read) ;
 	virtual void ReadActionParameters();
+	virtual void AddMeUndo(bool redo);
+	virtual void undo();
+	virtual void redo();
+	virtual void AddMeRec();
 };
 

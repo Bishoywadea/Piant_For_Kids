@@ -4,11 +4,9 @@ Backicon::Backicon(ApplicationManager* pApp):Action(pApp)
 {
 }
 
-void Backicon::Execute()
+void Backicon::Execute(bool read)
 {
 	Output* pOut = pManager->GetOutput();
-	Input* pIn = pManager->GetInput();
-
 	pOut->PrintMessage("back icon");
 	pOut->ClearToolBar();
 	pOut->CreateDrawToolBar();
@@ -16,4 +14,22 @@ void Backicon::Execute()
 
 void Backicon::ReadActionParameters()
 {
+}
+void Backicon::undo()
+{
+
+}
+void Backicon::redo()
+{
+	
+}
+void Backicon::AddMeUndo(bool redo)
+{
+
+
+}
+void Backicon::AddMeRec()
+{
+	pManager->AddToRec(this);
+
 }

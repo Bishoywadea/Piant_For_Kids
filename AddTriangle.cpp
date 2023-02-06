@@ -10,32 +10,15 @@ void AddTriangle::ReadActionParameters()
 	//Get a Pointer to the Input / Output Interfaces
 	Output* pOut = pManager->GetOutput();
 	Input* pIn = pManager->GetInput();
-
-	if (Sound)
-	{
-		PlaySound(TEXT("Sounds\\triangle.wav"), NULL, SND_ASYNC);
-	}
 	
 	// 2.3.1 - Drawing non-filled and non-Highlighted Triangle
 	pOut->PrintMessage("Drawing a Triangle,  Click three points");
-	do {
+	
 		pIn->GetPointClicked(P1.x, P1.y);
-		if (P1.y < UI.ToolBarHeight)
-			pOut->PrintMessage("Drawing a Triangle, Can not draw on tool bar");
-	} while (P1.y < UI.ToolBarHeight);
-	pOut->PrintMessage("Drawing a Triangle, Click another two points");
-	do {
 		pIn->GetPointClicked(P2.x, P2.y);
-		if (P2.y < UI.ToolBarHeight)
-			pOut->PrintMessage("Drawing a Triangle, Can not draw on tool bar");
-	} while (P2.y < UI.ToolBarHeight);
-	pOut->PrintMessage("Drawing a Triangle, Click another point");
-	do {
 		pIn->GetPointClicked(P3.x, P3.y);
-		if (P3.y < UI.ToolBarHeight)
-			pOut->PrintMessage("Drawing a Triangle, Can not draw on tool bar");
-	} while (P1.y < UI.ToolBarHeight || P2.y < UI.ToolBarHeight || P3.y < UI.ToolBarHeight);
-	TriGfxInfo.isFilled = false;	//default is not filled
+		
+	//TriGfxInfo.isFilled = false;	//default is not filled
 	//get drawing, filling colors and pen width from the interface
 	TriGfxInfo.DrawClr = pOut->getCrntDrawColor();
 	TriGfxInfo.FillClr = pOut->getCrntFillColor();
@@ -44,9 +27,14 @@ void AddTriangle::ReadActionParameters()
 
 }
 
-void AddTriangle::Execute()
+void AddTriangle::Execute(bool read)
 {
+	if (Sound)
+	{
+		PlaySound(TEXT("Sounds\\triangle.wav"), NULL, SND_ASYNC);
+	}
 	//This action needs to read some parameters first
+	if(read)
 	ReadActionParameters();
 
 	//Create a Triangle with the parameters read from the user
@@ -54,4 +42,23 @@ void AddTriangle::Execute()
 
 	//Add the Triangle to the list of figures
 	pManager->AddFigure(T);
+	DeletedFig=T;
+}
+void AddTriangle::undo()
+{
+	DeletedFig=pManager->Deletelastfig();
+}
+void AddTriangle::redo()
+{
+	pManager->AddFigure(DeletedFig);
+}
+void AddTriangle::AddMeUndo(bool redo)
+{
+	pManager->AddToUndo(this,redo);
+
+}
+void AddTriangle::AddMeRec()
+{
+	pManager->AddToRec(this);
+
 }

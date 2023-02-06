@@ -1,6 +1,6 @@
 #include "Input.h"
 #include "Output.h"
-
+#include<iostream>
 
 Input::Input(window* pW)
 {
@@ -12,9 +12,9 @@ void Input::GetPointClicked(int& x, int& y) const
 	pWind->WaitMouseClick(x, y);	//Wait for mouse click
 }
 
-void Input::watchDrag(buttonstate& state, button btn, int& x, int& y)
+void Input::mousestate(buttonstate& state,button btn,int& x, int& y)
 {
-	state = pWind->GetButtonState(btn, x, y);
+	state=pWind->GetButtonState(btn, x, y);  
 }
 
 string Input::GetSrting(Output* pO) const
@@ -68,12 +68,16 @@ ActionType Input::GetUserAction() const
 			case ITM_SAVE: return ACT_SAVE;              //icon to save the draw 
 			case ITM_LOAD: return ACT_LOAD;              //icon to save the draw 
 			case ITM_MOVE: return ACT_MOVE;              //icon to move the selected shape
-			case ITM_REDO: return ACT_REDO;    //icon to redo
+			case ITM_REDO: return ACT_REDO; //icon to redo
+			case ITM_STARTREC:return ACT_RECORD;
+	        case ITM_STOPREC:return ACT_STOP;
+	        case ITM_PLAYREC:return ACT_PLAY;
 			case ITM_CLEARALL: return ACT_CLEARALL;
 			case ITM_PLAYMOOD: return TO_PLAY;           //icon to go to play mode
 			case ITM_DRAWCOLOUR:return ACT_CHNGDRAWCOLOUR;
 			case ITM_SOUND:return Sound;
 			case ITM_Drag:return Drag;
+			case ITM_Resize:return Resize;
 			default: return EMPTY;	//A click on empty place in desgin toolbar
 			}
 		}
@@ -121,7 +125,7 @@ ActionType Input::GetUserAction() const
 		return STATUS;
 	}
 	//[5] If user in color menu and clicks on the colour
-	else if (UI.InterfaceMode == MODE_COLOUR)
+	else if (UI.InterfaceMode == MODE_Fill_COLOUR)
 	{
 		if (y >= 0 && y < UI.ToolBarHeight)
 		{
@@ -153,7 +157,40 @@ ActionType Input::GetUserAction() const
 		return STATUS;
 
 	}
-	//[6] If user in mode play and clicks on the icon in it
+	//[6] If user in color menu and clicks on the colour
+	else if (UI.InterfaceMode == MODE_Draw_COLOUR)
+	{
+		if (y >= 0 && y < UI.ToolBarHeight)
+		{
+			//Check whick Menu item was clicked
+			//==> This assumes that menu items are lined up horizontally <==
+			int ClickedItemOrder = (x / UI.MenuItemWidth);
+			//Divide x coord of the point clicked by the menu item width (int division)
+			//if division result is 0 ==> first item is clicked, if 1 ==> 2nd item and so on
+
+			switch (ClickedItemOrder)
+			{
+			case ITM_RED: return ACT_RED_D;         //icon to color red
+			case ITM_BLUE: return ACT_BLUE_D;       //icon to color blue
+			case ITM_GREEN: return ACT_GREEN_D;     //icon to color green
+			case ITM_ORANGE: return ACT_ORANGE_D;   //icon to color orange
+			case ITM_BLACK: return ACT_BLACK_D;     //icon to color black
+			case ITM_YELLOW: return ACT_YELLOW_D;   //icon to color yellow
+			default: return TO_DRAW;	//A click on empty place in desgin toolbar
+			}
+		}
+
+		//[2] User clicks on the drawing area
+		if (y >= UI.ToolBarHeight && y < UI.height - UI.StatusBarHeight)
+		{
+			return DRAWING_AREA;
+		}
+
+		//[3] User clicks on the status bar
+		return STATUS;
+
+	}
+	//[7] If user in mode play and clicks on the icon in it
 	else if (UI.InterfaceMode == MODE_PLAY)
 	{
 		if (y >= 0 && y < UI.ToolBarHeight)
@@ -168,8 +205,8 @@ ActionType Input::GetUserAction() const
 			{
 			case ITM_DRAWMOOD: return TO_DRAW;                               // icon to go back to draw mode
 			case ITM_HIDESHAPES: return HIDE_SHAPES;                         // icon to go hide shapes
-			case ITM_HIDECOLOURS: return ACT_HIDECOLOURS;      // icon to go hide shapes and colour
-			//case ITM_HIDECOLOURS: return HIDE_COLOURS;                       // icon to go hide colours
+			case ITM_HIDESHAPESANDCOLOURS: return HIDE_SHAPSANDCOLOURS;      // icon to go hide shapes and colour
+			case ITM_HIDECOLOURS: return HIDE_COLOURS;                       // icon to go hide colours
 			default: return EMPTY;	//A click on empty place in desgin toolbar
 			}
 		}

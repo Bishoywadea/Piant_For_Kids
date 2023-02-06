@@ -12,7 +12,8 @@ enum GUI_MODE	//Graphical user interface mode
 {
 	MODE_DRAW,	//Drawing mode (startup mode)
 	MODE_SHAPES,
-	MODE_COLOUR,
+	MODE_Fill_COLOUR,
+	MODE_Draw_COLOUR,
 	MODE_PLAY	//Playing mode
 };
 
@@ -37,6 +38,7 @@ enum DrawMenuItem //The items of the Draw menu (you should add more items)
 	ITM_DRAWCOLOUR,
 	ITM_SOUND,
 	ITM_Drag,
+	ITM_Resize,
 	ITM_EXIT,//Exit item
 	DRAW_ITM_COUNT		//no. of menu items ==> This should be the last line in this enum
 };

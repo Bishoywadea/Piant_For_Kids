@@ -10,10 +10,14 @@ class SaveAction :public Action
 	string SaveName;
 	ofstream OutFile;
 public:
-	SaveAction(ApplicationManager* pApp,int number,string s="UNinitializedno");
+	SaveAction(ApplicationManager* pApp,int number,string s="UNINITIALIZED");
 	void Heading(int number);
 	void ReadActionParameters();
-	virtual void Execute();
+	void Execute(bool b);
 	string ConvertColorToString(color c);
+	virtual void AddMeUndo(bool redo);
+    virtual	void undo();
+	virtual void redo();
+	virtual void AddMeRec();
 };
 

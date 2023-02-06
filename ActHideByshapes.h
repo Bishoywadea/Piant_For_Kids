@@ -1,12 +1,4 @@
 #pragma once
-
-class ActHideByshapes
-{
-};
-
-
-
-#pragma once
 #include "Actions/Action.h"
 #include "ApplicationManager.h"
 #include "GUI\Output.h"
@@ -22,20 +14,22 @@ class ActHideByshapes
 #include"AddSquare.h"
 #include"AddTriangle.h"
 #include"ACTHIDE.h"
-
 #include"ActDelete.h"
 #include<random>
-
-
-class HideByshapes :public ACTHIDE
+class HideByshapes :public Action
 {
 
 	Action* A;
-
+	int figcounter;
+	int figitems;
 public:
 	HideByshapes(ApplicationManager* pApp);
 	void ReadActionParameters();
-	void Execute();
+	void Execute(bool b=1);
+	virtual void AddMeUndo(bool redo);
+	virtual void AddMeRec();
+	virtual void undo();
+	virtual void redo();
 	
 };
 
